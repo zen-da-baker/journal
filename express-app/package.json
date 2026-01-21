@@ -1,0 +1,28 @@
+{
+  "name": "journal",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "npx tsc",
+    "start": "node build/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zen-da-baker/journal.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/zen-da-baker/journal/issues"
+  },
+  "homepage": "https://github.com/zen-da-baker/journal#readme",
+  "dependencies": {
+    "@types/express": "^5.0.6",
+    "express": "^5.2.1",
+    "morgan": "^1.10.1",
+    "typescript": "^5.9.3"
+  }
+}
