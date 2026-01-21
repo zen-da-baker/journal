@@ -6,6 +6,13 @@ import path from "path";
 
 import { fileURLToPath } from "url";
 
+// Import routes
+import { getHomePage } from "./controllers/get-pages/getHomePage.js";
+
+// Error pages
+import { getNotFoundPage } from "./controllers/error-handler/getNotFoundPage.js";
+import { getErrorPage } from "./controllers/error-handler/getErrorPage.js";
+
 const port = 3000;
 
 const app = express();
@@ -29,6 +36,22 @@ app.use( express.static( clientJavaScriptPath) );
 // Allow the routes to parse the body of requests when they are JSON
 app.use( express.json() );
 
-app.get("/", (request, response) => response.send("Hello World!") );
+// App routes
+// Static pages
+app.get( "/", getHomePage );
 
-app.listen( port, () => console.log("Listening to port: " + port ) );
+// app.get( "/about", getAboutPage );
+
+// The dashboard routes
+// app.use( "/dashboard", dashboardRouter );
+
+// The blog routes
+// app.use( "/blog", blogRouter );
+
+// The lessons routes
+
+// Error handler
+app.use( getNotFoundPage );
+app.use( getErrorPage );
+
+app.listen(port, () => console.log("App listening to port " + port + "."));

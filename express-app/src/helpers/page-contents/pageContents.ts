@@ -2,7 +2,7 @@
 import { getPageContentHelper } from "../get-page-content/getPageContentHelper.js";
 
 // The higher level paths for the directory structure
-let pagesDirectoryPath = "../../../../views/pages/";
+let pagesDirectoryPath = "../../../../views/";
 
 // Dashboard directories
 let dashboardDirectoryPath = pagesDirectoryPath + "dashboard/";
