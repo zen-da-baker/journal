@@ -5,6 +5,7 @@ import express from "express";
 import { getDashboardHomePage } from "../../get-pages/dashboard/getDashboardHomePage.js";
 import { getDayEntryPage } from "../../get-pages/dashboard/getDayEntryPage.js";
 import { getDreamEntryPage } from "../../get-pages/dashboard/getDreamEntryPage.js";
+import { getTutorialPage } from "../../get-pages/dashboard/getTutorialPage.js";
 import { getCalendarPage } from "../../get-pages/dashboard/getCalendarPage.js";
 import { getSettingsPage } from "../../get-pages/dashboard/getSettingsPage.js";
 
@@ -15,6 +16,8 @@ dashboardRouter.get( "/", getDashboardHomePage );
 dashboardRouter.get( "/day-entry", getDayEntryPage );
 
 dashboardRouter.get( "/dream-entry", getDreamEntryPage );
+
+dashboardRouter.get( "/tutorial", getTutorialPage );
 
 dashboardRouter.get( "/calendar", getCalendarPage );
 
