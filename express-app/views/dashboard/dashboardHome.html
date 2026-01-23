@@ -11,17 +11,33 @@
 
         <title>Dashboard | Bytesized Journal</title>
 
+        <link rel="stylesheet" href="/styles/flex.css" />
+
     </head>
 
     <body>
 
-        <header>
+        <header class="flex align-items-center space-around">
 
-            <a href="/">
+            <nav>
 
-                <h2>Bytesized Journal</h2>
+                <a href="/">
 
-            </a>
+                    <h2>Bytesized Journal</h2>
+
+                </a>
+
+            </nav>
+
+            <nav>
+
+                <a href="/dashboard/tutorial">Tutorial</a>
+
+                <a href="/dashboard/calendar">Calendar</a>
+
+                <a href="/dashboard/settings">Settings</a>
+
+            </nav>
 
         </header>
 
@@ -29,15 +45,18 @@
 
             <h1>Dashboard</h1>
 
-            <a href="/dashboard/tutorial">Tutorial</a>
+            <button>New Day Entry</button>
 
-            <a href="/dashboard/settings">Settings</a>
+            <button>New Dream Entry</button>
 
-            <a href="/dashboard/calendar">Calendar</a>
+            <div id="entry-gallery">
+
+            </div>
 
         </main>
-
-        
         
     </body>
+
+    <script src="mainDashboardSetup.js" type="module"></script>
+
 </html>
