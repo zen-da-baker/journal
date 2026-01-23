@@ -13,6 +13,9 @@ import { getAboutPage } from "./controllers/get-pages/static/getAboutPage.js";
 // Import dashboard routes
 import { dashboardRouter } from "./controllers/routers/dashboard-router/dashboardRouter.js";
 
+// Import blog routes
+import { blogRouter } from "./controllers/routers/blog-router/blogRouter.js";
+
 // Error pages
 import { getNotFoundPage } from "./controllers/error-handler/getNotFoundPage.js";
 import { getErrorPage } from "./controllers/error-handler/getErrorPage.js";
@@ -49,9 +52,7 @@ app.get( "/about", getAboutPage );
 app.use( "/dashboard", dashboardRouter );
 
 // The blog routes
-// app.use( "/blog", blogRouter );
-
-// The lessons routes
+app.use( "/blog", blogRouter );
 
 // Error handler
 app.use( getNotFoundPage );
