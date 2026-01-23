@@ -8,6 +8,10 @@ import { fileURLToPath } from "url";
 
 // Import routes
 import { getHomePage } from "./controllers/get-pages/getHomePage.js";
+import { getAboutPage } from "./controllers/get-pages/static/getAboutPage.js";
+
+// Import dashboard routes
+import { dashboardRouter } from "./controllers/routers/dashboard-router/dashboardRouter.js";
 
 // Error pages
 import { getNotFoundPage } from "./controllers/error-handler/getNotFoundPage.js";
@@ -39,11 +43,10 @@ app.use( express.json() );
 // App routes
 // Static pages
 app.get( "/", getHomePage );
-
-// app.get( "/about", getAboutPage );
+app.get( "/about", getAboutPage );
 
 // The dashboard routes
-// app.use( "/dashboard", dashboardRouter );
+app.use( "/dashboard", dashboardRouter );
 
 // The blog routes
 // app.use( "/blog", blogRouter );
