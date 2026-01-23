@@ -26,7 +26,7 @@ let dashboardHomePagePath = dashboardDirectoryPath + "dashboardHome.html";
 
 let leaderboardPagePath = dashboardDirectoryPath + "leaderboard.html";
 
-let mathGamePagePath = dashboardDirectoryPath + "mathGame.html";
+let calendarPagePath = dashboardDirectoryPath + "calendar.html";
 
 let settingsPagePath = dashboardDirectoryPath + "settings.html";
 
@@ -58,7 +58,7 @@ let dashboardHomePageContent = await getPageContentHelper( dashboardHomePagePath
 
 let leaderboardPageContent = await getPageContentHelper( leaderboardPagePath );
 
-let mathGamePageContent = await getPageContentHelper( mathGamePagePath );
+let calendarPageContent = await getPageContentHelper( calendarPagePath );
 
 let settingsPageContent = await getPageContentHelper( settingsPagePath );
 
@@ -87,7 +87,7 @@ export {
     adminPageContent, 
     dashboardHomePageContent, 
     leaderboardPageContent,
-    mathGamePageContent,
+    calendarPageContent,
     settingsPageContent,
     storePageContent,
     storyPageContent,
