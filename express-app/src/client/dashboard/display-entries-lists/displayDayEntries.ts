@@ -33,7 +33,7 @@ export function displayDayEntries() {
 
             let linkElementUI = document.createElement("a");
 
-            linkElementUI.href = "/dashboard/day-entry?" + entry.id;
+            linkElementUI.href = "/dashboard/day-entry?entryId=" + entry.id;
 
             let linkButtonUI = document.createElement("button");
 

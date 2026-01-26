@@ -10,6 +10,9 @@ export function displayDreamEntries() {
 
     if ( listOfDreamEntries !== null ) {
 
+        // Reconstruct the list when this display function is called
+        dreamEntryGalleryUI.innerHTML = "";
+
         listOfDreamEntries.forEach( ( entry: any ) => {
 
             let newDOMJournalEntryCard = document.createElement("div");
@@ -26,7 +29,7 @@ export function displayDreamEntries() {
 
             let linkElementUI = document.createElement("a");
 
-            linkElementUI.href = "/dashboard/dream-entry?" + entry.id;
+            linkElementUI.href = "/dashboard/dream-entry?entryId=" + entry.id;
 
             let linkButtonUI = document.createElement("button");
 
@@ -47,7 +50,7 @@ export function displayDreamEntries() {
             dreamEntryGalleryUI.appendChild( newDOMJournalEntryCard );
 
         })
-        
+
     }
     
 }

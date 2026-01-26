@@ -6,6 +6,8 @@ import { addDreamEntryToList } from "./addDreamEntryToList.js";
 
 import { addDreamEntryToDB } from "../../database/addDreamEntryToDB.js";
 
+import { displayDreamEntries } from "../display-entries-lists/displayDreamEntries.js";
+
 export function addDreamEntry() {
 
     // Create the new dream entry instance
@@ -15,5 +17,8 @@ export function addDreamEntry() {
     addDreamEntryToList( newDreamEntry );
 
     addDreamEntryToDB( newDreamEntry );
+
+    // Update the UI display
+    displayDreamEntries();
 
 }
