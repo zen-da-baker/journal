@@ -1,3 +1,6 @@
-export function createEntryId() {
+export function createEntryId(): string {
+
     
+
+
 }

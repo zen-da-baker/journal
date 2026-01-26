@@ -1,0 +1,41 @@
+import { getListOfDreamEntries } from "./getListOfDreamEntries.js";
+
+import { monthsList } from "./monthsList.js";
+
+export function displayDreamEntries() {
+
+    const dreamEntryGalleryUI = document.getElementById("dream-entry-gallery");
+
+    let listOfDreamEntries = getListOfDreamEntries();
+
+    if ( listOfDreamEntries !== null ) {
+
+        listOfDreamEntries.forEach( ( entry: any ) => {
+
+            let newDOMJournalEntryCard = document.createElement("div");
+
+            newDOMJournalEntryCard.className = "card";
+
+            newDOMJournalEntryCard.id = entry.id;
+
+            let titleElementUI = document.createElement("h3");
+
+            titleElementUI.textContent = entry.title;
+
+            let dateElementUI = document.createElement("p");
+
+            let entryDate = new Date( entry.date );
+
+            dateElementUI.textContent = monthsList[ entryDate.getMonth() ] + " " + entryDate.getDay() + ", " + entryDate.getFullYear();
+
+            newDOMJournalEntryCard.appendChild( titleElementUI );
+
+            newDOMJournalEntryCard.appendChild( dateElementUI );
+
+            dreamEntryGalleryUI.appendChild( newDOMJournalEntryCard );
+
+        })
+    }
+
+    
+}
