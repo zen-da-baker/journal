@@ -10,6 +10,9 @@ export function displayDayEntries() {
 
     if ( listOfDayEntries !== null ) {
 
+        // Clear the existing HTML and rebuild the section
+        dayEntryGalleryUI.innerHTML = "";
+
         listOfDayEntries.forEach( ( entry: any ) => {
 
             let newDOMJournalEntryCard = document.createElement("div");
