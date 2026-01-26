@@ -1,6 +1,6 @@
-import { getListOfDayEntries } from "./getListOfDayEntries.js";
+import { getListOfDayEntries } from "../getListOfDayEntries.js";
 
-import { monthsList } from "./monthsList.js";
+import { monthsList } from "../monthsList.js";
 
 export function displayDayEntries() {
 
