@@ -27,7 +27,7 @@ export function addDayEntryToList( entry: DayEntryModel ) {
     if ( listOfDayEntries !== null ) {
 
         // Add the new entry to the list 
-        listOfDayEntries.push( listItem );
+        listOfDayEntries.unshift( listItem );
 
         let listString = JSON.stringify( listOfDayEntries );
 
@@ -39,7 +39,7 @@ export function addDayEntryToList( entry: DayEntryModel ) {
 
         listOfDayEntries = [];
 
-        listOfDayEntries.push( listItem );
+        listOfDayEntries.unshift( listItem );
 
         let listString = JSON.stringify( listOfDayEntries );
 
