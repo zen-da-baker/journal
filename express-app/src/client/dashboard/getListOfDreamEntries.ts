@@ -1,7 +1,13 @@
-import { database } from "../database/db.js";
+// Import the local storage assessor
+import { getEntriesListFromLocalStorage } from "./getEntriesListFromLocalStorage.js";
 
-export function getListOfDreamEntries() {
+// This function returns the dream entries as a list or null
+export function getListOfDreamEntries(): Array<any> | null {
 
-    let dreamsList: string | null = localStorage.getItem( "bytesized-journal-dreams-list" );
+    let dreamsListName = "bytesized-journal-dreams-list";
+
+    let dreamsList: Array<any> | null = getEntriesListFromLocalStorage( dreamsListName );
+
+    return dreamsList;
 
 }

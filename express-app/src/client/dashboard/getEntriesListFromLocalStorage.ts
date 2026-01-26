@@ -11,6 +11,6 @@ export function getEntriesListFromLocalStorage( listName: string ): Array<any> |
 
     }
 
-    return listItems
+    return listItems;
 
 }
