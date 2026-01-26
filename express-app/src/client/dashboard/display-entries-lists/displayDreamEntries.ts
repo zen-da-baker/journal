@@ -1,6 +1,6 @@
-import { getListOfDreamEntries } from "./getListOfDreamEntries.js";
+import { getListOfDreamEntries } from "../getListOfDreamEntries.js";
 
-import { monthsList } from "./monthsList.js";
+import { monthsList } from "../monthsList.js";
 
 export function displayDreamEntries() {
 
@@ -24,6 +24,16 @@ export function displayDreamEntries() {
 
             let dateElementUI = document.createElement("p");
 
+            let linkElementUI = document.createElement("a");
+
+            linkElementUI.href = "/dashboard/dream-entry?" + entry.id;
+
+            let linkButtonUI = document.createElement("button");
+
+            linkButtonUI.textContent = entry.title;
+
+            linkElementUI.appendChild( linkButtonUI );
+
             let entryDate = new Date( entry.date );
 
             dateElementUI.textContent = monthsList[ entryDate.getMonth() ] + " " + entryDate.getDay() + ", " + entryDate.getFullYear();
@@ -32,10 +42,12 @@ export function displayDreamEntries() {
 
             newDOMJournalEntryCard.appendChild( dateElementUI );
 
+            newDOMJournalEntryCard.appendChild( linkElementUI );
+
             dreamEntryGalleryUI.appendChild( newDOMJournalEntryCard );
 
         })
+        
     }
-
     
 }

@@ -31,14 +31,26 @@ export function displayDayEntries() {
 
             dateElementUI.textContent = monthsList[ entryDate.getMonth() ] + " " + entryDate.getDay() + ", " + entryDate.getFullYear();
 
+            let linkElementUI = document.createElement("a");
+
+            linkElementUI.href = "/dashboard/day-entry?" + entry.id;
+
+            let linkButtonUI = document.createElement("button");
+
+            linkButtonUI.textContent = entry.title;
+
+            linkElementUI.appendChild( linkButtonUI );
+
             newDOMJournalEntryCard.appendChild( titleElementUI );
 
             newDOMJournalEntryCard.appendChild( dateElementUI );
 
+            newDOMJournalEntryCard.appendChild( linkElementUI );
+
             dayEntryGalleryUI.appendChild( newDOMJournalEntryCard );
 
         })
-    }
 
+    }
     
 }

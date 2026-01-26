@@ -4,6 +4,8 @@ import { DreamEntryModel } from "../../../models/DreamEntryModel.js";
 // Import helper functions
 import { addDreamEntryToList } from "./addDreamEntryToList.js";
 
+import { addDreamEntryToDB } from "../../database/addDreamEntryToDB.js";
+
 export function addDreamEntry() {
 
     // Create the new dream entry instance
@@ -11,5 +13,7 @@ export function addDreamEntry() {
 
     // Add the dream instance to the list
     addDreamEntryToList( newDreamEntry );
+
+    addDreamEntryToDB( newDreamEntry );
 
 }
