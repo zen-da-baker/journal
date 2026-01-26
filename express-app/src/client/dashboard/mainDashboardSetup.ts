@@ -1,3 +1,11 @@
-const entryGalleryUI = document.getElementById("entry-gallery");
+// Import the list of entries for day and dreams 
+import { getListOfDreamEntries } from "./getListOfDreamEntries.js";
 
-console.log("Hello from the Dashboard!");
+const dreamEntryGalleryUI = document.getElementById("dream-entry-gallery");
+
+// Update the UI to display the day entries
+import { displayDayEntries } from "./displayDayEntries.js";
+
+displayDayEntries();
+
+
