@@ -1,6 +1,7 @@
 // Import data models
 import { DayEntryModel } from "../../models/DayEntryModel.js";
 
+// Import database helpers
 import { database } from "./db.js";
 
 import { dayObjectStoreName } from "./db.js";
