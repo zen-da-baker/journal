@@ -1,5 +1,5 @@
 // Import data models
-import { DreamEntryModel } from "../../models/DreamEntryModel.js";
+import { DreamEntryModel } from "../models/DreamEntryModel.js";
 
 // Import database helpers
 import { database } from "./db.js";

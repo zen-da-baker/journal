@@ -1,5 +1,5 @@
 // Import the random number generator
-import { generateRandom5DigitNumber } from "../client/helpers/generateRandom5DigitNumber.js";
+import { generateRandom5DigitNumber } from "../helpers/generateRandom5DigitNumber.js";
 
 /*
     This data model is for the lines displayed on each of the journal entries. 

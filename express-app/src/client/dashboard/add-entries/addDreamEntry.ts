@@ -1,5 +1,5 @@
 // Import data models
-import { DreamEntryModel } from "../../../models/DreamEntryModel.js";
+import { DreamEntryModel } from "../../models/DreamEntryModel.js";
 
 // Import helper functions
 import { addDreamEntryToList } from "./addDreamEntryToList.js";

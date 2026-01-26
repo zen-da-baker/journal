@@ -1,5 +1,5 @@
 // Import data models
-import { DayEntryModel } from "../../../models/DayEntryModel.js";
+import { DayEntryModel } from "../../models/DayEntryModel.js";
 
 // Import helper functions
 import { addDayEntryToList } from "./addDayEntryToList.js";

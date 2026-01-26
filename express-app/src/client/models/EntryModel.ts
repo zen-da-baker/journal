@@ -2,7 +2,7 @@
 import { EntryLineModel } from "./EntryLineModel.js";
 
 // Import helper functions
-import { createEntryId } from "../client/helpers/createEntryId.js";
+import { createEntryId } from "../helpers/createEntryId.js";
 
 export class EntryModel {
 
