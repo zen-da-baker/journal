@@ -11,7 +11,7 @@ import { displayDayEntries } from "../display-entries-lists/displayDayEntries.js
 export function addDayEntry() {
 
     // Create the new entry data model instance
-    let newDayEntry = new DayEntryModel();
+    let newDayEntry = new DayEntryModel("Untitled Entry");
 
     // Add the core information to the list of entries
     addDayEntryToList( newDayEntry );

@@ -37,9 +37,9 @@ export function displayDreamEntries() {
 
             linkElementUI.appendChild( linkButtonUI );
 
-            let entryDate = new Date( entry.date );
+            let entryDate = new Date( entry.createdOn );
 
-            dateElementUI.textContent = monthsList[ entryDate.getMonth() ] + " " + entryDate.getDay() + ", " + entryDate.getFullYear();
+            dateElementUI.textContent = monthsList[ entryDate.getMonth() ] + " " + entryDate.getDate() + ", " + entryDate.getFullYear();
 
             newDOMJournalEntryCard.appendChild( titleElementUI );
 

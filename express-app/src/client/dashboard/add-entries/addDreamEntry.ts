@@ -11,7 +11,7 @@ import { displayDreamEntries } from "../display-entries-lists/displayDreamEntrie
 export function addDreamEntry() {
 
     // Create the new dream entry instance
-    let newDreamEntry = new DreamEntryModel();
+    let newDreamEntry = new DreamEntryModel("Untitled Entry");
 
     // Add the dream instance to the list
     addDreamEntryToList( newDreamEntry );

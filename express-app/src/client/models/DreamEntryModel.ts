@@ -8,9 +8,9 @@ export class DreamEntryModel extends EntryModel {
 
     entryType: string = "";
 
-    constructor( inputTitle: string = "", createdInput: string = new Date().toString() ) {
+    constructor( inputTitle: string = "" ) {
 
-        super( inputTitle, createdInput );
+        super( inputTitle );
 
         this.entryType = "dream";
 

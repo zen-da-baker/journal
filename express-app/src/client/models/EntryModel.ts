@@ -18,14 +18,16 @@ export class EntryModel {
     // The list of lines are not included in the constructor
     listOfLines: Array<EntryLineModel> = [];
 
-    constructor( inputTitle = "Untitled Entry", createdInput = new Date().toString() ) {
+    constructor( inputTitle = "Untitled Entry" ) {
 
         // Create a random ID and assign it to the object
         this.id = createEntryId();
 
         this.title = inputTitle;
 
-        this.createdOn = createdInput;
+        let currentDate = new Date();
+
+        this.createdOn = currentDate.toString();
 
     }
 

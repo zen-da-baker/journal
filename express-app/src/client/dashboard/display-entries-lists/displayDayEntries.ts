@@ -27,9 +27,9 @@ export function displayDayEntries() {
 
             let dateElementUI = document.createElement("p");
 
-            let entryDate = new Date( entry.date );
+            let entryDate = new Date( entry.createdOn );
 
-            dateElementUI.textContent = monthsList[ entryDate.getMonth() ] + " " + entryDate.getDay() + ", " + entryDate.getFullYear();
+            dateElementUI.textContent = monthsList[ entryDate.getMonth() ] + " " + entryDate.getDate() + ", " + entryDate.getFullYear();
 
             let linkElementUI = document.createElement("a");
 
