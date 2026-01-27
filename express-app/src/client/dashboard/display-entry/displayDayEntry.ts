@@ -9,6 +9,8 @@ export function displayDayEntry( entry: DayEntryModel) {
 
     let entryBodyUI = document.getElementById("entry-body");
 
+    let newLineButtonUI = document.getElementById("new-line-button");
+
     // Clear the existing HTML so that new content can be added after
     entryTitleUI.innerHTML = "";
 
@@ -27,6 +29,23 @@ export function displayDayEntry( entry: DayEntryModel) {
 
         newLine.contentEditable = "true";
 
+        entryBodyUI.appendChild( newLine );
+
     })
+
+    // When the new line button is clicked, create a new paragraph and call the display function again
+    newLineButtonUI.onclick = () => {
+
+        console.log( entry );
+
+        let nextNewLine = new EntryLineModel("p");
+
+        entry.listOfLines.push( nextNewLine );
+
+        console.log( entry );
+
+        displayDayEntry( entry );
+
+    }
 
 }
