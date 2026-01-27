@@ -8,11 +8,11 @@ let dreamObjectStoreName = "bytesized-journal-dream-entries";
 
 let request = indexedDB.open( databaseName, databaseVersion );
 
-let database;
+let database: IDBDatabase | null;
 
 function onRequestSuccess( event: any ) {
 
-    database = event.target.result; 
+    database = event.target.result;
 
 }
 

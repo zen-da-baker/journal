@@ -8,12 +8,14 @@ import { dreamObjectStoreName } from "./db.js";
 
 export function addDreamEntryToDB( entryToSave: DreamEntryModel ) {
 
-    let writeOption = "readwrite";
+    if ( database !== null ) {
 
-    let dreamEntryTransaction = database.transaction( dreamObjectStoreName, writeOption );
+        let dreamEntryTransaction = database.transaction( dreamObjectStoreName, "readwrite" );
 
-    let dreamEntryObjectStore = dreamEntryTransaction.objectStore( dreamObjectStoreName );
+        let dreamEntryObjectStore = dreamEntryTransaction.objectStore( dreamObjectStoreName );
 
-    dreamEntryObjectStore.add( entryToSave );
+        dreamEntryObjectStore.add( entryToSave );
     
+    }
+
 }

@@ -8,12 +8,14 @@ import { dayObjectStoreName } from "./db.js";
 
 export function addDayEntryToDB( entryToSave: DayEntryModel ) {
 
-    let writeOption = "readwrite";
+    if ( database !== null ) {
 
-    let dayEntryTransaction = database.transaction( dayObjectStoreName, writeOption );
+        let dayEntryTransaction = database.transaction( dayObjectStoreName, "readwrite" );
 
-    let dayEntryObjectStore = dayEntryTransaction.objectStore( dayObjectStoreName );
+        let dayEntryObjectStore = dayEntryTransaction.objectStore( dayObjectStoreName );
 
-    dayEntryObjectStore.add( entryToSave );
+        dayEntryObjectStore.add( entryToSave );
 
+    }
+    
 }
