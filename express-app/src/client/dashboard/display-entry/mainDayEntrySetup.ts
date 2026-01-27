@@ -8,8 +8,4 @@ const paramsObject = new URLSearchParams( searchBody );
 
 const entryID = paramsObject.get("entryId");
 
-console.log( entryID );
-
-let entry = getDayEntry( entryID );
-
-console.log( entry );
+getDayEntry( entryID );

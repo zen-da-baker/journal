@@ -1,14 +1,13 @@
 // Import database helpers
 import { database } from "../../database/db.js";
-
 import { dayObjectStoreName } from "../../database/db.js";
 
-// Import data models
-import { DayEntryModel } from "../../models/DayEntryModel.js";
+// Import helper functions
+import { displayDayEntry } from "../display-entry/displayDayEntry.js";
+import { displayEntryError } from "../display-entry/displayEntryError.js";
 
 export function getDayEntry( id: string ) {
 
-    let result: DayEntryModel;
 
     // If the database wasn't connected yet, try again after one second
     if ( database === undefined ) {
@@ -32,12 +31,18 @@ export function getDayEntry( id: string ) {
 
             console.log("Stored data accessed successfully.")
 
-            result = event.target.result;
+            displayDayEntry( event.target.result );
+
+        }
+
+        retrievalRequest.onerror = ( event: any ) => {
+
+            displayEntryError();
 
         }
 
     }
 
-    return result;
+    
 
 }
