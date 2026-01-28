@@ -4,11 +4,11 @@ import { EntryLineModel } from "../../models/EntryLineModel.js";
 
 // Import helper functions
 import { handleLineEdit } from "./handleLineEdit.js";
-import { updateExistingDayEntry } from "../update-entries/updateExistingDayEntry.js";
 import { addNewLine } from "./addNewLine.js";
+import { deleteSelectedLine } from "./deleteSelectedLine.js";
 import { focusOnLine } from "./focusOnLine.js";
 
-export function displayDayEntry( entry: DayEntryModel ) {
+export function displayDayEntry( entry: DayEntryModel ): void {
 
     // Get the relavant DOM nodes
     let entryTitleUI = document.getElementById("entry-title");
@@ -60,13 +60,37 @@ export function displayDayEntry( entry: DayEntryModel ) {
 
             }
 
+            // If the backspace or the delete keys are pressed
             if ( event.key === "Backspace" || event.key === "Delete" ) {
 
+                // Get the current line HTML element from the current ID
                 let currentLine = document.getElementById( line.id );
 
+                /* 
+                    If the text is empty in the current line at the time the backspace or delete 
+                    keys are pressed, delete the line
+                */
                 if ( currentLine.textContent === "" ) {
 
-                    console.log("Delete line");
+                    // Delete the line from the entry object and save it to the database
+                    deleteSelectedLine( entry, index );
+
+                    // If the current line is not the very first one, set the focus to the previous line
+                    if ( index > 0 ) {
+
+                        // Get the previous index position
+                        let previousIndex = index - 1;
+
+                        // Get the line ID of the previous line position
+                        let previousLineId = entry.listOfLines[ previousIndex ].id;
+
+                        // Attempt to set the focus to the previous line
+                        setTimeout( () => focusOnLine( previousLineId, 0 ) );
+
+                    }
+
+                    // Remove the deleted line from the DOM
+                    entryBodyUI.removeChild( newLine );                    
 
                 }
 
