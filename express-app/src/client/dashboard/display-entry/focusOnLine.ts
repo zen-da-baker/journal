@@ -28,4 +28,23 @@ export function focusOnLine( lineId: string, attemptCount: number ): void {
     // If the element is known, set the focus to it
     lineToFocus.focus();
 
+    let textContent: string = lineToFocus.textContent;
+
+    // Make sure that the caret position starts at the end
+    /*
+    let range = document.createRange();
+
+    range.setStart( lineToFocus, textContent.length - 1 );
+
+    range.setEnd( lineToFocus, textContent.length - 1 );
+
+    let selection = window.getSelection();
+
+    selection.removeAllRanges();
+
+    selection.addRange( range );
+    */
+
+    // lineToFocus.setSelectionRange( textContent.length, textContent.length );
+
 }

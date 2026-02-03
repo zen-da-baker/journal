@@ -7,6 +7,7 @@ import { handleLineEdit } from "./handleLineEdit.js";
 import { addNewLine } from "./addNewLine.js";
 import { deleteSelectedLine } from "./deleteSelectedLine.js";
 import { focusOnLine } from "./focusOnLine.js";
+import { handleTitleEdit } from "./handleTitleEdit.js";
 
 export function displayDayEntry( entry: DayEntryModel ): void {
 
@@ -24,6 +25,8 @@ export function displayDayEntry( entry: DayEntryModel ): void {
 
     // Assign the title of the entry which will be 
     entryTitleUI.textContent = entry.title;
+
+    entryTitleUI.onblur = () => handleTitleEdit( entry, entryTitleUI.textContent, "day" );
 
     // On each line within the entry body
     entry.listOfLines.forEach( ( line: EntryLineModel, index: number ) => {
