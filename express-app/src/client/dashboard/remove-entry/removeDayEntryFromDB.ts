@@ -2,7 +2,7 @@ import { database } from "../../database/db.js";
 
 import { dayObjectStoreName } from "../../database/db.js";
 
-export function removeDayEntry( entryId: string ) {
+export function removeDayEntryFromDB( entryId: string ) {
 
     let dayObjectStoreTransaction = database.transaction( dayObjectStoreName, "readwrite" );
 

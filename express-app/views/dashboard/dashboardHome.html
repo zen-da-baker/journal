@@ -45,9 +45,23 @@
 
             <h1>Dashboard</h1>
 
-            <button id="add-day-entry-button">New Day Entry</button>
+            <div class="flex space-around">
 
-            <button id="add-dream-entry-button">New Dream Entry</button>
+                <button id="add-day-entry-button">New Day Entry</button>
+
+                <button id="add-dream-entry-button">New Dream Entry</button>
+
+            </div>
+
+            <dialog id="delete-day-entry-dialogue">
+
+                <h3 id="delete-warning"></h3>
+
+                <button id="finalize-delete-button">Delete Entry</button>
+
+                <button id="close-day-entry-delete-dialogue">Close</button>
+
+            </dialog>
 
             <div id="gallery-container" class="flex space-around">
 
