@@ -34,6 +34,7 @@ export function displayDayEntries() {
 
             dateElementUI.textContent = monthsList[ entryDate.getMonth() ] + " " + entryDate.getDate() + ", " + entryDate.getFullYear();
 
+            // The link to the entry is created and holds a query parameter that contains the entry id which is needed for the next page
             let linkElementUI = document.createElement("a");
 
             linkElementUI.href = "/dashboard/day-entry?entryId=" + entry.id;
@@ -47,6 +48,7 @@ export function displayDayEntries() {
                                             <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"/>
                                         </svg>`
 
+            // Get the delete entry modal and its related elements from the DOM
             let deleteModalUI: HTMLDialogElement = document.querySelector("dialog");
 
             let closeDeleteModalUI = document.getElementById("close-day-entry-delete-dialogue");
@@ -55,20 +57,32 @@ export function displayDayEntries() {
 
             let deleteWarningUI = document.getElementById("delete-warning");
 
+            // When the deletion button is clicked on an entry card, the modal is shown along with customized information
             deleteButtonUI.onclick = () => {
                 
+                // The modal is shown
                 deleteModalUI.showModal();
 
+                // The heading of the modal displays a customized message
                 deleteWarningUI.textContent = "Are you sure you want to remove " + entry.title + "?";
 
-                deleteModalDeleteButtonUI.onclick = () => removeDayEntryFromDisplay( entry.id, index );
+                // When the final delete button is pressed, the element is removed from the DOM and the modal is closed
+                deleteModalDeleteButtonUI.onclick = () => {
+                    
+                    removeDayEntryFromDisplay( entry.id, index );
+
+                    deleteModalUI.close();
+                
+                };
             
             }
 
+            // The modal can be closed without any action taken
             closeDeleteModalUI.onclick = () => deleteModalUI.close();
 
             linkButtonUI.textContent = entry.title;
 
+            // The elements are all added to the DOM
             linkElementUI.appendChild( linkButtonUI );
 
             newDOMJournalEntryCard.appendChild( titleElementUI );
