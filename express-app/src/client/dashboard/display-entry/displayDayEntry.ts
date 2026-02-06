@@ -18,6 +18,8 @@ export function displayDayEntry( entry: DayEntryModel ): void {
 
     let newLineButtonUI = document.getElementById("new-line-button");
 
+    let pageTitle = document.querySelector("title");
+
     // Clear the existing HTML so that new content can be added after
     entryTitleUI.innerHTML = "";
 
@@ -25,6 +27,9 @@ export function displayDayEntry( entry: DayEntryModel ): void {
 
     // Assign the title of the entry which will be 
     entryTitleUI.textContent = entry.title;
+
+    // Assign the meta data title to be a custom version of the entry title
+    pageTitle.textContent = entry.title + " | Bytesized Journal";
 
     entryTitleUI.onblur = () => handleTitleEdit( entry, entryTitleUI.textContent, "day" );
 

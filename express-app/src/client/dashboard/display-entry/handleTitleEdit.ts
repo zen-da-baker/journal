@@ -12,6 +12,7 @@ import { dreamEntriesListName } from "../getListOfDreamEntries.js";
 */
 export function handleTitleEdit( entryToSave: DayEntryModel, currentTitleValue: string, type: string ) {
 
+    // Determine the entry type which determines which list to use for local storage and the indexedDB object store
     let entryListName = dayEntriesListName;
 
     if ( type === "dream" ) {
@@ -20,13 +21,21 @@ export function handleTitleEdit( entryToSave: DayEntryModel, currentTitleValue: 
 
     }
 
+    // Get the entries list JSON string from the local storage 
     let entriesListString = localStorage.getItem( entryListName );
 
+    // If the entry title and the selected text do not match, set the entry title and save it to the indexedDB database
     if ( entryToSave.title !== currentTitleValue ) {
 
         // Assign the title value and save the entry
         entryToSave.title = currentTitleValue;
 
+        // Update the page title element as well 
+        let pageTitle = document.querySelector("title");
+
+        pageTitle.textContent = currentTitleValue + " | Bytesized Journal";
+
+        // Update the new title in the indexedDB database
         updateExistingDayEntry( entryToSave );
 
     }
