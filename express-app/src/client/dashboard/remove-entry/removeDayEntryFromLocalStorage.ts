@@ -7,8 +7,8 @@ export function removeDayEntryFromLocalStorage( entryIndex: number ): void {
     // Extract the day entries list string from the local storage which may be null
     let entriesListString: string | null = localStorage.getItem( dayEntriesListName );
 
-    // If the entries list exists
-    if ( entriesListString !== null ) {
+    // If the entries list exists and the index of the entry exists
+    if ( entriesListString !== null && entryIndex !== -1 ) {
 
         // The entries list is extracted from the JSON string
         let entriesList = JSON.parse( entriesListString );

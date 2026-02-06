@@ -9,6 +9,7 @@ import { deleteSelectedLine } from "./deleteSelectedLine.js";
 import { focusOnLine } from "./focusOnLine.js";
 import { handleTitleEdit } from "./handleTitleEdit.js";
 import { displayEntryDate } from "./displayEntryDate.js";
+import { removeCurrentEntryPrompt } from "../remove-entry/removeCurrentEntryPrompt.js";
 
 export function displayDayEntry( entry: DayEntryModel ): void {
 
@@ -20,6 +21,8 @@ export function displayDayEntry( entry: DayEntryModel ): void {
     let newLineButtonUI = document.getElementById("new-line-button");
 
     let pageTitle = document.querySelector("title");
+
+    let deleteEntryButtonUI = document.getElementById("delete-current-entry-button");
 
     // Clear the existing HTML so that new content can be added after
     entryTitleUI.innerHTML = "";
@@ -117,5 +120,7 @@ export function displayDayEntry( entry: DayEntryModel ): void {
 
     // When the new line button is clicked, create a new paragraph and call the display function again
     newLineButtonUI.onclick = () => addNewLine( entry );
+
+    deleteEntryButtonUI.onclick = () => removeCurrentEntryPrompt( entry );
 
 }
