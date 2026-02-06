@@ -8,6 +8,7 @@ import { addNewLine } from "./addNewLine.js";
 import { deleteSelectedLine } from "./deleteSelectedLine.js";
 import { focusOnLine } from "./focusOnLine.js";
 import { handleTitleEdit } from "./handleTitleEdit.js";
+import { displayEntryDate } from "./displayEntryDate.js";
 
 export function displayDayEntry( entry: DayEntryModel ): void {
 
@@ -32,6 +33,9 @@ export function displayDayEntry( entry: DayEntryModel ): void {
     pageTitle.textContent = entry.title + " | Bytesized Journal";
 
     entryTitleUI.onblur = () => handleTitleEdit( entry, entryTitleUI.textContent, "day" );
+
+    // Display the entry date on the page
+    displayEntryDate( entry );
 
     // On each line within the entry body
     entry.listOfLines.forEach( ( line: EntryLineModel, index: number ) => {
