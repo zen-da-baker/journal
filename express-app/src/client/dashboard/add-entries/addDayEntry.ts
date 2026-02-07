@@ -6,7 +6,7 @@ import { addDayEntryToList } from "./addDayEntryToList.js";
 
 import { addDayEntryToDB } from "../../database/addDayEntryToDB.js";
 
-import { displayDayEntries } from "../display-entries-lists/displayDayEntries.js";
+import { displayDayEntries } from "../display-entries-lists/displayJournalEntries.js";
 
 export function addDayEntry() {
 

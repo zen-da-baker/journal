@@ -1,22 +1,27 @@
 // Import helper functions
-import { getListOfDayEntries } from "../getListOfDayEntries.js";
+import { getListOfJournalEntries } from "../getListOfJournalEntries.js";
 
 import { monthsList } from "../monthsList.js";
 
 import { removeDayEntryFromDisplay } from "../remove-entry/removeDayEntryFromDisplay.js";
 
-export function displayDayEntries() {
+// This helper function displays the journal entry card on the dashboard as a gallery, taking in the type of entry to display
+export function displayJournalEntries( entryType: string = "day" ) {
 
-    const dayEntryGalleryUI = document.getElementById("day-entry-gallery");
+    // The journal entry gallery to display is determined by the type in the parameter
+    const journalEntryGalleryUI = document.getElementById( entryType + "-entry-gallery");
 
-    let listOfDayEntries = getListOfDayEntries();
+    // Get the list of of journal entries based on the type loaded
+    let listOfJournalEntries = getListOfJournalEntries( entryType );
 
-    if ( listOfDayEntries !== null ) {
+    // If the entries exists, proceed with the following
+    if ( listOfJournalEntries !== null ) {
 
         // Clear the existing HTML and rebuild the section
-        dayEntryGalleryUI.innerHTML = "";
+        journalEntryGalleryUI.innerHTML = "";
 
-        listOfDayEntries.forEach( ( entry: any, index: number ) => {
+        // For each entry in the list, display it as a card
+        listOfJournalEntries.forEach( ( entry: any, index: number ) => {
 
             let newDOMJournalEntryCard = document.createElement("div");
 
@@ -37,7 +42,14 @@ export function displayDayEntries() {
             // The link to the entry is created and holds a query parameter that contains the entry id which is needed for the next page
             let linkElementUI = document.createElement("a");
 
-            linkElementUI.href = "/dashboard/journal-entry?entryId=" + entry.id;
+            /* 
+                Some deeper implimentation notes for the next page to work properly:
+                The link to the entry will contain query parameters. The first key is the id for the entry that will
+                be used to look for the user created data from the indexedDB object store. This is needed because the 
+                user created entry can surpass the localStorage 5MB limit as well as contain files to store such as images.
+                The second key is the entry type which determines which object store is searched and the styling of the page.
+            */
+            linkElementUI.href = "/dashboard/journal-entry?entryId=" + entry.id + "&entryType=" + entryType;
 
             let linkButtonUI = document.createElement("button");
 
@@ -51,7 +63,7 @@ export function displayDayEntries() {
             // Get the delete entry modal and its related elements from the DOM
             let deleteModalUI: HTMLDialogElement = document.querySelector("dialog");
 
-            let closeDeleteModalUI = document.getElementById("close-day-entry-delete-dialogue");
+            let closeDeleteModalUI = document.getElementById("close-entry-delete-dialogue");
 
             let deleteModalDeleteButtonUI = document.getElementById("finalize-delete-button");
 
@@ -93,7 +105,7 @@ export function displayDayEntries() {
 
             newDOMJournalEntryCard.appendChild( deleteButtonUI );
 
-            dayEntryGalleryUI.appendChild( newDOMJournalEntryCard );
+            journalEntryGalleryUI.appendChild( newDOMJournalEntryCard );
 
         })
 

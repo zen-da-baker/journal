@@ -2,7 +2,7 @@ import { getListOfDreamEntries } from "../getListOfDreamEntries.js";
 
 import { monthsList } from "../monthsList.js";
 
-export function displayDreamEntries() {
+export function displayDreamEntries( entryType: string ) {
 
     const dreamEntryGalleryUI = document.getElementById("dream-entry-gallery");
 

@@ -2,10 +2,10 @@
 import { DayEntryModel } from "../../models/DayEntryModel.js";
 
 // Import helper functions
-import { getListOfDayEntries } from "../getListOfDayEntries.js";
+import { getListOfDayEntries } from "../getListOfJournalEntries.js";
 
 // Import list name
-import { dayEntriesListName } from "../getListOfDayEntries.js";
+import { dayEntriesListName } from "../getListOfJournalEntries.js";
 
 export function addDayEntryToList( entry: DayEntryModel ) {
 

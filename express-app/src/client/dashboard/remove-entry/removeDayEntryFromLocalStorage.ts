@@ -1,5 +1,5 @@
 // Import global variables
-import { dayEntriesListName } from "../getListOfDayEntries.js";
+import { dayEntriesListName } from "../getListOfJournalEntries.js";
 
 // This function removes a particular entry from the localStorage list for day entries and if null, no action is taken
 export function removeDayEntryFromLocalStorage( entryIndex: number ): void {

@@ -1,7 +1,7 @@
 // Import helper functions
 import { removeDayEntryFromDB } from "./removeDayEntryFromDB.js";
 import { removeDayEntryFromLocalStorage } from "./removeDayEntryFromLocalStorage.js";
-import { displayDayEntries } from "../display-entries-lists/displayDayEntries.js";
+import { displayDayEntries } from "../display-entries-lists/displayJournalEntries.js";
 
 export function removeDayEntryFromDisplay( entryId: string, entryIndex: number) {
 

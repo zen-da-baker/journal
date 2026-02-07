@@ -3,7 +3,7 @@ import { DayEntryModel } from "../../models/DayEntryModel.js";
 
 // Import helper functions
 import { updateExistingDayEntry } from "../update-entries/updateExistingDayEntry.js";
-import { dayEntriesListName } from "../getListOfDayEntries.js";
+import { dayEntriesListName } from "../getListOfJournalEntries.js";
 import { dreamEntriesListName } from "../getListOfDreamEntries.js";
 
 /*

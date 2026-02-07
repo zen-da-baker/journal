@@ -1,5 +1,5 @@
 // Import helper functions
-import { getListOfDayEntries } from "../getListOfDayEntries.js";
+import { getListOfDayEntries } from "../getListOfJournalEntries.js";
 
 // This helper function takes an entry id and finds the local storage list index based on it
 export function getEntryLocalStorageIndex( entryId: string ) {

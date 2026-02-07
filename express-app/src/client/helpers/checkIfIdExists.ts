@@ -1,5 +1,5 @@
 // Import the list of day and dream entries to access their IDs
-import { getListOfDayEntries } from "../dashboard/getListOfDayEntries.js";
+import { getListOfDayEntries } from "../dashboard/getListOfJournalEntries.js";
 import { getListOfDreamEntries } from "../dashboard/getListOfDreamEntries.js";
 
 /* 
