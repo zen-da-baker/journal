@@ -1,10 +1,10 @@
 // Import data models
-import { DayEntryModel } from "../../models/DayEntryModel.js";
+import { EntryModel } from "../../models/EntryModel.js";
 
 // Import helper functions
-import { updateExistingDayEntry } from "../update-entries/updateExistingDayEntry.js";
+import { updateExistingDayEntry } from "./updateExistingDayEntry.js";
 
-export function handleLineEdit( lineId: string, entry: DayEntryModel, lineIndex: number ) {
+export function handleLineEdit( lineId: string, entry: EntryModel, lineIndex: number ) {
 
     let currentLineUI = document.getElementById( lineId );
 

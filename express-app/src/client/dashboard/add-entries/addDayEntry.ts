@@ -6,7 +6,7 @@ import { addDayEntryToList } from "./addDayEntryToList.js";
 
 import { addDayEntryToDB } from "../../database/addDayEntryToDB.js";
 
-import { displayDayEntries } from "../display-entries-lists/displayJournalEntries.js";
+import { displayJournalEntries } from "../display-entries-lists/displayJournalEntries.js";
 
 export function addDayEntry() {
 
@@ -20,6 +20,6 @@ export function addDayEntry() {
     addDayEntryToDB( newDayEntry );
 
     // Update the UI display
-    displayDayEntries();
+    displayJournalEntries();
 
 }

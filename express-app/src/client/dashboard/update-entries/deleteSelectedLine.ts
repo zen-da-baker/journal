@@ -1,5 +1,5 @@
 // Import data models 
-import { DayEntryModel } from "../../models/DayEntryModel.js";
+import { EntryModel } from "../../models/EntryModel.js";
 
 // Import helper functions
 import { updateExistingDayEntry } from "../update-entries/updateExistingDayEntry.js";
@@ -9,7 +9,7 @@ import { updateExistingDayEntry } from "../update-entries/updateExistingDayEntry
     This function has no return value. 
     The focus of the line is set by the event listener above this helper function. 
 */
-export function deleteSelectedLine( entry: DayEntryModel, targetIndex: number, ): void {
+export function deleteSelectedLine( entry: EntryModel, targetIndex: number, ): void {
 
     // Set the delete count which is one item
     let deleteCount = 1;

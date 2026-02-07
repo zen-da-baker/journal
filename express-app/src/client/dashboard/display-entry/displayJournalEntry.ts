@@ -3,11 +3,11 @@ import { EntryModel } from "../../models/EntryModel.js";
 import { EntryLineModel } from "../../models/EntryLineModel.js";
 
 // Import helper functions
-import { handleLineEdit } from "./handleLineEdit.js";
-import { addNewLine } from "./addNewLine.js";
-import { deleteSelectedLine } from "./deleteSelectedLine.js";
+import { handleLineEdit } from "../update-entries/handleLineEdit.js";
+import { addNewLine } from "../update-entries/addNewLine.js";
+import { deleteSelectedLine } from "../update-entries/deleteSelectedLine.js";
 import { focusOnLine } from "./focusOnLine.js";
-import { handleTitleEdit } from "./handleTitleEdit.js";
+import { handleTitleEdit } from "../update-entries/handleTitleEdit.js";
 import { displayEntryDate } from "./displayEntryDate.js";
 import { removeCurrentEntryPrompt } from "../remove-entry/removeCurrentEntryPrompt.js";
 

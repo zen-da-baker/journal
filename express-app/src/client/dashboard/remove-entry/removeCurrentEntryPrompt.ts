@@ -1,14 +1,13 @@
 // Import data models
-import { DayEntryModel } from "../../models/DayEntryModel.js";
+import { EntryModel } from "../../models/EntryModel.js";
 
 // Import helper functions
 import { getEntryLocalStorageIndex } from "../get-entries/getEntryLocalStorageIndex.js";
-import { removeDayEntryFromLocalStorage } from "./removeDayEntryFromLocalStorage.js";
-import { removeDayEntryFromDB } from "./removeDayEntryFromDB.js";
-import { navigateBack } from "../../helpers/navigateBack.js";
+import { removeJournalEntryFromDB } from "./removeJournalEntryFromDB.js";
+import { removeJournalEntryFromLocalStorage } from "./removeJournalEntryFromLocalStorage.js";
 
 // When the user clicks the first delete button, it triggers this prompt function
-export function removeCurrentEntryPrompt( entry: DayEntryModel ): void {
+export function removeCurrentEntryPrompt( entry: EntryModel ): void {
 
     // All of the relevant modal DOM elements are extracted
     let deletionModalUI = document.querySelector("dialog");
@@ -36,10 +35,10 @@ export function removeCurrentEntryPrompt( entry: DayEntryModel ): void {
         let entryIndex: number = getEntryLocalStorageIndex( entry.id );
 
         // The entry is removed from the local storage
-        removeDayEntryFromLocalStorage( entryIndex );
+        removeJournalEntryFromLocalStorage( entryIndex, entry.type );
 
         // The entry is removed from the indexedDB database
-        removeDayEntryFromDB( entry.id );
+        removeJournalEntryFromDB( entry.id, entry.type );
         
         // The user is navigated back to the dashboard page which will reflect the entry deletion
         location.href = location.origin + "/dashboard";

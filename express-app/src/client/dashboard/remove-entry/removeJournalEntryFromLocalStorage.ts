@@ -1,11 +1,25 @@
 // Import global variables
 import { dayEntriesListName } from "../getListOfJournalEntries.js";
+import { dreamEntriesListName } from "../getListOfJournalEntries.js";
 
 // This function removes a particular entry from the localStorage list for day entries and if null, no action is taken
-export function removeDayEntryFromLocalStorage( entryIndex: number ): void {
+export function removeJournalEntryFromLocalStorage( entryIndex: number, entryType: string ): void {
+
+    let entriesListName: string;
+
+    if ( entryType === "day" ) {
+
+        entriesListName = dayEntriesListName;
+
+    } else {
+
+        entriesListName = dreamEntriesListName;
+
+    }
+
 
     // Extract the day entries list string from the local storage which may be null
-    let entriesListString: string | null = localStorage.getItem( dayEntriesListName );
+    let entriesListString: string | null = localStorage.getItem( entriesListName );
 
     // If the entries list exists and the index of the entry exists
     if ( entriesListString !== null && entryIndex !== -1 ) {
@@ -23,7 +37,7 @@ export function removeDayEntryFromLocalStorage( entryIndex: number ): void {
         entriesListString = JSON.stringify( entriesList );
 
         // The JSON string list is stored in the local storage once again
-        localStorage.setItem( dayEntriesListName, entriesListString );
+        localStorage.setItem( entriesListName, entriesListString );
 
     }
 

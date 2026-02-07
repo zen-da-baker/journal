@@ -1,11 +1,11 @@
 // Import data models
-import { DayEntryModel } from "../../models/DayEntryModel.js";
+import { EntryModel } from "../../models/EntryModel.js";
 
 // Import helper functions
 import { monthsList } from "../monthsList.js";
 
 // This helper function sets the date DOM element text
-export function displayEntryDate( entry: DayEntryModel ) {
+export function displayEntryDate( entry: EntryModel ): void {
 
     // Get the date DOM element 
     let entryDateUI = document.getElementById("entry-date");

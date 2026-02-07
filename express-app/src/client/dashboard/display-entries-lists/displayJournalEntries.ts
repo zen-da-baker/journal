@@ -3,7 +3,7 @@ import { getListOfJournalEntries } from "../getListOfJournalEntries.js";
 
 import { monthsList } from "../monthsList.js";
 
-import { removeDayEntryFromDisplay } from "../remove-entry/removeDayEntryFromDisplay.js";
+import { removeDayEntryFromDisplay } from "../remove-entry/removeJournalEntryFromDisplay.js";
 
 // This helper function displays the journal entry card on the dashboard as a gallery, taking in the type of entry to display
 export function displayJournalEntries( entryType: string = "day" ) {
@@ -81,7 +81,7 @@ export function displayJournalEntries( entryType: string = "day" ) {
                 // When the final delete button is pressed, the element is removed from the DOM and the modal is closed
                 deleteModalDeleteButtonUI.onclick = () => {
                     
-                    removeDayEntryFromDisplay( entry.id, index );
+                    removeDayEntryFromDisplay( entry.id, index, entry.type );
 
                     deleteModalUI.close();
                 
