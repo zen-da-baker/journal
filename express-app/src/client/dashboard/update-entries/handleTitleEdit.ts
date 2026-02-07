@@ -1,5 +1,5 @@
 // Import data models
-import { DayEntryModel } from "../../models/DayEntryModel.js";
+import { EntryModel } from "../../models/EntryModel.js";
 
 // Import helper functions
 import { updateExistingDayEntry } from "../update-entries/updateExistingDayEntry.js";
@@ -10,7 +10,7 @@ import { dreamEntriesListName } from "../getListOfDreamEntries.js";
     This helper functions evaluates the title of a journal entry and the current HTML element and saves the 
     entry if the current value is not the same as the existing entry object.
 */
-export function handleTitleEdit( entryToSave: DayEntryModel, currentTitleValue: string, type: string ) {
+export function handleTitleEdit( entryToSave: EntryModel, currentTitleValue: string, type: string ) {
 
     // Determine the entry type which determines which list to use for local storage and the indexedDB object store
     let entryListName = dayEntriesListName;

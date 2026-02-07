@@ -15,13 +15,17 @@ export class EntryModel {
 
     lastEdited: string = "";
 
+    type: string = "";
+
     // The list of lines are not included in the constructor
     listOfLines: Array<EntryLineModel> = [];
 
-    constructor( inputTitle = "Untitled Entry" ) {
+    constructor( inputType: string = "day", inputTitle = "Untitled Entry" ) {
 
         // Create a random ID and assign it to the object
         this.id = createEntryId();
+
+        this.type = inputType;
 
         this.title = inputTitle;
 

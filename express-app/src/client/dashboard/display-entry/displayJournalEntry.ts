@@ -1,5 +1,5 @@
 // Import data model
-import { DayEntryModel } from "../../models/DayEntryModel.js";
+import { EntryModel } from "../../models/EntryModel.js";
 import { EntryLineModel } from "../../models/EntryLineModel.js";
 
 // Import helper functions
@@ -11,7 +11,7 @@ import { handleTitleEdit } from "./handleTitleEdit.js";
 import { displayEntryDate } from "./displayEntryDate.js";
 import { removeCurrentEntryPrompt } from "../remove-entry/removeCurrentEntryPrompt.js";
 
-export function displayDayEntry( entry: DayEntryModel ): void {
+export function displayJournalEntry( entry: EntryModel ): void {
 
     // Get the relavant DOM nodes
     let entryTitleUI = document.getElementById("entry-title");

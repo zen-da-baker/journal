@@ -4,7 +4,7 @@ import { EntryLineModel } from "../../models/EntryLineModel.js";
 
 // Import helper functions
 import { updateExistingDayEntry } from "../update-entries/updateExistingDayEntry.js";
-import { displayDayEntry } from "./displayDayEntry.js";
+import { displayDayEntry } from "./displayJournalEntry.js";
 
 export function addNewLine( entry: DayEntryModel ): string {
 
