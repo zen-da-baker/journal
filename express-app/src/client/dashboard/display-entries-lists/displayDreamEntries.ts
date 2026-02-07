@@ -29,7 +29,7 @@ export function displayDreamEntries() {
 
             let linkElementUI = document.createElement("a");
 
-            linkElementUI.href = "/dashboard/dream-entry?entryId=" + entry.id;
+            linkElementUI.href = "/dashboard/journal-entry?entryId=" + entry.id;
 
             let linkButtonUI = document.createElement("button");
 

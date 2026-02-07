@@ -21,7 +21,7 @@ let landingPagePath = staticDirectoryPath + "landingPage.html";
 // Dashboard pages
 let dashboardHomePagePath = dashboardDirectoryPath + "dashboardHome.html";
 
-let dayEntryPagePath = dashboardDirectoryPath + "dayJournal.html";
+let journalEntryPagePath = dashboardDirectoryPath + "journalEntry.html";
 
 let dreamEntryPagePath = dashboardDirectoryPath + "dreamJournal.html";
 
@@ -48,7 +48,7 @@ let landingPageContent = await getPageContentHelper( landingPagePath );
 // Dashboard pages
 let dashboardHomePageContent = await getPageContentHelper( dashboardHomePagePath );
 
-let dayEntryPageContent = await getPageContentHelper( dayEntryPagePath );
+let journalEntryPageContent = await getPageContentHelper( journalEntryPagePath );
 
 let dreamEntryPageContent = await getPageContentHelper( dreamEntryPagePath );
 
@@ -74,7 +74,7 @@ export {
 
     // Dashboard pages
     dashboardHomePageContent, 
-    dayEntryPageContent,
+    journalEntryPageContent,
     dreamEntryPageContent,
     tutorialPageContent,
     calendarPageContent,

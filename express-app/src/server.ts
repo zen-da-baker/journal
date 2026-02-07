@@ -1,3 +1,4 @@
+// Import all of the relevant frameworks which are express for HTTP and morgan for logging
 import express from "express";
 
 import morgan from "morgan";
@@ -20,13 +21,16 @@ import { blogRouter } from "./controllers/routers/blog-router/blogRouter.js";
 import { getNotFoundPage } from "./controllers/error-handler/getNotFoundPage.js";
 import { getErrorPage } from "./controllers/error-handler/getErrorPage.js";
 
+// Establish the port number
 const port = 3000;
 
+// Create an instance of the express app 
 const app = express();
 
 // Enable logging using Morgan
 app.use( morgan( "dev" ) );
 
+// Create the ability for project directory files to be read from relative paths 
 const __filename = fileURLToPath( import.meta.url );
 const __dirname = path.dirname( __filename );
 

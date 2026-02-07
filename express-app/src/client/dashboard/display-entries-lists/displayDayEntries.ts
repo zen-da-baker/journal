@@ -37,7 +37,7 @@ export function displayDayEntries() {
             // The link to the entry is created and holds a query parameter that contains the entry id which is needed for the next page
             let linkElementUI = document.createElement("a");
 
-            linkElementUI.href = "/dashboard/day-entry?entryId=" + entry.id;
+            linkElementUI.href = "/dashboard/journal-entry?entryId=" + entry.id;
 
             let linkButtonUI = document.createElement("button");
 
