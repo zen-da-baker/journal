@@ -1,16 +1,16 @@
 // Import helper functions
-import { getListOfDayEntries } from "../getListOfJournalEntries.js";
+import { getListOfJournalEntries } from "../getListOfJournalEntries.js";
 
 // This helper function takes an entry id and finds the local storage list index based on it
-export function getEntryLocalStorageIndex( entryId: string ) {
+export function getEntryLocalStorageIndex( entryId: string, entryType: string ) {
 
-    let dayEntriesList = getListOfDayEntries();
+    let entriesList = getListOfJournalEntries( entryType );
 
     let entryIndex: number = -1;
 
-    if ( dayEntriesList !== null ) {
+    if ( entriesList !== null ) {
 
-        entryIndex = dayEntriesList.findIndex( ( searchEntry: any ) => {
+        entryIndex = entriesList.findIndex( ( searchEntry: any ) => {
 
             if ( searchEntry.id === entryId ) {
 

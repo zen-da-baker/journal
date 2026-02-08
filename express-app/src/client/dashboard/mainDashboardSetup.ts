@@ -2,8 +2,7 @@
 import { displayJournalEntries } from "./display-entries-lists/displayJournalEntries.js";
 
 // Import DOM listener functions
-import { addDayEntry } from "./add-entries/addDayEntry.js";
-import { addDreamEntry } from "./add-entries/addDreamEntry.js";
+import { addJournalEntry } from "./add-entries/addJournalEntry.js";
 
 // Display the entries list with each display function showing the different types of entries
 displayJournalEntries( "day" );
@@ -13,5 +12,5 @@ displayJournalEntries( "dream" );
 const addDayEntryButtonUI = document.getElementById("add-day-entry-button");
 const addDreamEntryButtonUI = document.getElementById("add-dream-entry-button");
 
-addDayEntryButtonUI.onclick = addDayEntry;
-addDreamEntryButtonUI.onclick = addDreamEntry;
+addDayEntryButtonUI.onclick = () => addJournalEntry( "day" );
+addDreamEntryButtonUI.onclick = () => addJournalEntry( "dream" );

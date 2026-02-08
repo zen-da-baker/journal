@@ -2,21 +2,21 @@ let databaseName = "bytesized-journal-database";
 
 let databaseVersion = 1;
 
-let dayObjectStoreName = "bytesized-journal-day-entries";
+const dayObjectStoreName = "bytesized-journal-day-entries";
 
-let dreamObjectStoreName = "bytesized-journal-dream-entries";
+const dreamObjectStoreName = "bytesized-journal-dream-entries";
 
 let request = indexedDB.open( databaseName, databaseVersion );
 
 let database: IDBDatabase | null;
 
-function onRequestSuccess( event: any ) {
+function onRequestSuccess( event: any ): void {
 
     database = event.target.result;
 
 }
 
-function createDatabase( event: any ) {
+function createDatabase( event: any ): void {
 
     let db = event.target.result;
 

@@ -1,6 +1,5 @@
 // Import the list of day and dream entries to access their IDs
-import { getListOfDayEntries } from "../dashboard/getListOfJournalEntries.js";
-import { getListOfDreamEntries } from "../dashboard/getListOfDreamEntries.js";
+import { getListOfJournalEntries } from "../dashboard/getListOfJournalEntries.js";
 
 /* 
     This helper function compares the dream and day entries IDs and returns 
@@ -12,9 +11,9 @@ export function checkIfIdExists( inputId: string ): boolean {
     let exists: boolean = false;
 
     // Get the list of entries
-    let dayEntries = getListOfDayEntries();
+    let dayEntries = getListOfJournalEntries( "day" );
 
-    let dreamEntries = getListOfDreamEntries();
+    let dreamEntries = getListOfJournalEntries( "dream" );
 
     // If the list exists, search it and compare the entry ID to the input ID and mark if they are the same
     if ( dayEntries !== null ) {

@@ -32,7 +32,7 @@ export function removeCurrentEntryPrompt( entry: EntryModel ): void {
     confirmDeletionButtonUI.onclick = () => {
 
         // The entry index position in local storage is identified
-        let entryIndex: number = getEntryLocalStorageIndex( entry.id );
+        let entryIndex: number = getEntryLocalStorageIndex( entry.id, entry.type );
 
         // The entry is removed from the local storage
         removeJournalEntryFromLocalStorage( entryIndex, entry.type );
