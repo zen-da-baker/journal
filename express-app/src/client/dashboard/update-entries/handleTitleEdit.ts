@@ -2,20 +2,23 @@
 import { EntryModel } from "../../models/EntryModel.js";
 
 // Import helper functions
-import { updateExistingDayEntry } from "../update-entries/updateExistingDayEntry.js";
-import { dayEntriesListName } from "../getListOfJournalEntries.js";
-import { dreamEntriesListName } from "../getListOfDreamEntries.js";
+import { updateExistingEntry } from "./updateExistingEntry.js";
+import { dayEntriesListName, dreamEntriesListName } from "../getListOfJournalEntries.js";
 
 /*
     This helper functions evaluates the title of a journal entry and the current HTML element and saves the 
     entry if the current value is not the same as the existing entry object.
 */
-export function handleTitleEdit( entryToSave: EntryModel, currentTitleValue: string, type: string ) {
+export function handleTitleEdit( entryToSave: EntryModel, currentTitleValue: string ): void {
 
     // Determine the entry type which determines which list to use for local storage and the indexedDB object store
-    let entryListName = dayEntriesListName;
+    let entryListName: string;
+    
+    if ( entryToSave.type === "day" ) {
 
-    if ( type === "dream" ) {
+        entryListName = dayEntriesListName;
+
+    } else {
 
         entryListName = dreamEntriesListName;
 
@@ -36,13 +39,15 @@ export function handleTitleEdit( entryToSave: EntryModel, currentTitleValue: str
         pageTitle.textContent = currentTitleValue + " | Bytesized Journal";
 
         // Update the new title in the indexedDB database
-        updateExistingDayEntry( entryToSave );
+        updateExistingEntry( entryToSave );
 
     }
 
     if ( entriesListString !== null ) {
 
         let entriesList: any = JSON.parse( entriesListString );
+
+        console.log( entriesList );
 
         let entryIndex: number = entriesList.findIndex( ( entrySearchItem: any ) => {
 
@@ -59,14 +64,18 @@ export function handleTitleEdit( entryToSave: EntryModel, currentTitleValue: str
 
         })
 
+        console.log( entryIndex );
+
         // If the entry was found, assign its title to the current title
         if ( entryIndex !== -1 ) {
 
+            // Change the title of the element object for the local storage list
             entriesList[ entryIndex ].title = currentTitleValue;
 
             // After assigning the entry title, convert the list to a JSON string again and set it in local storage
             entriesListString = JSON.stringify( entriesList );
 
+            // Save the local storage list
             localStorage.setItem( entryListName, entriesListString );
 
         }

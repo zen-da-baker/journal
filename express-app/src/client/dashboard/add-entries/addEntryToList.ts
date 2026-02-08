@@ -32,7 +32,9 @@ export function addEntryToList( entry: EntryModel ) {
 
         title: entry.title,
 
-        createdOn: entry.createdOn
+        createdOn: entry.createdOn,
+
+        type: entry.type
 
     }
 

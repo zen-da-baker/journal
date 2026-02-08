@@ -12,10 +12,12 @@ export function displayJournalEntries( entryType: string = "day" ) {
     const journalEntryGalleryUI = document.getElementById( entryType + "-entry-gallery");
 
     // Get the list of of journal entries based on the type loaded
-    let listOfJournalEntries = getListOfJournalEntries( entryType );
+    let listOfJournalEntries: Array<any> | null = getListOfJournalEntries( entryType );
 
     // If the entries exists, proceed with the following
     if ( listOfJournalEntries !== null ) {
+
+        console.log( listOfJournalEntries );
 
         // Clear the existing HTML and rebuild the section
         journalEntryGalleryUI.innerHTML = "";
@@ -23,14 +25,19 @@ export function displayJournalEntries( entryType: string = "day" ) {
         // For each entry in the list, display it as a card
         listOfJournalEntries.forEach( ( entry: any, index: number ) => {
 
+            // The new card element is created programmatically 
             let newDOMJournalEntryCard = document.createElement("div");
 
+            // The HTML class of the card is the card element
             newDOMJournalEntryCard.className = "card";
 
+            // The element ID is assigned to the data id string
             newDOMJournalEntryCard.id = entry.id;
 
+            // Create the heading element that will be displayed on the card
             let titleElementUI = document.createElement("h3");
 
+            // The title is assigned to the page element
             titleElementUI.textContent = entry.title;
 
             let dateElementUI = document.createElement("p");

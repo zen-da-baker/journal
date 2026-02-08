@@ -2,7 +2,7 @@
 import { EntryModel } from "../../models/EntryModel.js";
 
 // Import helper functions
-import { updateExistingDayEntry } from "./updateExistingDayEntry.js";
+import { updateExistingEntry } from "./updateExistingEntry.js";
 
 export function handleLineEdit( lineId: string, entry: EntryModel, lineIndex: number ) {
 
@@ -15,7 +15,7 @@ export function handleLineEdit( lineId: string, entry: EntryModel, lineIndex: nu
         entry.listOfLines[ lineIndex ].value = currentLineUI.textContent;
 
         // Update the existing journal entry in the database
-        updateExistingDayEntry( entry );
+        updateExistingEntry( entry );
 
     }
 

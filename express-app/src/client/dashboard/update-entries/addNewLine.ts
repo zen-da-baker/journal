@@ -3,7 +3,7 @@ import { EntryModel } from "../../models/EntryModel.js";
 import { EntryLineModel } from "../../models/EntryLineModel.js";
 
 // Import helper functions
-import { updateExistingDayEntry } from "./updateExistingDayEntry.js";
+import { updateExistingEntry } from "./updateExistingEntry.js";
 import { displayJournalEntry } from "../display-entry/displayJournalEntry.js";
 
 export function addNewLine( entry: EntryModel ): string {
@@ -12,7 +12,7 @@ export function addNewLine( entry: EntryModel ): string {
     
     entry.listOfLines.push( nextNewLine );
 
-    updateExistingDayEntry( entry );
+    updateExistingEntry( entry );
 
     displayJournalEntry( entry );
 

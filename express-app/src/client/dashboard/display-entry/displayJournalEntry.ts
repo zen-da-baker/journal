@@ -35,7 +35,7 @@ export function displayJournalEntry( entry: EntryModel ): void {
     // Assign the meta data title to be a custom version of the entry title
     pageTitle.textContent = entry.title + " | Bytesized Journal";
 
-    entryTitleUI.onblur = () => handleTitleEdit( entry, entryTitleUI.textContent, "day" );
+    entryTitleUI.onblur = () => handleTitleEdit( entry, entryTitleUI.textContent );
 
     // Display the entry date on the page
     displayEntryDate( entry );

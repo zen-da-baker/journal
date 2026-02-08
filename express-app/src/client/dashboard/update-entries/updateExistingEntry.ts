@@ -8,7 +8,7 @@ import { dayObjectStoreName, dreamObjectStoreName } from "../../database/db.js";
 /*
     This helper function updates the database record for the day journal entries
 */
-export function updateExistingDayEntry( entryToSave: EntryModel ) {
+export function updateExistingEntry( entryToSave: EntryModel ) {
 
     // Use either object store name based on if this is a day entry or a dream entry
     let objectStoreName: string;
@@ -24,13 +24,13 @@ export function updateExistingDayEntry( entryToSave: EntryModel ) {
     }
 
     // Open a transaction with the database with writing permission
-    let dayEntryTransaction = database.transaction( objectStoreName, "readwrite" );
+    let entryTransaction = database.transaction( objectStoreName, "readwrite" );
 
     // Get the object store from the store name on the transaction
-    let dayObjectStore = dayEntryTransaction.objectStore( objectStoreName );
+    let objectStore = entryTransaction.objectStore( objectStoreName );
 
     // Write the newer journal entry object to the database
-    let writeAttempt = dayObjectStore.put( entryToSave );
+    let writeAttempt = objectStore.put( entryToSave );
 
     // If the write attempt is successful, log the success message to the console
     writeAttempt.onsuccess = () => console.log( "Entry " + entryToSave.title + " saved to the database." );

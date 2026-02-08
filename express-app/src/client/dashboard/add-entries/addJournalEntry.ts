@@ -18,6 +18,6 @@ export function addJournalEntry( newEntryType: string ): void {
     addEntryToDB( newEntry );
 
     // Update the UI display
-    displayJournalEntries();
+    displayJournalEntries( newEntryType );
 
 }
