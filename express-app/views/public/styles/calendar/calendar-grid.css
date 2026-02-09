@@ -1,6 +1,12 @@
-.calendar-day {
+.calendar-column {
 
     width: 5rem;
+
+    border: 0.1rem solid black;
+
+}
+
+.calendar-day {
 
     height: 5rem;
 
@@ -17,5 +23,5 @@
 .current-day {
 
     background-color: hsl( 1, 50%, 80% );
-    
+
 }

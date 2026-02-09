@@ -6,7 +6,7 @@ export function displayCalendarDaysGrid(): void {
 
     let dayIterations = 0;
 
-    for ( let outerIterator = 0; outerIterator < 4; outerIterator++ ) {
+    for ( let outerIterator = 0; outerIterator < 5; outerIterator++ ) {
 
         let calendarDaysRowUI = document.createElement("div");
 
@@ -18,7 +18,7 @@ export function displayCalendarDaysGrid(): void {
 
             let calendarDayUI = document.createElement("div");
 
-            calendarDayUI.className = "calendar-day";
+            calendarDayUI.className = "calendar-day calendar-column";
 
             if ( innerIterator === 0 || innerIterator === 6 ) {
 
@@ -29,7 +29,7 @@ export function displayCalendarDaysGrid(): void {
             if ( dayIterations + 1 === currentDate.getDate() ) {
 
                 calendarDayUI.className += " current-day";
-                
+
             }
 
             calendarDayUI.id = "day-row-" + outerIterator + "-column-" + innerIterator;
