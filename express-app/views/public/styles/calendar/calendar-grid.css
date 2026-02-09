@@ -11,5 +11,11 @@
 .calendar-weekend {
 
     background-color: hsl( 1, 0%, 80% );
+
+}
+
+.current-day {
+
+    background-color: hsl( 1, 50%, 80% );
     
 }

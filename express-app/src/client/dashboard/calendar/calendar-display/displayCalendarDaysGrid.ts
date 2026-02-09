@@ -2,6 +2,10 @@ export function displayCalendarDaysGrid(): void {
 
     let calendarDaysGridUI = document.getElementById("calendar-days-grid");
 
+    let currentDate = new Date();
+
+    let dayIterations = 0;
+
     for ( let outerIterator = 0; outerIterator < 4; outerIterator++ ) {
 
         let calendarDaysRowUI = document.createElement("div");
@@ -14,19 +18,25 @@ export function displayCalendarDaysGrid(): void {
 
             let calendarDayUI = document.createElement("div");
 
+            calendarDayUI.className = "calendar-day";
+
             if ( innerIterator === 0 || innerIterator === 6 ) {
 
-                calendarDayUI.className = "calendar-day calendar-weekend";
+                calendarDayUI.className += " calendar-weekend";
 
-            } else {
+            } 
 
-                calendarDayUI.className = "calendar-day";
+            if ( dayIterations + 1 === currentDate.getDate() ) {
 
+                calendarDayUI.className += " current-day";
+                
             }
 
             calendarDayUI.id = "day-row-" + outerIterator + "-column-" + innerIterator;
 
             calendarDaysRowUI.appendChild( calendarDayUI );
+
+            dayIterations++;
 
         }
 
