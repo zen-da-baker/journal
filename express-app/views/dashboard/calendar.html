@@ -7,13 +7,21 @@
 
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+        <link rel="icon" href="/icons/bytesized-orange.png" />
+
         <title>Calendar | Bytesized Journal</title>
+
+        <!-- Include styling -->
+         <link rel="stylesheet" href="/styles/flex.css" />
+
+        <!-- Calendar specific styling -->
+        <link rel="stylesheet" href="/styles/calendar/calendar-grid.css" />
 
     </head>
 
     <body>
 
-        <header>
+        <header class="flex space-around">
 
             <a href="/dashboard">
 
@@ -21,14 +29,63 @@
 
             </a>
 
+            <h1>Calendar</h1>
+
         </header>
 
         <main>
 
-            <h1>Calendar</h1>
+            <div id="month-calendar">
+
+                <div id="calendar-header" class="flex">
+
+                    <div>
+
+                        <span>Month</span>
+
+                        <span>Year</span>
+
+                    </div>
+
+                    <span>Previous</span>
+
+                    <span>Next</span>
+
+                </div>
+
+                <div id="calendar-body">
+
+                    <div id="calendar-days-titles" class="calendar-row">
+
+                        <span>Sunday</span>
+
+                        <span>Monday</span>
+
+                        <span>Tuesday</span>
+
+                        <span>Wednesday</span>
+
+                        <span>Thursday</span>
+
+                        <span>Friday</span>
+
+                        <span>Saturday</span>
+
+                    </div>
+
+                    <div id="calendar-days-grid">
+
+                        
+                    </div>
+
+                </div>
+
+            </div>
 
         </main>
         
     </body>
+
+    <script src="/dashboard/calendar/mainCalendarProgram.js" type="module"></script>
     
 </html>

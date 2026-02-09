@@ -23,8 +23,6 @@ let dashboardHomePagePath = dashboardDirectoryPath + "dashboardHome.html";
 
 let journalEntryPagePath = dashboardDirectoryPath + "journalEntry.html";
 
-let dreamEntryPagePath = dashboardDirectoryPath + "dreamJournal.html";
-
 let tutorialPagePath = dashboardDirectoryPath + "tutorial.html";
 
 let calendarPagePath = dashboardDirectoryPath + "calendar.html";
@@ -50,8 +48,6 @@ let dashboardHomePageContent = await getPageContentHelper( dashboardHomePagePath
 
 let journalEntryPageContent = await getPageContentHelper( journalEntryPagePath );
 
-let dreamEntryPageContent = await getPageContentHelper( dreamEntryPagePath );
-
 let tutorialPageContent = await getPageContentHelper( tutorialPagePath );
 
 let calendarPageContent = await getPageContentHelper( calendarPagePath );
@@ -75,7 +71,6 @@ export {
     // Dashboard pages
     dashboardHomePageContent, 
     journalEntryPageContent,
-    dreamEntryPageContent,
     tutorialPageContent,
     calendarPageContent,
     settingsPageContent,

@@ -1,0 +1,15 @@
+.calendar-day {
+
+    width: 5rem;
+
+    height: 5rem;
+
+    border: 0.1rem solid black;
+
+}
+
+.calendar-weekend {
+
+    background-color: hsl( 1, 0%, 80% );
+    
+}
