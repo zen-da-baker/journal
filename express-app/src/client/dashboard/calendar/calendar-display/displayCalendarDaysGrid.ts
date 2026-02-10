@@ -6,13 +6,15 @@ export function displayCalendarDaysGrid(): void {
 
     let dayIterations = 0;
 
-    for ( let outerIterator = 0; outerIterator < 5; outerIterator++ ) {
+    let totalIterations: number = 1;
+
+    for ( let outerIterator = 0; outerIterator < totalIterations; outerIterator++ ) {
 
         let calendarDaysRowUI = document.createElement("div");
 
         calendarDaysRowUI.id = "row-" + outerIterator;
 
-        calendarDaysRowUI.className = "flex calendar-row"
+        calendarDaysRowUI.className = "flex calendar-row";
 
         for ( let innerIterator = 0; innerIterator < 7; innerIterator++ ) {
 
@@ -37,6 +39,12 @@ export function displayCalendarDaysGrid(): void {
             calendarDaysRowUI.appendChild( calendarDayUI );
 
             dayIterations++;
+
+        }
+
+        if ( totalIterations < 6 ) {
+
+            totalIterations++;
 
         }
 
