@@ -1,6 +1,39 @@
-export function displayCalendarDaysGrid(): void {
+export function displayCalendarDaysGrid( selectedMonth: number , selectedYear: number ): void {
 
+    // The calendar grid HTML element will be gathered first
     let calendarDaysGridUI = document.getElementById("calendar-days-grid");
+
+    // If the grid already has a display when this function is called, it will be cleared
+    if ( calendarDaysGridUI.innerHTML !== "" ){
+    
+        calendarDaysGridUI.innerHTML = "";
+
+    }
+
+    /*
+        Determine the number of days in the month as a list that is a parallel 
+        array to the month number from the date object
+    */
+    let daysInMonthList = [ 
+        31, 28, 31, 
+        30, 31, 30,
+        31, 31, 30,
+        31, 30, 31
+    ]
+
+    // If the year is divisible by 4, it is a leap year and Feb will have 29 days instead of 28
+    let febIndex = 1;
+
+    // Access the divisibility of the year selected
+    if ( selectedYear % 4 === 0 ) {
+
+        daysInMonthList[ febIndex ] = 29;
+
+    } else {
+
+        daysInMonthList[ febIndex ] = 28;
+
+    }
 
     let currentDate = new Date();
 
@@ -14,7 +47,7 @@ export function displayCalendarDaysGrid(): void {
 
     let totalCalendarRows: number = 1;
 
-    let maxDaysInTheMonth = 31;
+    let maxDaysInTheMonth = daysInMonthList[ selectedMonth ];
 
     // The number of rows the calendar will have
     for ( let outerIterator = 0; outerIterator < totalCalendarRows; outerIterator++ ) {

@@ -25,3 +25,9 @@
     background-color: hsl( 1, 50%, 80% );
 
 }
+
+#month-calendar {
+
+    width: 35rem;
+    
+}
