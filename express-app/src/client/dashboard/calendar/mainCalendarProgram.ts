@@ -34,3 +34,24 @@ nextMonthButton.onclick = () => {
     displayCalendarDaysDates( selectedMonth, selectedYear );
     
 }
+
+// If the user clicks on the month cycle for the previous month, it will be decremented
+previousMonthButton.onclick = () => {
+
+    // The month is decremented
+    selectedMonth--;
+
+    // If the month was already Jan, it will be assigned to Dec and the year will be decremented
+    if ( selectedMonth === -1 ) {
+
+        selectedYear--;
+
+        selectedMonth = 11;
+
+    }
+
+    displayCalendarDaysGrid( selectedMonth, selectedYear );
+
+    displayCalendarDaysDates( selectedMonth, selectedYear );
+
+}
