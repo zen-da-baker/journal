@@ -1,6 +1,16 @@
+// Get the list of months
 import { monthsList } from "../../monthsList.js";
 
-export function displayCalendarDaysGrid( selectedMonth: number , selectedYear: number ): void {
+// Import helper functions
+import { addJournalEntriesToDay } from "./addJournalEntriesToDay.js";
+
+// This 
+export function displayCalendarDaysGrid( 
+    selectedMonth: number, 
+    selectedYear: number, 
+    listOfDayEntries: Array<any>, 
+    listOfDreamEntries: Array<any>
+): void {
 
     // The calendar grid HTML element will be gathered first
     let calendarDaysGridUI = document.getElementById("calendar-days-grid");
@@ -101,6 +111,7 @@ export function displayCalendarDaysGrid( selectedMonth: number , selectedYear: n
 
             }
 
+            // The ID of the day HTML element
             calendarDayUI.id = "day-row-" + outerIterator + "-column-" + innerIterator;
 
             let calendarDateText = document.createElement("span");
@@ -116,6 +127,8 @@ export function displayCalendarDaysGrid( selectedMonth: number , selectedYear: n
                 calendarDateText.textContent = dayIterations.toString();
 
                 calendarDayUI.appendChild( calendarDateText );
+
+                addJournalEntriesToDay( calendarDayUI, dayIterations, selectedMonth, selectedYear, listOfDayEntries, listOfDreamEntries );
 
             }
 
@@ -134,8 +147,12 @@ export function displayCalendarDaysGrid( selectedMonth: number , selectedYear: n
                 calendarDateText.textContent = ( dayIterations ).toString();
 
                 calendarDayUI.appendChild( calendarDateText );
+
+                addJournalEntriesToDay( calendarDayUI, dayIterations, selectedMonth, selectedYear, listOfDayEntries, listOfDreamEntries );
         
             }
+
+            // Now that the day iterations are identified, add any journal entries to the calendar
 
             calendarDaysRowUI.appendChild( calendarDayUI );
 

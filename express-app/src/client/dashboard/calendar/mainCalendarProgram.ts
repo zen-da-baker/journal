@@ -1,18 +1,23 @@
+// Import helper functions
 import { displayCalendarDaysGrid } from "./calendar-display/displayCalendarDaysGrid.js";
-import { displayCalendarDaysDates } from "./calendar-display/displayCalendarDaysDates.js";
-import { monthsList } from "../monthsList.js";
+import { getListOfJournalEntries } from "../getListOfJournalEntries.js";
 
+// Get the current date as the base starting point for the calendar
 let currentDate: Date = new Date();
 
 let selectedMonth: number = currentDate.getMonth();
 
 let selectedYear: number = currentDate.getFullYear();
 
+// Get DOM elements for adding functionality to the calendar display for month cycling
 let previousMonthButton = document.getElementById("previous-month-button");
 let nextMonthButton = document.getElementById("next-month-button");
 
+let dayJournalList: Array<any> = getListOfJournalEntries("day");
+let dreamJournalList: Array<any> = getListOfJournalEntries("dream");
+
 // Display the calendar with the current month and year first
-displayCalendarDaysGrid( selectedMonth, selectedYear );
+displayCalendarDaysGrid( selectedMonth, selectedYear, dayJournalList, dreamJournalList );
 
 // If the user clicks on the month cycle button, it will increment the month or year
 nextMonthButton.onclick = () => {
@@ -29,7 +34,7 @@ nextMonthButton.onclick = () => {
 
     }
 
-    displayCalendarDaysGrid( selectedMonth, selectedYear );
+    displayCalendarDaysGrid( selectedMonth, selectedYear, dayJournalList, dreamJournalList );
     
 }
 
@@ -48,6 +53,6 @@ previousMonthButton.onclick = () => {
 
     }
 
-    displayCalendarDaysGrid( selectedMonth, selectedYear );
+    displayCalendarDaysGrid( selectedMonth, selectedYear, dayJournalList, dreamJournalList );
 
 }
