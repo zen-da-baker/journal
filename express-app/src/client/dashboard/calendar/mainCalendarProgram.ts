@@ -11,8 +11,8 @@ let selectedYear: number = currentDate.getFullYear();
 let previousMonthButton = document.getElementById("previous-month-button");
 let nextMonthButton = document.getElementById("next-month-button");
 
+// Display the calendar with the current month and year first
 displayCalendarDaysGrid( selectedMonth, selectedYear );
-displayCalendarDaysDates( selectedMonth, selectedYear );
 
 // If the user clicks on the month cycle button, it will increment the month or year
 nextMonthButton.onclick = () => {
@@ -30,8 +30,6 @@ nextMonthButton.onclick = () => {
     }
 
     displayCalendarDaysGrid( selectedMonth, selectedYear );
-
-    displayCalendarDaysDates( selectedMonth, selectedYear );
     
 }
 
@@ -51,7 +49,5 @@ previousMonthButton.onclick = () => {
     }
 
     displayCalendarDaysGrid( selectedMonth, selectedYear );
-
-    displayCalendarDaysDates( selectedMonth, selectedYear );
 
 }

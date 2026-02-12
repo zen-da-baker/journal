@@ -1,3 +1,5 @@
+import { monthsList } from "../../monthsList.js";
+
 export function displayCalendarDaysGrid( selectedMonth: number , selectedYear: number ): void {
 
     // The calendar grid HTML element will be gathered first
@@ -37,21 +39,33 @@ export function displayCalendarDaysGrid( selectedMonth: number , selectedYear: n
 
     let currentDate = new Date();
 
-    let firstDayOfTheMonth = new Date( currentDate );
+    let firstDayNumber = 1;
 
-    firstDayOfTheMonth.setDate( 1 );
+    let firstDayOfTheMonth = new Date( selectedYear, selectedMonth, firstDayNumber );
 
     let firstDayPosition = firstDayOfTheMonth.getDay();
 
     let dayIterations = 0;
 
+    let previousMonthDaysInFirstRow = 0;
+
     let totalCalendarRows: number = 1;
 
     let maxDaysInTheMonth = daysInMonthList[ selectedMonth ];
 
+    let monthNameUI = document.getElementById("month-name");
+
+    let yearNumberUI = document.getElementById("year-number");
+
+    monthNameUI.textContent = monthsList[ selectedMonth ];
+    
+    yearNumberUI.textContent = selectedYear.toString();
+
+
     // The number of rows the calendar will have
     for ( let outerIterator = 0; outerIterator < totalCalendarRows; outerIterator++ ) {
 
+        // The row element is created so days can be added based on certain conditions 
         let calendarDaysRowUI = document.createElement("div");
 
         calendarDaysRowUI.id = "row-" + outerIterator;
@@ -61,10 +75,13 @@ export function displayCalendarDaysGrid( selectedMonth: number , selectedYear: n
         // The number of columns a row has which is always fixed to 7 days
         for ( let innerIterator = 0; innerIterator < 7; innerIterator++ ) {
 
+            // The day element is created
             let calendarDayUI = document.createElement("div");
 
+            // The CSS class of the day is started
             calendarDayUI.className = "calendar-day calendar-column";
 
+            // If it is the first or last day in the row, the class name adds and assigns the calendar weekend CSS class
             if ( innerIterator === 0 || innerIterator === 6 ) {
 
                 calendarDayUI.className += " calendar-weekend";
@@ -75,9 +92,9 @@ export function displayCalendarDaysGrid( selectedMonth: number , selectedYear: n
             if ( 
                 dayIterations + 1 === currentDate.getDate() 
                 && 
-                currentDate.getFullYear() === firstDayOfTheMonth.getFullYear()  
+                currentDate.getFullYear() === selectedYear 
                 &&
-                currentDate.getMonth() === firstDayOfTheMonth.getMonth()
+                currentDate.getMonth() === selectedMonth
             ) {
 
                 calendarDayUI.className += " current-day";
@@ -86,36 +103,55 @@ export function displayCalendarDaysGrid( selectedMonth: number , selectedYear: n
 
             calendarDayUI.id = "day-row-" + outerIterator + "-column-" + innerIterator;
 
-            calendarDaysRowUI.appendChild( calendarDayUI );
+            let calendarDateText = document.createElement("span");
+
+            /* 
+                If the day iterations is greater than zero, increase the iterations and display the date 
+                number on the calendar first since the following block for the first day only will not run.
+            */
+            if ( dayIterations > 0 ) {
+
+                dayIterations++;
+
+                calendarDateText.textContent = dayIterations.toString();
+
+                calendarDayUI.appendChild( calendarDateText );
+
+            }
 
             // If the first day is equal to the current display position for the first week row, start the day count
             if ( firstDayPosition === innerIterator && outerIterator === 1 ) {
 
                 dayIterations++;
+
+                /* 
+                    The inner iteration count plus the day that was zeroed will be used to know how many
+                    days from the previous month were in the first row. This assists in controlling how many
+                    total rows are displayed by not counting them toward the maximum days in the month.
+                */
+                previousMonthDaysInFirstRow = innerIterator + 1;
+
+                calendarDateText.textContent = ( dayIterations ).toString();
+
+                calendarDayUI.appendChild( calendarDateText );
         
             }
 
-            if ( dayIterations > 0 && dayIterations <= maxDaysInTheMonth ) {
+            calendarDaysRowUI.appendChild( calendarDayUI );
 
-                dayIterations++;
-
-            }
+            
 
         }
 
+        calendarDaysGridUI.appendChild( calendarDaysRowUI );
+
         // The total number of rows is determined by the number of days after the first row is established
-        if ( dayIterations < maxDaysInTheMonth ) {
+        if ( dayIterations + previousMonthDaysInFirstRow <= maxDaysInTheMonth ) {
 
             // Add a new row to the count while there are still days to cycle through
             totalCalendarRows += 1;
 
         }
-
-        console.log( totalCalendarRows );
-
-        console.log( dayIterations );
-
-        calendarDaysGridUI.appendChild( calendarDaysRowUI );
 
     }
 
