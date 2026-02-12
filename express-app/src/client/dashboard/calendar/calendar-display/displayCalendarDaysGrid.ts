@@ -109,7 +109,7 @@ export function displayCalendarDaysGrid( selectedMonth: number , selectedYear: n
                 If the day iterations is greater than zero, increase the iterations and display the date 
                 number on the calendar first since the following block for the first day only will not run.
             */
-            if ( dayIterations > 0 ) {
+            if ( dayIterations > 0 && dayIterations < maxDaysInTheMonth ) {
 
                 dayIterations++;
 
@@ -120,7 +120,7 @@ export function displayCalendarDaysGrid( selectedMonth: number , selectedYear: n
             }
 
             // If the first day is equal to the current display position for the first week row, start the day count
-            if ( firstDayPosition === innerIterator && outerIterator === 1 ) {
+            if ( firstDayPosition === innerIterator && outerIterator === 0 ) {
 
                 dayIterations++;
 
@@ -139,14 +139,15 @@ export function displayCalendarDaysGrid( selectedMonth: number , selectedYear: n
 
             calendarDaysRowUI.appendChild( calendarDayUI );
 
-            
-
         }
 
         calendarDaysGridUI.appendChild( calendarDaysRowUI );
 
-        // The total number of rows is determined by the number of days after the first row is established
-        if ( dayIterations + previousMonthDaysInFirstRow <= maxDaysInTheMonth ) {
+        /* 
+            The total number of rows is determined by the number of days remaining after the first row is established.
+            As each row is created, a new row is added if there are more days to be added to the calendar.
+        */
+        if ( dayIterations < maxDaysInTheMonth ) {
 
             // Add a new row to the count while there are still days to cycle through
             totalCalendarRows += 1;
