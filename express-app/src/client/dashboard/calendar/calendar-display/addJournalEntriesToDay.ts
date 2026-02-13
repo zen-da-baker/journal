@@ -33,7 +33,7 @@ export function addJournalEntriesToDay(
 
             entryCardLink.href = "/dashboard/journal-entry?entryId=" + entry.id + "&entryType=" + entryType;
 
-            entryCardButton.textContent = "Open Entry";
+            entryCardButton.textContent = "Open";
 
             // Add the calendar card element to the current calendar day entry
             entryCardLink.appendChild( entryCardButton );
