@@ -1,8 +1,9 @@
 // Get the list of months
 import { monthsList } from "../../monthsList.js";
 
-// Import helper functions
+// Import DOM manipulator functions
 import { addJournalEntriesToDay } from "./addJournalEntriesToDay.js";
+import { addJournalEntryCalendarDayButton } from "./addJournalEntryCalendarDayButton.js";
 
 // This 
 export function displayCalendarDaysGrid( 
@@ -128,6 +129,12 @@ export function displayCalendarDaysGrid(
 
                 calendarDayUI.appendChild( calendarDateText );
 
+                let addEntryButtonUI = document.createElement("button");
+
+                addEntryButtonUI.textContent = "+";
+
+                addJournalEntryCalendarDayButton( calendarDayUI, addEntryButtonUI, dayIterations, selectedMonth, selectedYear );
+
                 addJournalEntriesToDay( calendarDayUI, dayIterations, selectedMonth, selectedYear, listOfDayEntries, listOfDreamEntries );
 
             }
@@ -147,6 +154,12 @@ export function displayCalendarDaysGrid(
                 calendarDateText.textContent = ( dayIterations ).toString();
 
                 calendarDayUI.appendChild( calendarDateText );
+
+                let addEntryButtonUI = document.createElement("button");
+
+                addEntryButtonUI.textContent = "+";
+
+                addJournalEntryCalendarDayButton( calendarDayUI, addEntryButtonUI, dayIterations, selectedMonth, selectedYear );
 
                 addJournalEntriesToDay( calendarDayUI, dayIterations, selectedMonth, selectedYear, listOfDayEntries, listOfDreamEntries );
         
