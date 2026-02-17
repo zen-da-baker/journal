@@ -31,6 +31,7 @@ let settingsPagePath = dashboardDirectoryPath + "settings.html";
 
 // Blog pages
 let blogHomePagePath = blogDirectoryPath + "blogHome.html";
+let firstBlogPostPagePath = blogDirectoryPath + "blog1.html";
 
 // Error pages
 let notFoundPagePath = errorDirectoryPath + "notFound.html";
@@ -56,6 +57,7 @@ let settingsPageContent = await getPageContentHelper( settingsPagePath );
 
 // Blog pages
 let blogHomePageContent = await getPageContentHelper( blogHomePagePath );
+let firstBlogPostPageContent = await getPageContentHelper( firstBlogPostPagePath );
 
 // Error pages
 let notFoundPageContent = await getPageContentHelper( notFoundPagePath );
@@ -77,6 +79,7 @@ export {
 
     // Blog pages
     blogHomePageContent,
+    firstBlogPostPageContent,
 
     // Error pages
     notFoundPageContent,
