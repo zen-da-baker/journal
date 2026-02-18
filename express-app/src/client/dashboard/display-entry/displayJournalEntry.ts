@@ -119,7 +119,13 @@ export function displayJournalEntry( entry: EntryModel ): void {
     })    
 
     // When the new line button is clicked, create a new paragraph and call the display function again
-    newLineButtonUI.onclick = () => addNewLine( entry, entry.listOfLines.length - 1 );
+    newLineButtonUI.onclick = () => {
+
+        let newLineId = addNewLine( entry, entry.listOfLines.length - 1 );
+
+        focusOnLine( newLineId, 0 );
+    
+    }
 
     deleteEntryButtonUI.onclick = () => removeCurrentEntryPrompt( entry );
 
