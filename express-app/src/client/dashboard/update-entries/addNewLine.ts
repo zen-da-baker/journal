@@ -6,11 +6,13 @@ import { EntryLineModel } from "../../models/EntryLineModel.js";
 import { updateExistingEntry } from "./updateExistingEntry.js";
 import { displayJournalEntry } from "../display-entry/displayJournalEntry.js";
 
-export function addNewLine( entry: EntryModel ): string {
+export function addNewLine( entry: EntryModel, selectedLine: number ): string {
 
     let nextNewLine = new EntryLineModel("p");
+
+    let deleteCount = 0;
     
-    entry.listOfLines.push( nextNewLine );
+    entry.listOfLines.splice( selectedLine + 1, deleteCount, nextNewLine );
 
     updateExistingEntry( entry );
 

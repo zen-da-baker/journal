@@ -68,7 +68,7 @@ export function displayJournalEntry( entry: EntryModel ): void {
                 handleLineEdit( line.id, entry, index );
 
                 // A new line is created and the id of it is returned
-                let newLineId: string = addNewLine( entry );
+                let newLineId: string = addNewLine( entry, index );
 
                 // Try to set the focus to the newly created line, but if it doesn't exist yet, try to connect to it again
                 setTimeout( () => focusOnLine( newLineId, 0 ), 50 );
@@ -119,7 +119,7 @@ export function displayJournalEntry( entry: EntryModel ): void {
     })    
 
     // When the new line button is clicked, create a new paragraph and call the display function again
-    newLineButtonUI.onclick = () => addNewLine( entry );
+    newLineButtonUI.onclick = () => addNewLine( entry, entry.listOfLines.length - 1 );
 
     deleteEntryButtonUI.onclick = () => removeCurrentEntryPrompt( entry );
 
