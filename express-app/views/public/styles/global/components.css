@@ -31,10 +31,40 @@ button:active {
 
     padding: 0.25rem;
 
+    margin: 0.25rem;
+
+    background-color: white;
+
 }
 
 .icon {
 
     width: 1rem;
-    
+
+}
+
+footer, header {
+
+    background-color: hsl( 200, 50%, 20% );
+
+    color: white;
+
+}
+
+footer a {
+
+    color: hsl( 200, 50%, 80% );
+
+}
+
+footer span {
+
+    color: white;
+
+}
+
+header {
+
+    padding: 0.5rem 1rem;
+
 }

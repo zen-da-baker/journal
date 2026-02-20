@@ -22,7 +22,9 @@ export function addJournalEntriesToDay(
             // Begin the creation of the journal entry card to be displayed on the calendar day
             let entryCalendarCardUI = document.createElement("div");
 
-            let entryCardTitleUI = document.createElement("h3");
+            entryCalendarCardUI.className = "card";
+
+            let entryCardTitleUI = document.createElement("span");
 
             let entryCardLink = document.createElement("a");
 
