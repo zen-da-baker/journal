@@ -35,6 +35,8 @@ button:active {
 
     background-color: white;
 
+    max-width: 40vw;
+
 }
 
 .icon {
