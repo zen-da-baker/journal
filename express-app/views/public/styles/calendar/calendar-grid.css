@@ -16,18 +16,48 @@
 
 .calendar-weekend {
 
-    background-color: hsl( 1, 0%, 80% );
+    background-color: hsl( 40, 50%, 80% );
 
 }
 
 .current-day {
 
-    background-color: hsl( 1, 50%, 80% );
+    background-color: hsl( 1, 50%, 75% );
 
 }
 
 #month-calendar {
 
-    width: 35rem;
-    
+    width: 70rem;
+
+    margin: 5vw;
+
+    border-radius: 1rem;
+
+    overflow: hidden;
+
+    border: 0.1rem solid black;
+
+    background-color: hsl( 40, 90%, 95% );
+
+}
+
+#calendar-header {
+
+    padding: 1rem;
+
+}
+
+#calendar-month-cycling {
+
+    width: 7.5rem;
+
+}
+
+#calendar-days-titles * {
+
+    padding: 0.5rem;
+
+    text-align: center;
+
 }
