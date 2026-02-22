@@ -70,3 +70,45 @@ header {
     padding: 0.5rem 1rem;
 
 }
+
+dialog {
+
+    margin: auto;
+
+    padding: 1rem;
+
+    border-radius: 0.5rem;
+
+    border: 0.1rem solid black;
+
+}
+
+select {
+
+    padding: 0.25rem;
+
+    background-color: white;
+
+    border-radius: 0.5rem;
+
+}
+
+.confirm {
+
+    background-color: hsl( 150, 50%, 25% );
+
+    color: white;
+
+    box-shadow: 0.25rem 0.25rem hsl( 150, 50%, 10% );
+
+}
+
+.cancel {
+
+    background-color: hsl( 5, 50%, 25% );
+
+    color: white;
+
+    box-shadow: 0.25rem 0.25rem hsl( 5, 50%, 10% );
+
+}

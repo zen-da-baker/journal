@@ -45,19 +45,29 @@
 
             <dialog id="new-journal-entry-selection">
 
-                <label for="journal-entry-type-selection">What type of entry will this be?</label>
+                <h3>What type of Entry Will this Be?</h3>
 
-                <select id="journal-entry-type-selection">
+                <div id="calendar-journal-type-selection-form" class="flex space-between align-items-center">
 
-                    <option value="day">Day</option>
+                    <label for="journal-entry-type-selection">Journal Entry Type:</label>
 
-                    <option value="dream">Dream</option>
+                    <select id="journal-entry-type-selection">
 
-                </select>
+                        <option value="day">Day</option>
 
-                <button id="confirm-new-journal-entry">Confirm</button>
+                        <option value="dream">Dream</option>
 
-                <button id="cancel-new-journal-entry">Cancel</button>
+                    </select>
+
+                </div>
+
+                <div class="flex space-between">
+
+                    <button id="confirm-new-journal-entry" class="confirm">Confirm</button>
+
+                    <button id="cancel-new-journal-entry" class="cancel">Cancel</button>
+
+                </div>
 
             </dialog>
 
