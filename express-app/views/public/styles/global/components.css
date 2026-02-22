@@ -70,3 +70,31 @@ header {
     padding: 0.5rem 1rem;
 
 }
+
+#month-calendar {
+
+    width: 70rem;
+
+    margin: 5vw;
+
+    border-radius: 1rem;
+
+    overflow: hidden;
+
+    border: 0.1rem solid black;
+
+    background-color: hsl( 40, 90%, 95% );
+
+}
+
+#calendar-header {
+
+    padding: 1rem;
+
+}
+
+#calendar-month-cycling {
+
+    width: 7.5rem;
+
+}

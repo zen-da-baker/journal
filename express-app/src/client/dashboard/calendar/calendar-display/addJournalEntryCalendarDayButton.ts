@@ -78,6 +78,12 @@ export function addJournalEntryCalendarDayButton(
 
     }
 
+    calendarDayUI.style.position = "relative";
+
+    calendarButtonUI.style.position = "absolute";
+
+    calendarButtonUI.style.right = "0.5rem";
+
     calendarDayUI.appendChild( calendarButtonUI );
 
 }
