@@ -104,13 +104,25 @@ export function displayJournalEntries( entryType: string = "day" ) {
             // The elements are all added to the DOM
             linkElementUI.appendChild( linkButtonUI );
 
+            let buttonContainerUI = document.createElement("div");
+
+            buttonContainerUI.className = "flex space-between";
+
+            // A container that will hold the button that opens the journal entry and the delete button
+            buttonContainerUI.appendChild( linkElementUI );
+
+            buttonContainerUI.appendChild( deleteButtonUI );
+
             newDOMJournalEntryCard.appendChild( titleElementUI );
 
             newDOMJournalEntryCard.appendChild( dateElementUI );
 
-            newDOMJournalEntryCard.appendChild( linkElementUI );
+            // newDOMJournalEntryCard.appendChild( linkElementUI );
 
-            newDOMJournalEntryCard.appendChild( deleteButtonUI );
+            // newDOMJournalEntryCard.appendChild( deleteButtonUI );
+
+            // Add the button container to the card being displayed
+            newDOMJournalEntryCard.appendChild( buttonContainerUI );
 
             journalEntryGalleryUI.appendChild( newDOMJournalEntryCard );
 

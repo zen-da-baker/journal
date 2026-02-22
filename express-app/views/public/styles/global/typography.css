@@ -70,4 +70,12 @@ strong {
 
     font-family: 'Comic Neue', cursive;
 
+    text-align: left;
+
+}
+
+header * {
+
+    color: hsl( 200, 50%, 75% );
+
 }
