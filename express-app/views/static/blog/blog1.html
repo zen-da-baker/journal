@@ -10,15 +10,15 @@
 
         <title>Welcome Internet Traveler | Bytesized Journal</title>
 
+        <!-- The styles of the pages -->
+        <!-- Global CSS -->
         <link rel="stylesheet" href="/styles/global/global.css" />
-
         <link rel="stylesheet" href="/styles/global/typography.css" />
-
         <link rel="stylesheet" href="/styles/global/components.css" />
 
-        <link rel="stylesheet" href="/styles/static/header.css" />
-
+        <!-- Layout CSS -->
         <link rel="stylesheet" href="/styles/flex.css" />
+        <link rel="stylesheet" href="/styles/static/header.css" />
 
     </head>
 
@@ -26,23 +26,27 @@
 
         <header class="flex space-between">
 
-            <a href="/blog">
-
-                <button>Back to Blog Home</button>
-
-            </a>
-
             <a href="/">
 
                 <h2>Bytesized Journal</h2>
 
             </a>
 
-            <a href="/dashboard">
+            <nav>
 
-                <button>Dashboard</button>
+                <a href="/dashboard">
+                    Dashboard
+                </a>
 
-            </a>
+                <a href="/dashboard/calendar">
+                    Calendar
+                </a>
+
+                <a href="/dashboard/settings">
+                    Settings
+                </a>
+                
+            </nav>
 
         </header>
 

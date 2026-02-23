@@ -11,40 +11,42 @@
 
         <title>Dashboard | Bytesized Journal</title>
 
-        <link rel="stylesheet" href="/styles/flex.css" />
-
+        <!-- The styles of the pages -->
+        <!-- Global CSS -->
         <link rel="stylesheet" href="/styles/global/global.css" />
-
         <link rel="stylesheet" href="/styles/global/typography.css" />
-
         <link rel="stylesheet" href="/styles/global/components.css" />
 
+        <!-- Layout CSS -->
         <link rel="stylesheet" href="/styles/flex.css" />
+        <link rel="stylesheet" href="/styles/static/header.css" />
 
     </head>
 
     <body>
 
-        <header class="flex align-items-center space-around">
+        <header class="flex space-between">
+
+            <a href="/">
+
+                <h2>Bytesized Journal</h2>
+
+            </a>
 
             <nav>
 
-                <a href="/">
-
-                    <h2>Bytesized Journal</h2>
-
+                <a href="/dashboard">
+                    Dashboard
                 </a>
 
-            </nav>
+                <a href="/dashboard/calendar">
+                    Calendar
+                </a>
 
-            <nav>
-
-                <a href="/dashboard/tutorial">Tutorial</a>
-
-                <a href="/dashboard/calendar">Calendar</a>
-
-                <a href="/dashboard/settings">Settings</a>
-
+                <a href="/dashboard/settings">
+                    Settings
+                </a>
+                
             </nav>
 
         </header>

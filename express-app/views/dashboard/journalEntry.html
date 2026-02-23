@@ -17,15 +17,15 @@
         <!-- Page title -->
         <title>Entry | Bytesized Journal</title>
 
+        <!-- The styles of the pages -->
+        <!-- Global CSS -->
         <link rel="stylesheet" href="/styles/global/global.css" />
-
         <link rel="stylesheet" href="/styles/global/typography.css" />
-
         <link rel="stylesheet" href="/styles/global/components.css" />
 
-        <link rel="stylesheet" href="/styles/static/header.css" />
-
+        <!-- Layout CSS -->
         <link rel="stylesheet" href="/styles/flex.css" />
+        <link rel="stylesheet" href="/styles/static/header.css" />
 
         <!-- Custom font for editable content -->
         <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -36,15 +36,29 @@
 
     <body>
 
-        <header class="flex space-around">
+        <header class="flex space-between">
 
-            <a href="/dashboard">
+            <a href="/">
 
-                <button>Back to Dashboard</button>
+                <h2>Bytesized Journal</h2>
 
             </a>
 
-            <h1>Journal Entry</h1>
+            <nav>
+
+                <a href="/dashboard">
+                    Dashboard
+                </a>
+
+                <a href="/dashboard/calendar">
+                    Calendar
+                </a>
+
+                <a href="/dashboard/settings">
+                    Settings
+                </a>
+                
+            </nav>
 
         </header>
 

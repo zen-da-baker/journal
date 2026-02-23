@@ -11,3 +11,9 @@ body {
     background-color: hsl( 200, 20%, 80% );
     
 }
+
+main {
+
+    min-height: 80vh;
+
+}
