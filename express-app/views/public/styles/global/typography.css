@@ -60,6 +60,12 @@ p, li, span, a {
 
 }
 
+.text-container p {
+
+    margin: 0.5rem 0;
+    
+}
+
 strong {
 
     color: black;
