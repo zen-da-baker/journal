@@ -93,6 +93,16 @@ select {
 
 }
 
+nav {
+
+    min-width: 20rem;
+
+    display: flex;
+
+    justify-content: space-between;
+
+}
+
 .confirm-btn {
 
     background-color: hsl( 150, 50%, 25% );
