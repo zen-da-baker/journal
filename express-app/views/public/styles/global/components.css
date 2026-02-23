@@ -93,7 +93,7 @@ select {
 
 }
 
-.confirm {
+.confirm-btn {
 
     background-color: hsl( 150, 50%, 25% );
 
@@ -103,7 +103,17 @@ select {
 
 }
 
-.cancel {
+.cancel-btn {
+
+    background-color: hsl( 5, 0%, 25% );
+
+    color: white;
+
+    box-shadow: 0.25rem 0.25rem hsl( 5, 0%, 10% );
+
+}
+
+.danger-btn {
 
     background-color: hsl( 5, 50%, 25% );
 
