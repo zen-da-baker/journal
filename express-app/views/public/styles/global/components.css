@@ -39,6 +39,12 @@ button:active {
 
 }
 
+.card span {
+
+    font-size: 1rem;
+
+}
+
 .dream-card {
 
     background-color: hsl( 250, 50%, 25% );
@@ -48,10 +54,10 @@ button:active {
 .dream-card h3 {
 
     color: white;
-    
+
 }
 
-.dream-card p {
+.dream-card p, .dream-card span {
 
     color:hsl( 1, 0%, 80% );
 

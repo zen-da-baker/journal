@@ -24,6 +24,12 @@ export function addJournalEntriesToDay(
 
             entryCalendarCardUI.className = "card";
 
+            if ( entry.type === "dream" ) {
+
+                entryCalendarCardUI.className += " dream-card";
+                
+            }
+
             let entryCardTitleUI = document.createElement("span");
 
             let entryCardLink = document.createElement("a");
