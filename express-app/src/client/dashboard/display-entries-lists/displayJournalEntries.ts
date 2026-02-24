@@ -31,6 +31,13 @@ export function displayJournalEntries( entryType: string = "day" ) {
             // The HTML class of the card is the card element
             newDOMJournalEntryCard.className = "card";
 
+            // If the type of journal entry is a dream, the class name will have dream-card added and assigned to it
+            if ( entry.type === "dream" ) {
+
+                newDOMJournalEntryCard.className += " dream-card";
+
+            }
+
             // The element ID is assigned to the data id string
             newDOMJournalEntryCard.id = entry.id;
 

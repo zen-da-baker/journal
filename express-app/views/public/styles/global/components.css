@@ -39,6 +39,24 @@ button:active {
 
 }
 
+.dream-card {
+
+    background-color: hsl( 250, 50%, 25% );
+    
+}
+
+.dream-card h3 {
+
+    color: white;
+    
+}
+
+.dream-card p {
+
+    color:hsl( 1, 0%, 80% );
+
+}
+
 .icon {
 
     width: 1rem;
