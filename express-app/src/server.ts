@@ -5,6 +5,8 @@ import morgan from "morgan";
 
 import path from "path";
 
+import "dotenv/config";
+
 import { fileURLToPath } from "url";
 
 // Import routes
@@ -32,7 +34,7 @@ app.use( morgan( "dev" ) );
 
 // Create the ability for project directory files to be read from relative paths 
 const __filename = fileURLToPath( import.meta.url );
-const __dirname = path.dirname( __filename );
+export const __dirname = path.dirname( __filename );
 
 // Relative file paths
 export const viewsFilePath = path.join(__dirname, "../views");
