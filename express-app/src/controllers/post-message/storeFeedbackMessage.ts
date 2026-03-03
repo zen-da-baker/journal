@@ -57,7 +57,7 @@ export async function storeFeedbackMessage( request: any, response: any, next: a
 
     let message = new FeedbackMessage();
 
-    console.log( message.msg );
+    // console.log( message.msg );
     
     return response.status( 200 ).json(
         

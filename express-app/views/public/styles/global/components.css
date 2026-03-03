@@ -156,3 +156,25 @@ nav {
     box-shadow: 0.25rem 0.25rem hsl( 5, 50%, 10% );
 
 }
+
+#entry-body, #entry-title {
+
+    background-color: white;
+
+    padding: 1rem;
+
+    border-radius: 0.5rem;
+
+}
+
+#journal-button-container {
+
+    background-color: white;
+
+    padding: 1rem;
+
+    border-radius: 0.5rem;
+
+    margin: 1rem;
+
+}

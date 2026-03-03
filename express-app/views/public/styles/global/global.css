@@ -17,3 +17,9 @@ main {
     min-height: 80vh;
 
 }
+
+[contenteditable] {
+
+    outline: 0px solid transparent;
+    
+}
