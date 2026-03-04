@@ -16,7 +16,7 @@
 
 .calendar-weekend {
 
-    background-color: hsl( 40, 50%, 80% );
+    background-color: hsl( 200, 0%, 90% );
 
 }
 
@@ -38,7 +38,7 @@
 
     border: 0.1rem solid black;
 
-    background-color: hsl( 40, 90%, 95% );
+    background-color: white;
 
 }
 

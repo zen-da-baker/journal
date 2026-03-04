@@ -24,6 +24,19 @@ export function displayJournalEntry( entry: EntryModel ): void {
 
     let deleteEntryButtonUI = document.getElementById("delete-current-entry-button");
 
+    let mainUI = document.querySelector("main");
+
+    let entryDateUI = document.getElementById("entry-date");
+
+    // Adjust the page colors based on if it is a day or dream journal entry
+    if ( entry.type === "dream" ) {
+
+        mainUI.style.backgroundColor = "hsl( 250, 50%, 25% )";
+
+        entryDateUI.style.color = "white";
+
+    }
+
     // Clear the existing HTML so that new content can be added after
     entryTitleUI.innerHTML = "";
 

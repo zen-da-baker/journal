@@ -22,7 +22,9 @@ export function addJournalEntriesToDay(
             // Begin the creation of the journal entry card to be displayed on the calendar day
             let entryCalendarCardUI = document.createElement("div");
 
-            entryCalendarCardUI.className = "card";
+            entryCalendarCardUI.className = "card flex";
+
+            entryCalendarCardUI.style.flexDirection = "column";
 
             if ( entry.type === "dream" ) {
 
@@ -35,6 +37,8 @@ export function addJournalEntriesToDay(
             let entryCardLink = document.createElement("a");
 
             let entryCardButton = document.createElement("button");
+
+            entryCardButton.style.width = "100%";
 
             // Assign the properties of the new calendar card element
             entryCardTitleUI.textContent = entry.title;
