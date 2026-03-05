@@ -21,7 +21,7 @@ export function focusOnLine( lineId: string, attemptCount: number ): void {
         // Increase the attempt count and try again after 50 milliseconds
         attemptCount++;
 
-        setTimeout( () => focusOnLine( lineId, attemptCount ), 50);
+        setTimeout( () => focusOnLine( lineId, attemptCount ), 5 );
 
     }
 

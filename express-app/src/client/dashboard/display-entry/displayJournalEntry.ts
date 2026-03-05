@@ -24,14 +24,14 @@ export function displayJournalEntry( entry: EntryModel ): void {
 
     let deleteEntryButtonUI = document.getElementById("delete-current-entry-button");
 
-    let mainUI = document.querySelector("main");
+    let bodyUI = document.querySelector("body")
 
     let entryDateUI = document.getElementById("entry-date");
 
     // Adjust the page colors based on if it is a day or dream journal entry
     if ( entry.type === "dream" ) {
 
-        mainUI.style.backgroundColor = "hsl( 250, 50%, 25% )";
+        bodyUI.style.backgroundColor = "hsl( 250, 20%, 20% )";
 
         entryDateUI.style.color = "white";
 
@@ -84,7 +84,7 @@ export function displayJournalEntry( entry: EntryModel ): void {
                 let newLineId: string = addNewLine( entry, index );
 
                 // Try to set the focus to the newly created line, but if it doesn't exist yet, try to connect to it again
-                setTimeout( () => focusOnLine( newLineId, 0 ), 50 );
+                setTimeout( () => focusOnLine( newLineId, 0 ), 5 );
 
             }
 
