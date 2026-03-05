@@ -54,6 +54,9 @@ export function displayJournalEntry( entry: EntryModel ): void {
 
         if ( event.key === "Enter") {
 
+            // Prevent the default new line when the user presses enter on the title
+            event.preventDefault();
+
             handleTitleEdit( entry, entryTitleUI.textContent );
 
             let firstLineId: string = "null";
