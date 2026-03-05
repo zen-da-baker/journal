@@ -50,6 +50,32 @@ export function displayJournalEntry( entry: EntryModel ): void {
 
     entryTitleUI.onblur = () => handleTitleEdit( entry, entryTitleUI.textContent );
 
+    entryTitleUI.onkeydown = ( event: KeyboardEvent ) => {
+
+        if ( event.key === "Enter") {
+
+            handleTitleEdit( entry, entryTitleUI.textContent );
+
+            let firstLineId: string = "null";
+
+            let firstLineIndex = 0;
+
+            if ( entry.listOfLines.length === 0 ) {
+
+                // A new line is created and the id of it is returned
+                firstLineId = addNewLine( entry, firstLineIndex );
+
+            } else {
+
+                firstLineId = entry.listOfLines[ firstLineIndex ].id;
+
+            }
+
+            setTimeout( () => focusOnLine( firstLineId, 0 ), 5 );
+
+        }
+    }
+
     // Display the entry date on the page
     displayEntryDate( entry );
 
