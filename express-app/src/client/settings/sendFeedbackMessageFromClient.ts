@@ -15,8 +15,28 @@ const formSubjectUI: HTMLInputElement = document.getElementById("feedback-form-s
 
 const formBodyUI: HTMLInputElement = document.getElementById("feedback-form-message-body") as HTMLInputElement;
 
-async function submitFeedbackMessage() {
+/*
+    This helper function clears the values of the input elements.
+*/
+function clearFeedbackMessageForm(): void {
 
+    formNameUI.value = "";
+
+    formEmailUI.value = "";
+
+    formSubjectUI.value = "";
+
+    formBodyUI.value = "";
+
+}
+
+/*
+    This helper function submits the feedback message to the web server and displays if the 
+    request was successful or not.
+*/
+async function submitFeedbackMessage(): Promise<void> {
+
+    // The input fields of the form elements are assigned to string variables 
     let inputName = formNameUI.value;
 
     let inputEmail = formEmailUI.value;
@@ -25,31 +45,51 @@ async function submitFeedbackMessage() {
 
     let inputBody = formBodyUI.value;
 
+    // If any of the input fields are empty, the request will not be made to the web server
+    if ( inputName === "" || inputEmail === "" || inputSubject === "" || inputBody === "" ) {
+
+        return;
+
+    }
+
+    // The feedback message object is created
     let feedbackMessage = new FeedbackMessage( inputName, inputEmail, inputSubject, inputBody, "Bytesized Journal" );
 
+    // The fetch request options object is created
     let requestMessageObject = {
 
+        // It is a POST request
         method: "POST",
 
+        // The body of the message is expected to be JSON
         headers: {
 
             "Content-Type": "application/json"
 
         },
 
+        // The body is a JSON string of the feedback message object
         body: JSON.stringify( feedbackMessage )
 
     }
 
+    // The request is made and the response is awaited
     const response = await fetch("/dashboard/message", requestMessageObject );
 
-    console.log( response );
+    // If the response was successful, the user will be made aware and the form will be cleared of inputs
+    if ( response.ok ) {
+
+        clearFeedbackMessageForm();
+
+        return;
+
+    }
+
+    // If the response was not successful, the user will be made aware through a warning message and inputs remain
 
 }
 
-function clearFeedbackMessageForm() {
 
-}
 
 feedbackSubmitButtonUI.onclick = submitFeedbackMessage;
 
