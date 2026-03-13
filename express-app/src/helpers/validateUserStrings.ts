@@ -11,7 +11,7 @@ export function validateUserStrings( inputString: string ): string {
     let validatedString: string;
 
     // The character blacklist is applied to the unvalidated string and then assigned to that input string
-    inputString = validator.blacklist( inputString, [ "{", "}", "[", "]", "$" ] );
+    inputString = validator.blacklist( inputString, "\\{\\}\\[\\]\\$" );
 
     // The common characters are escaped from the input string and assigned back to the input string
     inputString = validator.escape( inputString );
