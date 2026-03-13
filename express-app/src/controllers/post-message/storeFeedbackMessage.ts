@@ -62,7 +62,21 @@ export async function storeFeedbackMessage( request: any, response: any, next: a
 
     }
 
-    let message = new FeedbackMessage( validatedName, validatedEmail, validatedSubject, validatedBody );
+    let validatedSubmittedFrom: string;
+
+    if ( unvalidatedMessage.submittedFrom ) {
+
+        validatedSubmittedFrom = validateUserStrings( unvalidatedMessage.submittedFrom )
+        
+    }
+
+    let message = new FeedbackMessage( 
+        validatedName, 
+        validatedEmail, 
+        validatedSubject, 
+        validatedBody, 
+        validatedSubmittedFrom 
+    );
 
     console.log( message );
 

@@ -10,11 +10,14 @@ export class FeedbackMessage {
 
     body: string;
 
+    submittedFrom: string;
+
     constructor( 
         inputName: string = "", 
         inputEmail: string = "", 
         inputSubject: string = "", 
-        inputBody: string = "" 
+        inputBody: string = "",
+        inputSubmittedFrom: string = ""
     ) {
 
         this.name = inputName;
@@ -24,6 +27,8 @@ export class FeedbackMessage {
         this.subject = inputSubject;
 
         this.body = inputBody;
+
+        this.submittedFrom = inputSubmittedFrom;
 
     }
 
