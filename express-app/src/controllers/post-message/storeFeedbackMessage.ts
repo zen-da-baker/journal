@@ -1,5 +1,8 @@
 import validator from "validator";
 
+// Import helper functions
+import { validateUserStrings } from "../../helpers/validateUserStrings.js";
+
 // Import the database helper function
 import { addFeedbackMessageToDatabase } from "../../database/addFeedbackMessageToDatabase.js"
 
@@ -31,13 +34,7 @@ export async function storeFeedbackMessage( request: any, response: any, next: a
 
     if ( unvalidatedMessage.name ) {
 
-        validator.blacklist( unvalidatedMessage.name, "{", "}", "[", "]", "$" );
-
-        validator.escape( unvalidatedMessage.name );
-
-        validator.trim( unvalidatedMessage.name );
-
-        validatedName = unvalidatedMessage.name;
+        validatedName = validateUserStrings( unvalidatedMessage.name );
 
     }
 
@@ -45,17 +42,29 @@ export async function storeFeedbackMessage( request: any, response: any, next: a
 
     if ( unvalidatedMessage.email ) {
 
-        validator.isEmail( unvalidatedMessage.email );
-
-        validator.normalizeEmail()
+        validatedEmail = validateUserStrings( unvalidatedMessage.email );
 
     }
 
     let validatedSubject: string;
 
+    if ( unvalidatedMessage.subject ) {
+
+        validatedSubject = validateUserStrings( unvalidatedMessage.subject );
+
+    }
+
     let validatedBody: string;
 
-    let message = new FeedbackMessage();
+    if ( unvalidatedMessage.body ) {
+
+        validatedBody = validateUserStrings( unvalidatedMessage.body );
+
+    }
+
+    let message = new FeedbackMessage( validatedName, validatedEmail, validatedSubject, validatedBody );
+
+    console.log( message );
 
     // console.log( message.msg );
     
