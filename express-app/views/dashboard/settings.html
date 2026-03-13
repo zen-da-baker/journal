@@ -19,7 +19,6 @@
 
         <!-- Layout CSS -->
         <link rel="stylesheet" href="/styles/flex.css" />
-        <link rel="stylesheet" href="/styles/static/header.css" />
 
     </head>
 
@@ -79,15 +78,21 @@
 
                 <h2>Submit Feedback</h2>
 
-                <div>
+                <div class="card flex flex-column">
 
                     <label>Your Name</label>
+                    <input type="text" placeholder="Name..." />
 
                     <label>Your Email Address</label>
+                    <input type="text" placeholder="Email..." />
 
                     <label>Subject</label>
+                    <input type="text" placeholder="Subject..." />
 
-                    <label>Body</label>
+                    <label>Message Body</label>
+                    <textarea placeholder="Body...">
+                        
+                    </textarea>
 
                     <div class="button-container flex space-between">
 
