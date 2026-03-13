@@ -1,5 +1,3 @@
-import validator from "validator";
-
 // Import helper functions
 import { validateUserStrings } from "../../helpers/validateUserStrings.js";
 
@@ -30,6 +28,7 @@ export async function storeFeedbackMessage( request: any, response: any, next: a
     // The raw message object is extracted from the request body
     let unvalidatedMessage = request.body;
 
+    // Each field of the message body will be validated 
     let validatedName: string;
 
     if ( unvalidatedMessage.name ) {
@@ -70,6 +69,7 @@ export async function storeFeedbackMessage( request: any, response: any, next: a
         
     }
 
+    // All validated strings are collected together to form the message object
     let message = new FeedbackMessage( 
         validatedName, 
         validatedEmail, 
@@ -78,12 +78,12 @@ export async function storeFeedbackMessage( request: any, response: any, next: a
         validatedSubmittedFrom 
     );
 
-    console.log( message );
+    console.log( "A message was stored successfully." );
 
-    // console.log( message.msg );
+    // The message object is now stored in the database after all strings were sanitized
+    addFeedbackMessageToDatabase( message );
     
-    return response.status( 200 ).json(
-        
-    )
+    // The user receives a message back that the feedback was stored successfully 
+    return response.status( 200 ).json({ msg: "Message stored successfully" });
 
 }
