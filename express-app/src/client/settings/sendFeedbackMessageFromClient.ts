@@ -15,6 +15,13 @@ const formSubjectUI: HTMLInputElement = document.getElementById("feedback-form-s
 
 const formBodyUI: HTMLInputElement = document.getElementById("feedback-form-message-body") as HTMLInputElement;
 
+// The modal elements for display
+const successModalUI: HTMLDialogElement = document.getElementById("success-modal") as HTMLDialogElement;
+
+const fieldsIncompleteModalUI: HTMLDialogElement = document.getElementById("fields-incomplete-modal") as HTMLDialogElement;
+
+const serverErrorModalUI: HTMLDialogElement = document.getElementById("server-error-modal") as HTMLDialogElement;
+
 /*
     This helper function clears the values of the input elements.
 */
@@ -47,6 +54,9 @@ async function submitFeedbackMessage(): Promise<void> {
 
     // If any of the input fields are empty, the request will not be made to the web server
     if ( inputName === "" || inputEmail === "" || inputSubject === "" || inputBody === "" ) {
+
+        // The error modal is shown for missing inputs
+        fieldsIncompleteModalUI.show();
 
         return;
 
@@ -81,11 +91,15 @@ async function submitFeedbackMessage(): Promise<void> {
 
         clearFeedbackMessageForm();
 
+        // The success modal is shown
+        successModalUI.show();
+
         return;
 
     }
 
     // If the response was not successful, the user will be made aware through a warning message and inputs remain
+    serverErrorModalUI.show();
 
 }
 

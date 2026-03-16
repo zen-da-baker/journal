@@ -50,9 +50,25 @@
 
         </header>
 
-        <dialog>
+        <dialog id="success-modal" class="modal success-modal">
 
             <h3>Your Feedback was Submitted Successfully</h3>
+
+        </dialog>
+
+        <dialog id="fields-incomplete-modal" class="modal error-modal">
+
+            <h3>Not All Fields Filled</h3>
+
+            <p>Not all of the input fields were filled when the submission button was pressed. The form was not submitted.</p>
+        
+        </dialog>
+
+        <dialog id="server-error-modal" class="modal error-modal">
+
+            <h3>Error During Submission</h3>
+
+            <p>The form was queued for submission to </p>
 
         </dialog>
 
@@ -81,16 +97,16 @@
                 <div class="card center-card flex flex-column">
 
                     <label for="feedback-form-name">Your Name</label>
-                    <input id="feedback-form-name" type="text" placeholder="Name..." />
+                    <input id="feedback-form-name" type="text" placeholder="Name..." required />
 
                     <label for="feedback-form-email">Your Email Address</label>
-                    <input id="feedback-form-email" type="text" placeholder="Email..." />
+                    <input id="feedback-form-email" type="text" placeholder="Email..." required />
 
                     <label for="feedback-form-subject">Subject</label>
-                    <input id="feedback-form-subject" type="text" placeholder="Subject..." />
+                    <input id="feedback-form-subject" type="text" placeholder="Subject..." required />
 
                     <label for="feedback-form-message-body">Message Body</label>
-                    <textarea id="feedback-form-message-body" placeholder="Body...">
+                    <textarea id="feedback-form-message-body" placeholder="Body..." required >
 
                     </textarea>
 
