@@ -143,6 +143,8 @@ dialog .cancel-btn {
 
     border: none;
 
+    min-height: 10rem;
+
 }
 
 select {

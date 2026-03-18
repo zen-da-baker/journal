@@ -18,9 +18,15 @@ const formBodyUI: HTMLInputElement = document.getElementById("feedback-form-mess
 // The modal elements for display
 const successModalUI: HTMLDialogElement = document.getElementById("success-modal") as HTMLDialogElement;
 
+const closeSuccessModalButtonUI = document.getElementById("close-success-modal-button");
+
 const fieldsIncompleteModalUI: HTMLDialogElement = document.getElementById("fields-incomplete-modal") as HTMLDialogElement;
 
+const closeIncompleteModalButtonUI = document.getElementById("close-fields-incomplete-modal-button");
+
 const serverErrorModalUI: HTMLDialogElement = document.getElementById("server-error-modal") as HTMLDialogElement;
+
+const closeServerErrorModalButtonUI = document.getElementById("close-server-error-modal-button");
 
 // Shared style variables
 let redBorder: string = "0.1rem solid red";
@@ -140,8 +146,12 @@ async function submitFeedbackMessage(): Promise<void> {
 
 }
 
-
-
 feedbackSubmitButtonUI.onclick = submitFeedbackMessage;
 
 feedbackCancelButtonUI.onclick = clearFeedbackMessageForm;
+
+closeSuccessModalButtonUI.onclick = () => successModalUI.close();
+
+closeIncompleteModalButtonUI.onclick = () => fieldsIncompleteModalUI.close();
+
+closeServerErrorModalButtonUI.onclick = () => serverErrorModalUI.close();
