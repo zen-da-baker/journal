@@ -40,7 +40,7 @@ button:active {
 .center-card {
 
     margin: auto;
-    
+
 }
 
 .card span {
@@ -101,13 +101,47 @@ header {
 
 dialog {
 
-    margin: auto;
+    position: absolute;
+
+    left: 25vw;
+
+    top: 25vh;
 
     padding: 1rem;
 
     border-radius: 0.5rem;
 
     border: 0.1rem solid black;
+
+}
+
+dialog .cancel-btn {
+
+    position: absolute;
+
+    bottom: 1rem;
+
+    right: 1rem;
+
+}
+
+.error-modal {
+
+    background-color: hsl( 1, 25%, 80% );
+
+    color: hsl( 1, 50%, 20% );
+
+    border: none;
+
+}
+
+.success-modal {
+
+    background-color: hsl( 150, 25%, 80% );
+
+    color: hsl( 150, 50%, 20% );
+
+    border: none;
 
 }
 

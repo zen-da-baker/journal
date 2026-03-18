@@ -22,6 +22,11 @@ const fieldsIncompleteModalUI: HTMLDialogElement = document.getElementById("fiel
 
 const serverErrorModalUI: HTMLDialogElement = document.getElementById("server-error-modal") as HTMLDialogElement;
 
+// Shared style variables
+let redBorder: string = "0.1rem solid red";
+
+let blackBorder: string = "0.1rem solid black";
+
 /*
     This helper function clears the values of the input elements.
 */
@@ -34,6 +39,14 @@ function clearFeedbackMessageForm(): void {
     formSubjectUI.value = "";
 
     formBodyUI.value = "";
+
+    formNameUI.style.border = blackBorder;
+
+    formEmailUI.style.border = blackBorder;
+
+    formSubjectUI.style.border = blackBorder;
+
+    formBodyUI.style.border = blackBorder;
 
 }
 
@@ -54,6 +67,30 @@ async function submitFeedbackMessage(): Promise<void> {
 
     // If any of the input fields are empty, the request will not be made to the web server
     if ( inputName === "" || inputEmail === "" || inputSubject === "" || inputBody === "" ) {
+
+        if ( inputName === "" ) {
+
+            formNameUI.style.border = redBorder;
+
+        }
+
+        if ( inputEmail === "" ) {
+
+            formEmailUI.style.border = redBorder;
+
+        }
+
+        if ( inputSubject === "" ) {
+
+            formSubjectUI.style.border = redBorder;
+
+        }
+
+        if ( inputBody === "" ) {
+
+            formBodyUI.style.border = redBorder;
+
+        }
 
         // The error modal is shown for missing inputs
         fieldsIncompleteModalUI.show();
