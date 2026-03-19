@@ -74,6 +74,75 @@
 
         <main>
 
+            <dialog id="new-line-modal">
+
+                <h3>Add a new line</h3>
+
+                <label>Line Type:</label>
+
+                <select>
+
+                    <option>Paragraph</option>
+
+                    <option>Heading 1</option>
+
+                    <option>Heading 2</option>
+
+                    <option>Heading 3</option>
+
+                    <option>Image</option>
+
+                    <option>YouTube Video</option>
+
+                </select>
+
+                <div class="flex space-between">
+
+                    <button>Finish Selection</button>
+
+                    <button>Cancel</button>
+
+                </div>
+
+            </dialog>
+
+            <dialog id="new-image-modal">
+
+                <h3>Add an Image</h3>
+
+                <label>Image Link</label>
+                <input type="text" placeholder="Image link..." />
+
+                <label>Image Alternate Text</label>
+                <input type="text" placeholder="Alternate text..." />
+
+                <div class="flex space-between">
+
+                    <button>Finish Addition</button>
+
+                    <button>Cancel</button>
+
+                </div>
+
+            </dialog>
+
+            <dialog id="new-youtube-video-modal">
+
+                <h3>Add YouTube Video</h3>
+
+                <label>Video Link</label>
+                <input type="text" placeholder="Video link..." />
+
+                <div class="flex space-between">
+
+                    <button>Finish Addition</button>
+
+                    <button>Cancel</button>
+
+                </div>
+
+            </dialog>
+
             <div>
 
                 <h2 id="entry-title" contenteditable="true"></h2>
