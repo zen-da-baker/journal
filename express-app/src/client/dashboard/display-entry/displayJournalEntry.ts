@@ -215,17 +215,22 @@ export function displayJournalEntry( entry: EntryModel ): void {
 
         }
 
+        newLineModalUI.close();
+
         let newLineId = addNewLine( entry, entry.listOfLines.length - 1, selectionValue );
 
         let attemptCount = 0;
 
         focusOnLine( newLineId, attemptCount );
 
+    }
+
+    // The cancelation button simply closes the modal without an action taken
+    cancelLineTypeSelectionUI.onclick = () => {
+
         newLineModalUI.close();
 
     }
-
-    
 
     deleteEntryButtonUI.onclick = () => removeCurrentEntryPrompt( entry );
 
