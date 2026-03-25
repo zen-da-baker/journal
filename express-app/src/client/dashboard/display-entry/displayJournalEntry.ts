@@ -39,6 +39,14 @@ export function displayJournalEntry( entry: EntryModel ): void {
 
     let newImageModalUI = document.getElementById("new-image-modal") as HTMLDialogElement;
 
+    let newImageSourceInputUI = document.getElementById("image-link-input") as HTMLInputElement;
+
+    let newImageAltTextInputUI = document.getElementById("image-alt-text-input") as HTMLInputElement;
+
+    let finishImageAdditionButtonUI = document.getElementById("finish-add-new-image-button");
+
+    let cancelImageAdditionButtonUI = document.getElementById("cancel-add-new-image-button");
+
     let newYouTubeVideoModelUI = document.getElementById("new-youtube-video-modal") as HTMLDialogElement;
 
     // Adjust the page colors based on if it is a day or dream journal entry
@@ -229,6 +237,17 @@ export function displayJournalEntry( entry: EntryModel ): void {
     cancelLineTypeSelectionUI.onclick = () => {
 
         newLineModalUI.close();
+
+    }
+
+    finishImageAdditionButtonUI.onclick = () => {
+
+        let imageSource = newImageSourceInputUI.value;
+
+        let altText = newImageAltTextInputUI.value;
+
+        // If the image source value is empty, a warning modal is triggered that must be closed before continuing
+
 
     }
 
