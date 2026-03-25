@@ -300,10 +300,14 @@ export function displayJournalEntry( entry: EntryModel ): void {
 
         let altText = newImageAltTextInputUI.value;
 
-        let imageURL = new URL( imageSource );
+        let imageURL: URL;
 
         // If the image source value is empty, a warning modal is triggered that must be closed before continuing
-        if ( !imageURL ) {
+        try {
+
+            imageURL = new URL( imageSource );
+
+        } catch( error: any ) {
 
             newLineErrorHeadingUI.textContent = "Image Without Source";
 
