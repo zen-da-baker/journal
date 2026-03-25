@@ -74,6 +74,16 @@
 
         <main>
 
+            <dialog id="new-line-error-modal" class="error-modal">
+
+                <h3 id="new-line-error-heading"></h3>
+
+                <p id="new-line-error-text"></p>
+
+                <button id="close-new-line-error-modal">Close</button>
+
+            </dialog>
+
             <dialog id="new-line-modal">
 
                 <h3>Add a new line</h3>
@@ -130,14 +140,14 @@
 
                 <h3>Add YouTube Video</h3>
 
-                <label>Video Link</label>
-                <input type="text" placeholder="Video link..." />
+                <label for="video-link-input">Video Link</label>
+                <input id="video-link-input" type="text" placeholder="Video link..." />
 
                 <div class="flex space-between bottom">
 
-                    <button>Finish Addition</button>
+                    <button id="finish-adding-video">Finish Addition</button>
 
-                    <button>Cancel</button>
+                    <button id="cancel-adding-video">Cancel</button>
 
                 </div>
 

@@ -161,6 +161,18 @@ dialog .cancel-btn {
 
 }
 
+.journal-image, .journal-video {
+
+    width: 90%;
+
+    position: relative;
+
+    display: block;
+
+    margin: 0 auto;
+
+}
+
 select {
 
     padding: 0.25rem;

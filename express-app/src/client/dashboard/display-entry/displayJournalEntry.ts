@@ -43,11 +43,25 @@ export function displayJournalEntry( entry: EntryModel ): void {
 
     let newImageAltTextInputUI = document.getElementById("image-alt-text-input") as HTMLInputElement;
 
-    let finishImageAdditionButtonUI = document.getElementById("finish-add-new-image-button");
+    let finishImageAdditionButtonUI = document.getElementById("finish-adding-new-image-button");
 
-    let cancelImageAdditionButtonUI = document.getElementById("cancel-add-new-image-button");
+    let cancelImageAdditionButtonUI = document.getElementById("cancel-adding-new-image-button");
+
+    let newLineErrorModalUI = document.getElementById("new-line-error-modal") as HTMLDialogElement;
+
+    let newLineErrorHeadingUI = document.getElementById("new-line-error-heading");
+
+    let newLineErrorTextUI = document.getElementById("new-line-error-text");
+
+    let newLineErrorCloseButtonUI = document.getElementById("close-new-line-error-modal");
 
     let newYouTubeVideoModelUI = document.getElementById("new-youtube-video-modal") as HTMLDialogElement;
+
+    let newYouTubeVideoInputUI = document.getElementById("video-link-input") as HTMLInputElement;
+
+    let finishAddingVideoButtonUI = document.getElementById("finish-adding-video");
+
+    let cancelAddingVideoButtonUI = document.getElementById("cancel-adding-video");
 
     // Adjust the page colors based on if it is a day or dream journal entry
     if ( entry.type === "dream" ) {
@@ -106,19 +120,55 @@ export function displayJournalEntry( entry: EntryModel ): void {
     // On each line within the entry body
     entry.listOfLines.forEach( ( line: EntryLineModel, index: number ) => {
 
-        // Create a new line element on the DOM
-        let newLine = document.createElement( line.type );
+        let newLine: any;
 
-        // If the line is a video, it will have a custom YouTube iframe instead
+        if ( line.type === "img" ) {
+
+            newLine = document.createElement("img") as HTMLImageElement;
+
+            newLine.src = line.value;
+
+            newLine.alt = line.altText;
+
+            newLine.className = "journal-image";
+
+        }
+
+        if ( line.type === "youtube-video" ) {
+
+            newLine = document.createElement("iframe") as HTMLIFrameElement;
+
+            newLine.src = "https://www.youtube.com/embed/" + line.value + "?si=Rfs6tTEmr03RcdmC";
+
+            newLine.title = "YouTube video player";
+
+            newLine.frameborder = "0";
+
+            newLine.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+
+            newLine.referrerpolicy = "strict-origin-when-cross-origin";
+
+            newLine.referrerPolicy = "allowfullscreen";
+
+            newLine.className = "journal-video";
+
+        }
+
+        if ( line.type !== "img" && line.type !== "youtube-video" ) {
+
+            // Create a new line element on the DOM
+            newLine = document.createElement( line.type );
+
+            // Assign the text of the line element to the DOM
+            newLine.textContent = line.value;
+
+            // Enable editability
+            newLine.contentEditable = "true";
+
+        }
 
         // Assign the id to the DOM element 
         newLine.id = line.id;
-
-        // Assign the text of the line element to the DOM
-        newLine.textContent = line.value;
-
-        // Enable editability
-        newLine.contentEditable = "true";
 
         // Add the on blur event listener after the DOM element is created
         newLine.onblur = () => handleLineEdit( line.id, entry, index );
@@ -240,14 +290,104 @@ export function displayJournalEntry( entry: EntryModel ): void {
 
     }
 
+    /*
+        The finish image addition button when clicked captures the input values and determines what action is taken next.
+    */
     finishImageAdditionButtonUI.onclick = () => {
 
+        // The input values are captured
         let imageSource = newImageSourceInputUI.value;
 
         let altText = newImageAltTextInputUI.value;
 
-        // If the image source value is empty, a warning modal is triggered that must be closed before continuing
+        console.log( imageSource );
 
+        console.log( altText );
+
+        // If the image source value is empty, a warning modal is triggered that must be closed before continuing
+        if ( imageSource === "" || imageSource === " " ) {
+
+            newLineErrorHeadingUI.textContent = "Image Without Source";
+
+            newLineErrorTextUI.textContent = "The image is lacking a source. Add a source so that the image can load.";
+
+            // Showing the error modal
+            newLineErrorModalUI.show();
+
+            return;
+
+        }
+
+        let lineType = "img";
+
+        let newLineId = addNewLine( entry, entry.listOfLines.length - 1, lineType, imageSource, altText );
+
+        let attemptCount = 0;
+
+        focusOnLine( newLineId, attemptCount );
+
+        // Closing the image modal after all operations are complete
+        newImageModalUI.close();
+
+    }
+
+    /*
+        The cancel button closes the image modal and opens the base new line modal again.
+    */
+    cancelImageAdditionButtonUI.onclick = () => {
+
+        newImageModalUI.close();
+
+        newLineModalUI.show();
+
+    }
+
+    finishAddingVideoButtonUI.onclick = () => {
+
+        let videoSource = newYouTubeVideoInputUI.value;
+
+        let videoURL = new URL( videoSource );
+
+        let videoId: string = "";
+
+        if ( videoURL.hostname === "youtu.be" ) {
+
+            videoId = videoURL.pathname;
+
+        }
+
+        if ( videoURL.hostname === "www.youtube.com" ) {
+
+            let searchParams = videoURL.searchParams;
+
+            videoId = searchParams.get("v");
+
+        }
+
+        let lineType = "youtube-video";
+
+        let newLineId = addNewLine( entry, entry.listOfLines.length - 1, lineType, videoId );
+
+        // Close the YouTube video modal
+        newYouTubeVideoModelUI.close();
+
+        let attemptCount = 0;
+
+        // Focus on the id of the new line
+        focusOnLine( newLineId, attemptCount );
+
+    }
+
+    cancelAddingVideoButtonUI.onclick = () => {
+
+        newYouTubeVideoModelUI.close();
+
+    }
+
+    // Error modal close button event
+    newLineErrorCloseButtonUI.onclick = () => {
+
+        newLineErrorModalUI.close();
 
     }
 
