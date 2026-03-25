@@ -117,6 +117,8 @@ dialog {
 
     min-height: 20rem;
 
+    z-index: 1;
+
 }
 
 dialog .cancel-btn {
@@ -137,6 +139,8 @@ dialog .cancel-btn {
 
     border: none;
 
+    z-index: 2;
+
 }
 
 .success-modal {
@@ -148,6 +152,8 @@ dialog .cancel-btn {
     border: none;
 
     min-height: 10rem;
+
+    z-index: 2;
 
 }
 
