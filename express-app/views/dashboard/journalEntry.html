@@ -78,29 +78,29 @@
 
                 <h3>Add a new line</h3>
 
-                <label>Line Type:</label>
+                <label for="line-type-selection">Line Type:</label>
 
-                <select>
+                <select id="line-type-selection">
 
-                    <option>Paragraph</option>
+                    <option value="p">Paragraph</option>
 
-                    <option>Heading 1</option>
+                    <option value="h1">Heading 1</option>
 
-                    <option>Heading 2</option>
+                    <option value="h2">Heading 2</option>
 
-                    <option>Heading 3</option>
+                    <option value="h3">Heading 3</option>
 
-                    <option>Image</option>
+                    <option value="img">Image</option>
 
-                    <option>YouTube Video</option>
+                    <option value="youtube-video">YouTube Video</option>
 
                 </select>
 
-                <div class="flex space-between">
+                <div class="flex space-between button-container bottom">
 
-                    <button>Finish Selection</button>
+                    <button id="finish-line-type-selection">Finish Selection</button>
 
-                    <button>Cancel</button>
+                    <button id="cancel-line-type-selection">Cancel</button>
 
                 </div>
 

@@ -28,6 +28,19 @@ export function displayJournalEntry( entry: EntryModel ): void {
 
     let entryDateUI = document.getElementById("entry-date");
 
+    // The modals 
+    let newLineModalUI = document.getElementById("new-line-modal") as HTMLDialogElement;
+
+    let lineTypeSelectionUI = document.getElementById("line-type-selection") as HTMLSelectElement;
+
+    let finishLineTypeSelectionUI = document.getElementById("finish-line-type-selection");
+
+    let cancelLineTypeSelectionUI = document.getElementById("cancel-line-type-selection");
+
+    let newImageModalUI = document.getElementById("new-image-modal") as HTMLDialogElement;
+
+    let newYouTubeVideoModelUI = document.getElementById("new-youtube-video-modal") as HTMLDialogElement;
+
     // Adjust the page colors based on if it is a day or dream journal entry
     if ( entry.type === "dream" ) {
 
@@ -87,6 +100,8 @@ export function displayJournalEntry( entry: EntryModel ): void {
 
         // Create a new line element on the DOM
         let newLine = document.createElement( line.type );
+
+        // If the line is a video, it will have a custom YouTube iframe instead
 
         // Assign the id to the DOM element 
         newLine.id = line.id;
@@ -160,14 +175,57 @@ export function displayJournalEntry( entry: EntryModel ): void {
 
     })    
 
-    // When the new line button is clicked, create a new paragraph and call the display function again
-    newLineButtonUI.onclick = () => {
+    function addNewLineAction() {
 
         let newLineId = addNewLine( entry, entry.listOfLines.length - 1 );
 
         focusOnLine( newLineId, 0 );
+        
+    }
+
+    // When the new line button is clicked, the modal for adding a new line is shown 
+    newLineButtonUI.onclick = () => {
+
+        newLineModalUI.show();
     
     }
+
+    finishLineTypeSelectionUI.onclick = () => {
+
+        let selectionValue = lineTypeSelectionUI.value;
+
+        // If the selected type is an image or a youtube video, their individual modals are triggered instead
+        if ( selectionValue === "img" ) {
+
+            newImageModalUI.show();
+
+            newLineModalUI.close();
+
+            return;
+
+        }
+
+        if ( selectionValue === "youtube-video" ) {
+
+            newYouTubeVideoModelUI.show();
+
+            newLineModalUI.close();
+
+            return;
+
+        }
+
+        let newLineId = addNewLine( entry, entry.listOfLines.length - 1, selectionValue );
+
+        let attemptCount = 0;
+
+        focusOnLine( newLineId, attemptCount );
+
+        newLineModalUI.close();
+
+    }
+
+    
 
     deleteEntryButtonUI.onclick = () => removeCurrentEntryPrompt( entry );
 

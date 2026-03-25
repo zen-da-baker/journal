@@ -113,6 +113,10 @@ dialog {
 
     border: 0.1rem solid black;
 
+    min-width: 25rem;
+
+    min-height: 20rem;
+
 }
 
 dialog .cancel-btn {
@@ -145,6 +149,14 @@ dialog .cancel-btn {
 
     min-height: 10rem;
 
+}
+
+.bottom {
+
+    position: absolute;
+
+    bottom: 0.5rem;
+    
 }
 
 select {

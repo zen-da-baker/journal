@@ -6,9 +6,9 @@ import { EntryLineModel } from "../../models/EntryLineModel.js";
 import { updateExistingEntry } from "./updateExistingEntry.js";
 import { displayJournalEntry } from "../display-entry/displayJournalEntry.js";
 
-export function addNewLine( entry: EntryModel, selectedLine: number ): string {
+export function addNewLine( entry: EntryModel, selectedLine: number, lineType: string = "p" ): string {
 
-    let nextNewLine = new EntryLineModel("p");
+    let nextNewLine = new EntryLineModel( lineType );
 
     let deleteCount = 0;
     
