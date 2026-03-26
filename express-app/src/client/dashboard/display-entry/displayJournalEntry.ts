@@ -328,6 +328,13 @@ export function displayJournalEntry( entry: EntryModel ): void {
 
         focusOnLine( newLineId, attemptCount );
 
+        // The form inputs are reset
+        lineTypeSelectionUI.value = "p";
+
+        newImageSourceInputUI.value = "";
+
+        newImageAltTextInputUI.value = "";
+
         // Closing the image modal after all operations are complete
         newImageModalUI.close();
 
