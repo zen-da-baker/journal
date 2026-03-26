@@ -169,7 +169,9 @@ dialog .cancel-btn {
 
 .journal-image {
 
-    height: 31%;
+    height: 31vw;
+
+    max-width: 75%;
 
 }
 
