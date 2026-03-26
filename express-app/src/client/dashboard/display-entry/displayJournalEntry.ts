@@ -364,9 +364,53 @@ export function displayJournalEntry( entry: EntryModel ): void {
 
         let videoSource = newYouTubeVideoInputUI.value;
 
-        let videoURL = new URL( videoSource );
+        let videoURL: URL;
+
+        try {
+        
+            videoURL = new URL( videoSource );
+
+        } catch( error: any ) {
+
+            newLineErrorHeadingUI.textContent = "Invalid Link";
+
+            newLineErrorTextUI.textContent = "The input was not a valid website URL.";
+
+            newLineErrorModalUI.show();
+
+            return;
+
+        }
 
         let videoId: string = "";
+
+        // The invalid link variable starts as true until the YouTube video link is verified
+        let invalidLink = true;
+
+        if ( videoURL.hostname === "youtu.be" ) {
+
+            invalidLink = false;
+
+        }
+
+        if ( videoURL.hostname === "www.youtube.com" ) {
+
+            invalidLink = false;
+
+        }
+
+        // If the video link is not from YouTube, it will be rejected
+        if ( invalidLink ) {
+
+            newLineErrorHeadingUI.textContent = "Invalid Website";
+
+            newLineErrorTextUI.textContent = "The video link must be from YouTube.";
+
+            newLineErrorModalUI.show();
+
+            return;
+
+        }
 
         if ( videoURL.hostname === "youtu.be" ) {
 
@@ -406,7 +450,11 @@ export function displayJournalEntry( entry: EntryModel ): void {
         // The video input is cleared
         newYouTubeVideoInputUI.value = "";
 
+        // The video modal is closed
         newYouTubeVideoModelUI.close();
+
+        // The new line modal is shown again
+        newLineModalUI.show();
 
     }
 

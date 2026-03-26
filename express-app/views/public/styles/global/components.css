@@ -167,9 +167,13 @@ dialog .cancel-btn {
 
 }
 
-.journal-image, .journal-video {
+.journal-image {
 
-    width: 90%;
+    height: 31%;
+
+}
+
+.journal-image, .journal-video {
 
     position: relative;
 
@@ -187,7 +191,9 @@ dialog .cancel-btn {
 
 .journal-video {
 
-    height: 24.3rem;
+    width: 55vw;
+
+    height: 31vw;
 
     border: none;
 
