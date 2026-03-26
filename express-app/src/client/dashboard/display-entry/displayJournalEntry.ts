@@ -286,6 +286,8 @@ export function displayJournalEntry( entry: EntryModel ): void {
     // The cancelation button simply closes the modal without an action taken
     cancelLineTypeSelectionUI.onclick = () => {
 
+        lineTypeSelectionUI.value = "p";
+
         newLineModalUI.close();
 
     }
@@ -345,8 +347,15 @@ export function displayJournalEntry( entry: EntryModel ): void {
     */
     cancelImageAdditionButtonUI.onclick = () => {
 
+        // Input for the image form is cleared
+        newImageSourceInputUI.value = "";
+
+        newImageAltTextInputUI.value = "";
+
+        // The image modal is closed
         newImageModalUI.close();
 
+        // The new line modal is shown again
         newLineModalUI.show();
 
     }
@@ -377,6 +386,11 @@ export function displayJournalEntry( entry: EntryModel ): void {
 
         let newLineId = addNewLine( entry, entry.listOfLines.length - 1, lineType, videoId );
 
+        // The video input is cleared
+        newYouTubeVideoInputUI.value = "";
+
+        lineTypeSelectionUI.value = "";
+
         // Close the YouTube video modal
         newYouTubeVideoModelUI.close();
 
@@ -388,6 +402,9 @@ export function displayJournalEntry( entry: EntryModel ): void {
     }
 
     cancelAddingVideoButtonUI.onclick = () => {
+
+        // The video input is cleared
+        newYouTubeVideoInputUI.value = "";
 
         newYouTubeVideoModelUI.close();
 

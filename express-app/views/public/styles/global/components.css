@@ -101,7 +101,7 @@ header {
 
 dialog {
 
-    position: absolute;
+    position: fixed;
 
     left: 25vw;
 
@@ -179,11 +179,15 @@ dialog .cancel-btn {
 
     padding: 0.5rem;
 
+    border-radius: 0.5rem;
+
+    overflow: hidden;
+
 }
 
 .journal-video {
 
-    height: 25rem;
+    height: 24.3rem;
 
     border: none;
 
