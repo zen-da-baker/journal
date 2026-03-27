@@ -29,6 +29,10 @@ let calendarPagePath = dashboardDirectoryPath + "calendar.html";
 
 let settingsPagePath = dashboardDirectoryPath + "settings.html";
 
+let loginPagePath = dashboardDirectoryPath + "login.html";
+
+let signupPagePath = dashboardDirectoryPath + "signup.html";
+
 // Blog pages
 let blogHomePagePath = blogDirectoryPath + "blogHome.html";
 let firstBlogPostPagePath = blogDirectoryPath + "blog1.html";
@@ -55,6 +59,10 @@ let calendarPageContent = await getPageContentHelper( calendarPagePath );
 
 let settingsPageContent = await getPageContentHelper( settingsPagePath );
 
+let loginPageContent = await getPageContentHelper( loginPagePath );
+
+let signupPageContent = await getPageContentHelper( signupPagePath );
+
 // Blog pages
 let blogHomePageContent = await getPageContentHelper( blogHomePagePath );
 let firstBlogPostPageContent = await getPageContentHelper( firstBlogPostPagePath );
@@ -76,6 +84,8 @@ export {
     tutorialPageContent,
     calendarPageContent,
     settingsPageContent,
+    loginPageContent,
+    signupPageContent,
 
     // Blog pages
     blogHomePageContent,
