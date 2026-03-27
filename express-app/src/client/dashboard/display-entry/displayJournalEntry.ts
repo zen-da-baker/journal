@@ -214,6 +214,19 @@ export function displayJournalEntry( entry: EntryModel ): void {
 
             deleteButtonUI.onclick = () => {
 
+                let deleteCount = 1;
+
+                let currentLinePosition = index;
+
+                // The current line is removed from the list of lines
+                entry.listOfLines.splice( currentLinePosition, deleteCount );
+
+                // The journal entry is updated in the database
+                updateExistingEntry( entry );
+
+                // The journal entry display is updated
+                displayJournalEntry( entry );
+
             }
 
             deleteButtonUI.textContent = "Delete";
