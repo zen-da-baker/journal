@@ -175,7 +175,7 @@ dialog .cancel-btn {
 
 }
 
-.journal-image-container {
+.journal-image-container, .journal-video-container {
 
     background-color: hsl( 40, 90%, 90% );
 
