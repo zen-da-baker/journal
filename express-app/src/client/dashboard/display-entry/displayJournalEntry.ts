@@ -10,6 +10,7 @@ import { focusOnLine } from "./focusOnLine.js";
 import { handleTitleEdit } from "../update-entries/handleTitleEdit.js";
 import { displayEntryDate } from "./displayEntryDate.js";
 import { removeCurrentEntryPrompt } from "../remove-entry/removeCurrentEntryPrompt.js";
+import { updateExistingEntry } from "../update-entries/updateExistingEntry.js";
 
 export function displayJournalEntry( entry: EntryModel ): void {
 
@@ -62,6 +63,16 @@ export function displayJournalEntry( entry: EntryModel ): void {
     let finishAddingVideoButtonUI = document.getElementById("finish-adding-video");
 
     let cancelAddingVideoButtonUI = document.getElementById("cancel-adding-video");
+
+    let editExistingImageModalUI = document.getElementById("edit-existing-image") as HTMLDialogElement;
+
+    let existingImageSourceInputUI = document.getElementById("image-source-edit-input") as HTMLInputElement;
+
+    let existingAltTextInputUI = document.getElementById("image-alt-text-edit-input") as HTMLInputElement;
+
+    let finishEditingImageButtonUI = document.getElementById("finish-image-edit");
+
+    let cancelEditingImageButtonUI = document.getElementById("cancel-image-edit");
 
     // Adjust the page colors based on if it is a day or dream journal entry
     if ( entry.type === "dream" ) {
@@ -124,13 +135,104 @@ export function displayJournalEntry( entry: EntryModel ): void {
 
         if ( line.type === "img" ) {
 
-            newLine = document.createElement("img") as HTMLImageElement;
+            newLine = document.createElement("div");
 
-            newLine.src = line.value;
+            let image = document.createElement("img");
 
-            newLine.alt = line.altText;
+            image.src = line.value;
 
-            newLine.className = "journal-image";
+            image.alt = line.altText;
+
+            let editButtonUI = document.createElement("button");
+
+            editButtonUI.textContent = "Edit";
+
+            editButtonUI.onclick = () => {
+
+                // The existing link and the alt text are the default input text
+                existingImageSourceInputUI.value = line.value;
+
+                existingAltTextInputUI.value = line.altText;
+
+                // The input modal is now shown
+                editExistingImageModalUI.show();
+
+            }
+
+            // The finish edit button and the cancel button will have their own event listeners below
+            finishEditingImageButtonUI.onclick = () => {
+
+                let imageSource = existingImageSourceInputUI.value;
+
+                let imageAltText = existingAltTextInputUI.value;
+
+                let imageURL: URL;
+
+                // Check if the image is a proper URL before saving the changes
+                try {
+
+                    imageURL = new URL( imageSource );
+
+                // If the link is not a valid URL, the error modal will be displayed and this function will end
+                } catch( error: any ) {
+
+                    newLineErrorHeadingUI.textContent = "Invalid Link";
+
+                    newLineErrorTextUI.textContent = "The link that was submitted was not a valid URL";
+
+                    newLineErrorModalUI.show();
+
+                    return;
+
+                }
+
+                // The following statements means that the URL for the image is valid and can be saved
+                line.value = imageURL.toString();
+
+                line.altText = imageAltText;
+
+                // After the line values are changed, they will be saved
+                updateExistingEntry( entry );
+
+                // The edit line modal will be closed
+                editExistingImageModalUI.close();
+
+                // The display of the journal entry will be updated
+                displayJournalEntry( entry );
+
+            }
+
+            // When the cancel image edit button is pressed, the modal is simply changed without any edits saved
+            cancelEditingImageButtonUI.onclick = () => {
+
+                editExistingImageModalUI.close();
+
+            }
+
+
+            let deleteButtonUI = document.createElement("button");
+
+            deleteButtonUI.onclick = () => {
+
+            }
+
+            deleteButtonUI.textContent = "Delete";
+
+            image.className = "journal-image";
+
+            newLine.className = "flex journal-image-container";
+
+            let buttonContainerUI = document.createElement("div");
+
+            buttonContainerUI.className = "flex flex-column space-around align-items-center";
+
+            newLine.appendChild( image );
+
+            buttonContainerUI.appendChild( editButtonUI );
+
+            buttonContainerUI.appendChild( deleteButtonUI );
+
+            newLine.appendChild( buttonContainerUI );
 
         }
 
