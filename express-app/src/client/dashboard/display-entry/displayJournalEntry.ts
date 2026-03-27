@@ -74,6 +74,14 @@ export function displayJournalEntry( entry: EntryModel ): void {
 
     let cancelEditingImageButtonUI = document.getElementById("cancel-image-edit");
 
+    let editVideoModalUI = document.getElementById("edit-existing-video") as HTMLDialogElement;
+
+    let editVideoLinkSourceInputUI = document.getElementById("edit-existing-video-source-input") as HTMLInputElement;
+
+    let finishEditingVideoButtonUI = document.getElementById("finish-editing-video-link-button");
+
+    let cancelEditingVideoButtonUI = document.getElementById("cancel-editing-video-link-button");
+
     // Adjust the page colors based on if it is a day or dream journal entry
     if ( entry.type === "dream" ) {
 
@@ -251,21 +259,151 @@ export function displayJournalEntry( entry: EntryModel ): void {
 
         if ( line.type === "youtube-video" ) {
 
-            newLine = document.createElement("iframe") as HTMLIFrameElement;
+            newLine = document.createElement("div");
 
-            newLine.src = "https://www.youtube.com/embed/" + line.value + "?si=Rfs6tTEmr03RcdmC";
+            // The YouTube video is an iframe as its base
+            let videoFrameUI = document.createElement("iframe");
 
-            newLine.title = "YouTube video player";
+            videoFrameUI.src = "https://www.youtube.com/embed/" + line.value + "?si=Rfs6tTEmr03RcdmC";
 
-            newLine.frameborder = "0";
+            videoFrameUI.title = "YouTube video player";
 
-            newLine.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+            videoFrameUI.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
 
-            newLine.referrerpolicy = "strict-origin-when-cross-origin";
+            videoFrameUI.referrerPolicy = "strict-origin-when-cross-origin";
 
-            newLine.referrerPolicy = "allowfullscreen";
+            videoFrameUI.className = "journal-video";
 
-            newLine.className = "journal-video";
+            // The video would need to be embedded within a container that will allow it to have the edit and delete functions
+            newLine.appendChild( videoFrameUI );
+
+            newLine.className = "flex journal-video-container";
+
+            let buttonContainerUI = document.createElement("div");
+
+            buttonContainerUI.className = "flex flex-column space-around align-items-center";
+
+            // Button for showing the video edit options modal
+            let editButtonUI = document.createElement("button");
+
+            editButtonUI.textContent = "Edit Video Link"
+
+            // The edit button opens the video edit modal
+            editButtonUI.onclick = () => {
+
+                editVideoModalUI.show();
+
+            }
+
+            // The confirmation button takes different action depending on which video had it's edit button pressed
+            finishEditingVideoButtonUI.onclick = () => {
+
+                let videoSourceInput = editVideoLinkSourceInputUI.value;
+
+                // First, determine if the link is a valid URL
+                let videoURL: URL;
+
+                try {
+
+                    videoURL = new URL( videoSourceInput );
+
+                // If the link is not a valid URL, the error modal is shown and the function ends before action is taken
+                } catch( error: any ) {
+
+                    newLineErrorHeadingUI.textContent = "Invalid Link";
+
+                    newLineErrorTextUI.textContent = "The link that was entered is not a valid URL. Please review the link.";
+
+                    newLineErrorModalUI.show();
+
+                    return;
+
+                }
+
+                // Next, the URL must be from a valid YouTube origin
+                let invalidLink = true;
+
+                if ( videoURL.hostname === "www.youtube.com" || videoURL.hostname === "youtu.be" ) {
+
+                    invalidLink = false;
+
+                }
+
+                // If the link was not from a YouTube origin, the error modal is shown and the function will end
+                if ( invalidLink ) {
+
+                    newLineErrorHeadingUI.textContent = "Invalid Link";
+
+                    newLineErrorTextUI.textContent = "The link submitted does not appear to be from YouTube. Please review it.";
+
+                    newLineErrorModalUI.show();
+
+                    return;
+
+                }
+
+                let videoId: string;
+
+                if ( videoURL.hostname === "youtu.be" ) {
+
+                    videoId = videoURL.pathname;
+
+                }
+
+                if ( videoURL.hostname === "www.youtube.com" ) {
+
+                    let searchParams = videoURL.searchParams;
+
+                    videoId = searchParams.get("v");
+
+                }
+
+                // The value of the line is now assigned to the video ID
+                line.value = videoId;
+
+                // Close the modal when no longer in use
+                editVideoModalUI.close();
+
+                // The input value is cleared when no longer in use
+                editVideoLinkSourceInputUI.value = "";
+
+                // The journal entry is updated in the database
+                updateExistingEntry( entry );
+
+                // The page is updated with the new data
+                displayJournalEntry( entry );
+
+            }
+
+            // The cancel button for editing the video link simply closes the modal without action being taken
+            cancelEditingVideoButtonUI.onclick = () => {
+
+                editVideoModalUI.close();
+
+            }
+
+            // Button for deleting the current line
+            let deleteButtonUI = document.createElement("button");
+
+            deleteButtonUI.textContent = "Delete Video from Entry";
+
+            deleteButtonUI.onclick = () => {
+
+                let deleteCount = 1;
+
+                entry.listOfLines.splice( index, deleteCount );
+
+                updateExistingEntry( entry );
+
+                displayJournalEntry( entry );
+
+            }
+
+            buttonContainerUI.appendChild( editButtonUI );
+
+            buttonContainerUI.appendChild( deleteButtonUI );
+
+            newLine.appendChild( buttonContainerUI );
 
         }
 
