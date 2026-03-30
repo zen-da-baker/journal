@@ -52,10 +52,55 @@
 
         <main>
 
-            <h1>Signup</h1>
+            <dialog id="error-modal" class="error-modal">
+
+                <h3 id="error-heading"></h3>
+
+                <p id="error-text"></p>
+
+                <button id="close-error-modal">Close</button>
+
+            </dialog>
+
+            <div class="text-container">
+
+                <h1>Signup</h1>
+
+                <p>
+                    To unlock the data sync feature of this app, signup below.
+                </p>
+
+            </div>
+
+            <form class="card center-card flex flex-column">
+
+                <label for="signup-username">Username</label>
+                <input id="signup-username" type="text" placeholder="Username..." />
+
+                <label for="signup-email">Email</label>
+                <input id="signup-email" type="email" placeholder="name@example.com..." />
+
+                <label for="signup-first-password-input">Password</label>
+                <input id="signup-first-password-input" type="password" placeholder="Password..." />
+
+                <label for="signup-second-password-input">Confirm Password</label>
+                <input id="signup-second-password-input" type="password" placeholder="Confirm password..." />
+
+                <button id="signup-submit-button">Submit</button>
+
+            </form>
+
+            <div class="text-container">
+
+                <p>
+                    Creating an account means that the identifying information above would be stored on the Bytesized Crew web server.
+                    This information can be deleted by you in the account settings at any time.
+                </p>
+
+            </div>
 
         </main>
         
     </body>
-    
+
 </html>

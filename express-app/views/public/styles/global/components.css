@@ -225,7 +225,7 @@ select {
 
 }
 
-input[ type = text ], textarea {
+input, textarea {
 
     padding: 0.5rem;
 

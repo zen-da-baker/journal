@@ -29,4 +29,10 @@ dashboardRouter.get( "/signup", getSignUpPage );
 
 dashboardRouter.post( "/message", storeFeedbackMessage );
 
+/*
+dashboardRouter.post( "/signup", );
+
+dashboardRouter.post( "/login", );
+*/
+
 export { dashboardRouter };

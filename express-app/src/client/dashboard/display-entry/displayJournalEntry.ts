@@ -12,6 +12,9 @@ import { displayEntryDate } from "./displayEntryDate.js";
 import { removeCurrentEntryPrompt } from "../remove-entry/removeCurrentEntryPrompt.js";
 import { updateExistingEntry } from "../update-entries/updateExistingEntry.js";
 
+// Import DOM manipulators
+import { showErrorModal } from "../modals/showErrorModal.js";
+
 export function displayJournalEntry( entry: EntryModel ): void {
 
     // Get the relavant DOM nodes
@@ -184,11 +187,11 @@ export function displayJournalEntry( entry: EntryModel ): void {
                 // If the link is not a valid URL, the error modal will be displayed and this function will end
                 } catch( error: any ) {
 
-                    newLineErrorHeadingUI.textContent = "Invalid Link";
+                    let errorTitle = "Invalid Link";
 
-                    newLineErrorTextUI.textContent = "The link that was submitted was not a valid URL";
+                    let errorText = "The link that was submitted was not a valid URL";
 
-                    newLineErrorModalUI.show();
+                    showErrorModal( errorTitle, errorText );
 
                     return;
 
@@ -310,11 +313,11 @@ export function displayJournalEntry( entry: EntryModel ): void {
                 // If the link is not a valid URL, the error modal is shown and the function ends before action is taken
                 } catch( error: any ) {
 
-                    newLineErrorHeadingUI.textContent = "Invalid Link";
+                    let errorTitle = "Invalid Link";
 
-                    newLineErrorTextUI.textContent = "The link that was entered is not a valid URL. Please review the link.";
+                    let errorText = "The link that was entered is not a valid URL. Please review the link.";
 
-                    newLineErrorModalUI.show();
+                    showErrorModal( errorTitle, errorText );
 
                     return;
 
@@ -332,11 +335,11 @@ export function displayJournalEntry( entry: EntryModel ): void {
                 // If the link was not from a YouTube origin, the error modal is shown and the function will end
                 if ( invalidLink ) {
 
-                    newLineErrorHeadingUI.textContent = "Invalid Link";
+                    let errorTitle = "Invalid Link";
 
-                    newLineErrorTextUI.textContent = "The link submitted does not appear to be from YouTube. Please review it.";
+                    let errorText = "The link submitted does not appear to be from YouTube. Please review it.";
 
-                    newLineErrorModalUI.show();
+                    showErrorModal( errorTitle, errorText );
 
                     return;
 
@@ -486,14 +489,6 @@ export function displayJournalEntry( entry: EntryModel ): void {
 
     })    
 
-    function addNewLineAction() {
-
-        let newLineId = addNewLine( entry, entry.listOfLines.length - 1 );
-
-        focusOnLine( newLineId, 0 );
-        
-    }
-
     // When the new line button is clicked, the modal for adding a new line is shown 
     newLineButtonUI.onclick = () => {
 
@@ -564,12 +559,12 @@ export function displayJournalEntry( entry: EntryModel ): void {
 
         } catch( error: any ) {
 
-            newLineErrorHeadingUI.textContent = "Image Without Source";
+            let errorTitle = "Image Without Source";
 
-            newLineErrorTextUI.textContent = "The image is lacking a source. Add a source so that the image can load.";
+            let errorText = "The image is lacking a source. Add a source so that the image can load.";
 
             // Showing the error modal
-            newLineErrorModalUI.show();
+            showErrorModal( errorTitle, errorText );
 
             return;
 
@@ -625,11 +620,11 @@ export function displayJournalEntry( entry: EntryModel ): void {
 
         } catch( error: any ) {
 
-            newLineErrorHeadingUI.textContent = "Invalid Link";
+            let errorTitle = "Invalid Link";
 
-            newLineErrorTextUI.textContent = "The input was not a valid website URL.";
+            let errorText = "The input was not a valid website URL.";
 
-            newLineErrorModalUI.show();
+            showErrorModal( errorTitle, errorText );
 
             return;
 
@@ -655,11 +650,11 @@ export function displayJournalEntry( entry: EntryModel ): void {
         // If the video link is not from YouTube, it will be rejected
         if ( invalidLink ) {
 
-            newLineErrorHeadingUI.textContent = "Invalid Website";
+            let errorTitle = "Invalid Website";
 
-            newLineErrorTextUI.textContent = "The video link must be from YouTube.";
+            let errorText = "The video link must be from YouTube.";
 
-            newLineErrorModalUI.show();
+            showErrorModal( errorTitle, errorText );
 
             return;
 
