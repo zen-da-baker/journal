@@ -28,9 +28,13 @@ export async function validateUniqueUsername( username: string ): Promise<boolea
         // If the document for the user was not found, the function will return true meaning the username is unique
         if ( userDocument === null ) {
 
+            client.close()
+
             return true;
 
         } 
+
+        client.close();
 
         return false;
 

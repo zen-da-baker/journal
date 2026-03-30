@@ -8,4 +8,14 @@ export class User {
 
     listOfTokens: Array<Token>;
 
+    constructor( inputUsername: string = "", inputPassword: string = "" ) {
+
+        this.username = inputUsername;
+
+        this.password = inputPassword;
+
+        this.listOfTokens = [];
+
+    }
+
 }

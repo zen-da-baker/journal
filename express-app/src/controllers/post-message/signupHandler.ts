@@ -1,6 +1,9 @@
 // Import helper functions
 import { validateUserStrings } from "../../helpers/validateUserStrings.js";
 import { validateUniqueUsername } from "../../database/validateUniqueUsername.js";
+import { hashPassword } from "../../database/hashPassword.js";
+import { createUserToken } from "../../database/createUserToken.js";
+import { storeNewUserAccount } from "../../database/storeNewUserAccount.js";
 
 export async function signupHandler( request: any, response: any, next: any ) {
 
@@ -103,12 +106,15 @@ export async function signupHandler( request: any, response: any, next: any ) {
     let hashedPassword = hashPassword( password1 );
 
     // Assigne a new token to the user account 
-    let userToken = assignUserToken( username );
+    let userToken = createUserToken( username );
+
+    let user = storeNewUserAccount( username, hashedPassword, userToken );
 
     // Return back the successful status of the account creation along with the active token
-
     return response.status( 200 ).json({
-        msg: "Form submitted."
+        msg: "Form submitted.",
+        token: userToken,
+        username
     })
 
 }
