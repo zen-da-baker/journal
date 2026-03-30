@@ -1,5 +1,8 @@
+// Import helper functions
 import { showErrorModal } from "../modals/showErrorModal.js";
+import { showSuccessModal } from "../modals/showSuccessModal.js";
 
+// Form DOM elements
 const usernameInputUI = document.getElementById("signup-username") as HTMLInputElement;
 
 const firstPasswordUI = document.getElementById("signup-first-password-input") as HTMLInputElement;
@@ -118,6 +121,16 @@ async function submitSignupForm(): Promise<void> {
         firstPasswordUI.value = "";
 
         secondPasswordUI.value = "";
+
+        // The user is notified on the UI that their account was created successfully and can now access online features
+
+        let successHeading = "Account Creation Successful";
+
+        let successBodyText = "Welcome, " + username + ". Your account was created successfully. " +
+        "Now take a look around the website to see some of the new features you can now use. " +
+        "I highly suggest, exploring the data sync feature to backup your journal entries."
+
+        showSuccessModal( successHeading, successBodyText );
 
         return;
 
