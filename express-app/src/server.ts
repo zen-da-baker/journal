@@ -23,6 +23,9 @@ import { blogRouter } from "./controllers/routers/blog-router/blogRouter.js";
 import { getNotFoundPage } from "./controllers/error-handler/getNotFoundPage.js";
 import { getErrorPage } from "./controllers/error-handler/getErrorPage.js";
 
+// Import global helper functions
+import { establishDatabaseConnection } from "./database/establishDatabaseConnection.js";
+
 // Establish the port number
 const port = 3000;
 
@@ -38,6 +41,8 @@ export const __dirname = path.dirname( __filename );
 
 // Relative file paths
 export const viewsFilePath = path.join(__dirname, "../views");
+
+export const database = await establishDatabaseConnection();
 
 let clientJavaScriptPath = path.join(__dirname, "../build/client");
 

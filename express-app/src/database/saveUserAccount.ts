@@ -1,5 +1,5 @@
-// Import packages
-import { MongoClient } from "mongodb";
+// Import database
+import { database } from "../server.js";
 
 // Import data models 
 import { User } from "../controllers/server-models/User.js";
@@ -16,31 +16,13 @@ import { env } from "node:process";
 */
 export async function saveUserAccount( user: User ): Promise<boolean> {
 
-    // The client object is created
-    let client = new MongoClient( env.URI );
-
     try {
-
-        console.log("The MongoDB client is created.")
-
-        // The client object connects to the database
-        await client.connect();
-
-        console.log("The client is connected to the database.")
-
-        // The database name is extracted from the environment variable
-        let dbName = env.DB_NAME;
-
-        // The database object is found from the database name on the connected client
-        let db = client.db( dbName );
-
-        console.log("The database is being accessed with the database name.");
 
         /*
             The collection for saving account details is the users collection with each user object being a file.
             This allows for searching the database by the username for account modifications as shown below.
         */
-        let collection = db.collection("users");
+        let collection = database.collection("users");
 
         console.log("The users collection is being accessed.");
 
@@ -58,10 +40,7 @@ export async function saveUserAccount( user: User ): Promise<boolean> {
 
     } finally {
 
-        client.close();
-
         console.log("The client is closed and the function returns true for a successful operation.");
-
 
     }
 

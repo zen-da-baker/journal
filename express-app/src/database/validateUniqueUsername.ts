@@ -1,5 +1,5 @@
 // Import external packages
-import { MongoClient } from "mongodb";
+import { database } from "../server.js";
 
 // Import environment parsing from Node
 import { env } from "node:process";
@@ -15,22 +15,10 @@ export async function validateUniqueUsername( username: string ): Promise<boolea
     try {
 
         // The client for connection to the database
-        const client = new MongoClient( env.URI );
-
-        console.log( "Connecting to MongoDB client." );
-
-        const dbName = env.DB_NAME;
-
-        await client.connect();
-
-        console.log("MongoDB client connected.")
-
-        // The database which has a collection of user objects
-        const db = client.db( dbName );
 
         console.log("Database accessed.");
 
-        const collection = db.collection("users");
+        const collection = database.collection("users");
 
         console.log("Users collection accessed.");
 
@@ -42,17 +30,14 @@ export async function validateUniqueUsername( username: string ): Promise<boolea
         // If the document for the user was not found, the function will return true meaning the username is unique
         if ( userDocument === null ) {
 
-            client.close();
-
             console.log("The user was not found and the function returns true.");
 
             return true;
 
         } 
 
-        client.close();
 
-        console.log("The user was found and the function returns false after closing the database connection.");
+        console.log("The user was found and the function returns false.");
 
         return false;
 
