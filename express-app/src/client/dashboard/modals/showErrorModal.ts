@@ -4,7 +4,7 @@ const errorHeadingUI = document.getElementById("error-heading");
 
 const errorTextUI = document.getElementById("error-text");
 
-const closeErrorModalButtonUI = document.getElementById("close-modal-button") as HTMLButtonElement;
+const closeErrorModalButtonUI = document.getElementById("close-error-modal") as HTMLButtonElement;
 
 /*
     This function is capable of displaying an error modal on multiple pages throughout the app by invoking this

@@ -72,23 +72,20 @@
 
             </div>
 
-            <form class="card center-card flex flex-column">
+            <div class="card center-card flex flex-column">
 
                 <label for="signup-username">Username</label>
-                <input id="signup-username" type="text" placeholder="Username..." />
-
-                <label for="signup-email">Email</label>
-                <input id="signup-email" type="email" placeholder="name@example.com..." />
+                <input id="signup-username" type="text" placeholder="Username..." required />
 
                 <label for="signup-first-password-input">Password</label>
-                <input id="signup-first-password-input" type="password" placeholder="Password..." />
+                <input id="signup-first-password-input" type="password" placeholder="Password..." required />
 
                 <label for="signup-second-password-input">Confirm Password</label>
-                <input id="signup-second-password-input" type="password" placeholder="Confirm password..." />
+                <input id="signup-second-password-input" type="password" placeholder="Confirm password..." required />
 
                 <button id="signup-submit-button">Submit</button>
 
-            </form>
+            </div>
 
             <div class="text-container">
 
@@ -102,5 +99,7 @@
         </main>
         
     </body>
+
+    <script src="/dashboard/signup/signupMainPageFile.js" type="module"></script>
 
 </html>
