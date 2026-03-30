@@ -97,13 +97,13 @@ export async function signupHandler( request: any, response: any, next: any ) {
     if ( !uniqueUsername ) {
 
         return response.status( 400 ).json({
-            msg: "The username submitted is already in user. Try logging in instead or try a different username."
+            msg: "The username submitted is already exists. Try logging in instead or try a different username."
         })
 
     }
 
     // Hash the password and store it and return the confirmation of it's success or failure
-    let hashedPassword = hashPassword( password1 );
+    let hashedPassword = await hashPassword( password1 );
 
     // Assigne a new token to the user account 
     let userToken = createUserToken( username );

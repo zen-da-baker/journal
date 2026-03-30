@@ -9,29 +9,11 @@ import { env } from "node:process";
     The hash is salted a number of times by the environment variable for security and then 
     returned from the function ready for storage in the database.
 */
-export function hashPassword( password: string ): string {
+export async function hashPassword( password: string ): Promise<string> {
 
     const saltRounds = Number( env.SALT_ROUNDS );
 
-    let hashedPassword = "";
-
-    function hashingCallback( error: Error, hashedResult: string ) {
-
-        if ( error ) {
-
-            console.log( error );
-
-            return "";
-
-        }
-
-        hashedPassword = hashedResult;
-
-        return hashedPassword;
-
-    }
-
-    bcrypt.hash( password, saltRounds, hashingCallback );
+    let hashedPassword = await bcrypt.hash( password, saltRounds );
 
     return hashedPassword;
 
