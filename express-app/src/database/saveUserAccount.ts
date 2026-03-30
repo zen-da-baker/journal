@@ -16,13 +16,17 @@ import { env } from "node:process";
 */
 export async function saveUserAccount( user: User ): Promise<boolean> {
 
+    // The client object is created
+    let client = new MongoClient( env.URI );
+
     try {
 
-        // The client object is created
-        let client = new MongoClient( env.URI );
+        console.log("The MongoDB client is created.")
 
         // The client object connects to the database
         await client.connect();
+
+        console.log("The client is connected to the database.")
 
         // The database name is extracted from the environment variable
         let dbName = env.DB_NAME;
@@ -30,20 +34,20 @@ export async function saveUserAccount( user: User ): Promise<boolean> {
         // The database object is found from the database name on the connected client
         let db = client.db( dbName );
 
+        console.log("The database is being accessed with the database name.");
+
         /*
             The collection for saving account details is the users collection with each user object being a file.
             This allows for searching the database by the username for account modifications as shown below.
         */
         let collection = db.collection("users");
 
+        console.log("The users collection is being accessed.");
+
         // The user object is searched for and then updated, or inserted if it doesn't already exist
         collection.updateOne( { username: user.username }, { $set: user }, { upsert: true} );
 
-        // Almost last, the client connection to the database is closed
-        await client.close();
-
-        // Lastly, true is returned meaning that the storage was performed successfully
-        return true;
+        console.log("The collection had a document for the user modified.");
 
     } catch( error: any ) {
 
@@ -52,6 +56,16 @@ export async function saveUserAccount( user: User ): Promise<boolean> {
         // The operation was not successful so the function returns false
         return false;
 
+    } finally {
+
+        client.close();
+
+        console.log("The client is closed and the function returns true for a successful operation.");
+
+
     }
+
+    // Lastly, the function returns true for a successful operation if no error occured
+    return true;
 
 }

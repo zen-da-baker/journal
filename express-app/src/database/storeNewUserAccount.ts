@@ -13,7 +13,11 @@ export async function storeNewUserAccount( username: string, hashedPassword: str
 
     let user = new User( username, hashedPassword );
 
+    console.log("A new user object has been created.")
+
     user.listOfTokens.push( token );
+
+    console.log("Attempting to save the user token in the database.");
 
     let success = await saveUserAccount( user );
 

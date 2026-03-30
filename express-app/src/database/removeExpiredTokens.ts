@@ -2,6 +2,9 @@
 import { User } from "../controllers/server-models/User.js";
 import { Token } from "../client/models/Token.js";
 
+// Import helper functions
+import { saveUserAccount } from "./saveUserAccount.js";
+
 /*
     This function searches through a user's list of tokens
     and removed any expired tokens using a loop.
@@ -39,6 +42,8 @@ export function removeExpiredTokens( user: User ): void {
         user.listOfTokens.splice( expiredTokenIndex, deleteCount );
 
     }
+
+    saveUserAccount( user );
 
 
 }

@@ -103,10 +103,33 @@ async function submitSignupForm(): Promise<void> {
 
     const responseBody = await initialResponse.json();
 
+    // If the signup was successful, store the necessary details in the local storage for use upon revisiting
+    if ( initialResponse.ok ) {
+
+        localStorage.setItem("bytesized-journal-token", JSON.stringify( responseBody.token ) );
+
+        localStorage.setItem("bytesized-journal-username", username );
+
+        console.log( responseBody.msg );
+
+        // After a successful submission, the input fields are cleared
+        usernameInputUI.value = "";
+
+        firstPasswordUI.value = "";
+
+        secondPasswordUI.value = "";
+
+        return;
+
+    }
+
     console.log( responseBody );
 
-    // After a successful submission, the input fields are cleared
+    let errorHeading = "An Error Occured on the Server";
 
+    let errorText = responseBody.msg;
+
+    showErrorModal( errorHeading, errorText );
 
 }
 

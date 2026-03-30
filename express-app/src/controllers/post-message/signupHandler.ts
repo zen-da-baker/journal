@@ -120,6 +120,8 @@ export async function signupHandler( request: any, response: any, next: any ) {
     }
 
     // Return back the successful status of the account creation along with the active token
+    console.log("A user account was created successfully and the necessary details were submitted back to the client.");
+
     return response.status( 200 ).json({
         msg: "Form submitted.",
         token: userToken,
