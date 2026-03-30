@@ -62,7 +62,7 @@ function validateSignupForm(): boolean {
     This function first uses the form validation function to confirm that all input fields were filled
     then it will submit the form using a POST request. 
 */
-function submitSignupForm(): void {
+async function submitSignupForm(): Promise<void> {
 
     let formValidated = validateSignupForm();
 
@@ -71,6 +71,40 @@ function submitSignupForm(): void {
         return;
 
     }
+
+    let username = usernameInputUI.value;
+
+    let password1 = firstPasswordUI.value;
+
+    let password2 = secondPasswordUI.value;
+
+    // The submission body is a fairly plain object containing the inputs of the field
+    let submissionBody = {
+
+        username, password1, password2
+
+    }
+
+    let requestOptions = {
+
+        method: "POST",
+
+        headers: {
+
+            "Content-Type": "application/json"
+
+        },
+
+        body: JSON.stringify( submissionBody )
+
+    }
+
+    const initialResponse = await fetch("/dashboard/signup", requestOptions );
+
+    console.log( initialResponse );
+
+    // After a successful submission, the input fields are cleared
+
 
 }
 
