@@ -1,3 +1,4 @@
+// Import external packages
 import { MongoClient } from "mongodb";
 
 // Import environment parsing from Node
@@ -13,22 +14,25 @@ export async function validateUniqueUsername( username: string ): Promise<boolea
 
     try {
 
+        // The client for connection to the database
         const client = new MongoClient( env.URI );
 
         const dbName = env.DB_NAME;
 
         await client.connect();
 
+        // The database which has a collection of user objects
         const db = client.db( dbName );
 
         const collection = db.collection("users");
 
-        const userDocument = await collection.findOne({ username: username });
+        // The user document is searched for based on the username but is null if it wasn't found
+        const userDocument = await collection.findOne( { username: username } );
 
         // If the document for the user was not found, the function will return true meaning the username is unique
         if ( userDocument === null ) {
 
-            client.close()
+            client.close();
 
             return true;
 

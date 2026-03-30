@@ -101,7 +101,9 @@ async function submitSignupForm(): Promise<void> {
 
     const initialResponse = await fetch("/dashboard/signup", requestOptions );
 
-    console.log( initialResponse );
+    const responseBody = await initialResponse.json();
+
+    console.log( responseBody );
 
     // After a successful submission, the input fields are cleared
 

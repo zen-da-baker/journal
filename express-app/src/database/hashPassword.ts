@@ -11,7 +11,7 @@ import { env } from "node:process";
 */
 export function hashPassword( password: string ): string {
 
-    const saltRounds = env.SALT_ROUNDS;
+    const saltRounds = Number( env.SALT_ROUNDS );
 
     let hashedPassword = "";
 

@@ -108,7 +108,16 @@ export async function signupHandler( request: any, response: any, next: any ) {
     // Assigne a new token to the user account 
     let userToken = createUserToken( username );
 
-    let user = storeNewUserAccount( username, hashedPassword, userToken );
+    let user = await storeNewUserAccount( username, hashedPassword, userToken );
+
+    // If the user object is null, the save was not successful and the client side will be alerted
+    if ( !user ) {
+
+        return response.status( 500 ).json({
+            msg: "The account details submitted were not saved because of a server error. Please try again later."
+        })
+
+    }
 
     // Return back the successful status of the account creation along with the active token
     return response.status( 200 ).json({

@@ -6,7 +6,7 @@ import { Token } from "../client/models/Token.js";
     This function searches through a user's list of tokens
     and removed any expired tokens using a loop.
 */
-export function removeExpiredTokens( user: User ) {
+export function removeExpiredTokens( user: User ): void {
 
     let expiredTokensExist = true;
 

@@ -51,6 +51,7 @@ export function assignUserToken( user: User ): boolean {
 
     }
 
+    // Remove expired tokens before the new one is inserted of which the expired tokens would likely be at the front
     removeExpiredTokens( user );
 
     user.listOfTokens.push( newToken );
