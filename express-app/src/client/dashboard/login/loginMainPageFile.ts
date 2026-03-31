@@ -44,11 +44,33 @@ async function handleLoginSubmission() {
 
     const initialResponse = await fetch( "/dashboard/login", requestOptions );
 
-    console.log( initialResponse );
-
     const responseBody = await initialResponse.json();
 
-    console.log( responseBody );
+    if ( initialResponse.ok ) {
+
+        usernameInputUI.value = "";
+
+        passwordInputUI.value = "";
+
+        localStorage.setItem( "bytesized-journal-username", username );
+
+        localStorage.setItem( "bytesized-journal-token", JSON.stringify( responseBody.token ) );
+
+        let successHeading = "Login Successful";
+
+        let successText = "The login was successfully made. Now enjoy the benefits of having an online account with Bytesized Journal.";
+
+        showSuccessModal( successHeading, successText );
+
+        return;
+
+    }
+
+    let errorHeading = "There was an Error on the Server";
+
+    let errorText = responseBody.msg;
+
+    showErrorModal( errorHeading, errorText );
 
 }
 

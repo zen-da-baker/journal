@@ -35,6 +35,8 @@ export function removeExpiredTokens( user: User ): void {
 
             expiredTokensExist = false;
 
+            break;
+
         }
 
         let deleteCount = 1;
