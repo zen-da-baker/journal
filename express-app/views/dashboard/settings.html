@@ -82,7 +82,7 @@
 
             <h1>Settings</h1>
 
-            <section>
+            <section id="login-signup-section" class="text-container">
 
                 <h2>Account</h2>
 
@@ -101,6 +101,33 @@
                     <button>Sign Up</button>
 
                 </a>
+
+            </section>
+
+            <section id="logout-section">
+
+                <h2>Needs a Break?</h2>
+
+                <p>Feel free to logout below if you feel inclined.</p>
+
+                <button id="logout-button">Logout</button>
+
+            </section>
+
+            <section id="change-password-section">
+
+                <h2>Change Password</h2>
+
+                <label>Current Password</label>
+                <input type="password" placeholder="Current password..." />
+
+                <label>New Password</label>
+                <input type="password" placeholder="New password..." />
+
+                <label>Confirm New Password</label>
+                <input type="password" placeholder="Confirm new password..." />
+
+                <button id="confirm-new-password">Confirm New Password</button>
 
             </section>
 
@@ -141,5 +168,6 @@
     </body>
 
     <script src="/settings/sendFeedbackMessageFromClient.js" type="module"></script>
+    <script src="/settings/mainSettingsPageFile.js" type="module"></script>
     
 </html>
