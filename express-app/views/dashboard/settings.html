@@ -143,6 +143,50 @@
 
             </section>
 
+            <section id="data-sync-section" class="text-container">
+
+                <h2>Data Syncing</h2>
+
+                <p>With an account, how your journal entries are stored can be adjusted here.</p>
+
+                <select id="data-sync-selection">
+
+                    <!-- The Offline only selection is the default, it's selection will download existing entries. -->
+                    <option value="offline only">Offline Only</option>
+
+                    <!-- The offline and online selection will extend offline to upload existing entries and then update individual entries as they are updated. -->
+                    <option value="offline and online">Offline and Online</option>
+
+                    <!-- The online only selection uploads existing journal entries and then removes the indexedDB entries. -->
+                    <option value="online only">Online Only</option>
+
+                </select>
+
+                <p>
+                    Offline Only is the default. 
+                    This means that the journal entries are stored on the device accessing the website.
+                    This is ideal if you plan to use the website on only one device or have the website 
+                    installed on a device. 
+                    The Offline and Online setting means that journal entries are stored primarily on one 
+                    device and backedup to the Bytesized Journal web server. This is ideal if you want 
+                    to extend the capability of the website to allow another device to access the journal 
+                    entries after being logged in. 
+                    The online only setting is for when you only want to access journal entries 
+                    stored on the Bytesized Journal web server without using any storage on the device accessing 
+                    the website. 
+                    Please review your selection before confirming. 
+                </p>
+
+                <div class="button-container flex space-around" style="width: 100%;">
+
+                    <button id="confirm-data-sync-selection-button">Confirm Selection</button>
+
+                    <button id="cancel-data-sync-selection-button">Cancel</button>
+
+                </div>
+
+            </section>
+
             <section>
 
                 <h2>Submit Feedback</h2>

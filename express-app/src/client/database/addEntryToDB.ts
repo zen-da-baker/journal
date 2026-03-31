@@ -21,17 +21,30 @@ export function addEntryToDB( entryToSave: EntryModel ) {
 
     }
 
-    // If the database exists
+    const dataSyncOption: string | null = localStorage.getItem("bytesized-journal-data-sync-selection");
+
+    // If offline or both offline and online
     if ( database !== null ) {
 
-        // Open the database with a transaction
-        let entryTransaction: IDBTransaction = database.transaction( storeName, "readwrite" );
+        if ( dataSyncOption === null || dataSyncOption === "offline only" || dataSyncOption === "offline and online" ) {
 
-        // Open the desired object store
-        let entryObjectStore: IDBObjectStore = entryTransaction.objectStore( storeName );
+            // Open the database with a transaction
+            let entryTransaction: IDBTransaction = database.transaction( storeName, "readwrite" );
 
-        // Perform the action on the database which is to save the journal entry
-        entryObjectStore.add( entryToSave );
+            // Open the desired object store
+            let entryObjectStore: IDBObjectStore = entryTransaction.objectStore( storeName );
+
+            // Perform the action on the database which is to save the journal entry
+            entryObjectStore.add( entryToSave );
+    
+        }
+
+    }
+
+    // If both offline and online or just online only 
+    if ( dataSyncOption === "online only" || dataSyncOption === "offline and online" ) {
+
+        // The journal entry is synced with the database through a PUT request and requires the token for validation
 
     }
     
