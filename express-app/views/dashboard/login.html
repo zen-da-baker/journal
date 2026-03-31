@@ -62,10 +62,42 @@
 
             </dialog>
 
-            <h1>Login</h1>
+            <dialog id="success-modal" class="success-modal">
+
+                <h3 id="success-heading"></h3>
+
+                <p id="success-text"></p>
+
+                <button id="close-success-modal">Close</button>
+
+            </dialog>
+
+            <div class="text-container">
+
+                <h1>Login</h1>
+
+                <p>
+                    Already have an account? Login to take advantage of your account features.
+                </p>
+
+            </div>
+
+            <div class="card center-card flex flex-column">
+
+                <label for="login-username">Username</label>
+                <input id="login-username" type="text" placeholder="Username..." required />
+
+                <label for="login-password-input">Password</label>
+                <input id="login-password-input" type="password" placeholder="Password..." required />
+
+                <button id="login-submit-button">Submit</button>
+
+            </div>
 
         </main>
         
     </body>
+
+    <script src="/dashboard/login/loginMainPageFile.js" type="module"></script>
 
 </html>
