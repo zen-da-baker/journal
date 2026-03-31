@@ -5,23 +5,7 @@ export async function validatePassword( plainPassword: string, hashedPassword: s
 
     let validatedPassword: boolean = false;
 
-    function hashedPasswordCallback( error: Error, result: boolean ) {
-
-        if ( error ) {
-
-            console.log( error );
-
-            validatedPassword = false;
-
-            return false;
-
-        }
-
-        validatedPassword = result;
-
-    }
-
-    bcrypt.compare( plainPassword, hashedPassword, hashedPasswordCallback );
+    validatedPassword = await bcrypt.compare( plainPassword, hashedPassword );
 
     return validatedPassword;
 

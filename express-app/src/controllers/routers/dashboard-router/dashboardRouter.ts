@@ -13,6 +13,7 @@ import { getSignUpPage } from "../../get-pages/dashboard/getSignUpPage.js";
 // Import POST controller functions
 import { storeFeedbackMessage } from "../../post-message/storeFeedbackMessage.js";
 import { signupHandler } from "../../post-message/signupHandler.js";
+import { loginHandler } from "../../post-message/loginHandler.js";
 
 
 const dashboardRouter = express.Router();
@@ -38,9 +39,8 @@ dashboardRouter.post( "/message", storeFeedbackMessage );
 // Submit signup form controller
 dashboardRouter.post( "/signup", signupHandler );
 
-/*
 // Submit login controller
-dashboardRouter.post( "/login", );
-*/
+dashboardRouter.post( "/login", loginHandler );
+
 
 export { dashboardRouter };

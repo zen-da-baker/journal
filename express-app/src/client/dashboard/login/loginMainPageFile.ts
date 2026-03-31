@@ -46,6 +46,10 @@ async function handleLoginSubmission() {
 
     console.log( initialResponse );
 
+    const responseBody = await initialResponse.json();
+
+    console.log( responseBody );
+
 }
 
 submitLoginButtonUI.onclick = handleLoginSubmission;

@@ -5,6 +5,7 @@ import { User } from "../controllers/server-models/User.js";
 // Import helper functions
 import { createUserToken } from "./createUserToken.js";
 import { removeExpiredTokens } from "./removeExpiredTokens.js";
+import { saveUserAccount } from "./saveUserAccount.js";
 
 /*
     This function takes in a username string that was already sanitized and creates a token
@@ -58,5 +59,7 @@ export function assignUserToken( user: User ): boolean {
     removeExpiredTokens( user );
 
     user.listOfTokens.push( newToken );
+
+    saveUserAccount( user );
 
 }
