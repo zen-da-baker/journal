@@ -28,6 +28,9 @@ const serverErrorModalUI: HTMLDialogElement = document.getElementById("server-er
 
 const closeServerErrorModalButtonUI = document.getElementById("close-server-error-modal-button");
 
+// Import helper functions
+import { showSuccessModal } from "../dashboard/modals/showSuccessModal.js";
+
 // Shared style variables
 let redBorder: string = "0.1rem solid red";
 
@@ -134,8 +137,11 @@ async function submitFeedbackMessage(): Promise<void> {
 
         clearFeedbackMessageForm();
 
-        // The success modal is shown
-        successModalUI.show();
+        let successHeading = "The Message was Submitted Successfully";
+
+        let successText = "Thank you for submitting your feedback. It was received successfully on the server. The developer will review it as soon as possible.";
+
+        showSuccessModal( successHeading, successText );
 
         return;
 

@@ -1,5 +1,6 @@
 // Import helper functions
 import { logoutHelper } from "./logoutHelper.js";
+import { changePasswordHelper } from "./changePasswordHelper.js";
 
 // Dynamically displayed DOM elements based on the login status
 const loginSectionUI = document.getElementById("login-signup-section");
@@ -7,6 +8,7 @@ const logoutSectionUI = document.getElementById("logout-section");
 
 const changePasswordSectionUI = document.getElementById("change-password-section");
 const logoutButtonUI = document.getElementById("logout-button");
+const changePasswordButtonUI = document.getElementById("confirm-new-password");
 
 let loginStatus: boolean;
 
@@ -35,3 +37,5 @@ if ( !loginStatus ) {
 }
 
 logoutButtonUI.onclick = logoutHelper;
+
+changePasswordButtonUI.onclick = changePasswordHelper;

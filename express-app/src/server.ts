@@ -16,6 +16,9 @@ import { getAboutPage } from "./controllers/get-pages/static/getAboutPage.js";
 // Import dashboard routes
 import { dashboardRouter } from "./controllers/routers/dashboard-router/dashboardRouter.js";
 
+// Import the settings routes
+import { settingsRouter } from "./controllers/routers/settings-router/settingsRouter.js";
+
 // Import blog routes
 import { blogRouter } from "./controllers/routers/blog-router/blogRouter.js";
 
@@ -61,6 +64,9 @@ app.get( "/about", getAboutPage );
 
 // The dashboard routes
 app.use( "/dashboard", dashboardRouter );
+
+// The settings routes
+app.use( "/settings", settingsRouter );
 
 // The blog routes
 app.use( "/blog", blogRouter );

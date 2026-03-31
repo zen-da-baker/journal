@@ -50,11 +50,23 @@
 
         </header>
 
-        <dialog id="success-modal" class="modal success-modal">
+        <dialog id="error-modal" class="error-modal">
 
-            <button id="close-success-modal-button" class="cancel-btn">Close</button>
+            <h3 id="error-heading"></h3>
 
-            <h3>Your Feedback was Submitted Successfully</h3>
+            <p id="error-text"></p>
+
+            <button id="close-error-modal">Close</button>
+
+        </dialog>
+
+        <dialog id="success-modal" class="success-modal">
+
+            <h3 id="success-heading"></h3>
+
+            <p id="success-text"></p>
+
+            <button id="close-success-modal">Close</button>
 
         </dialog>
 
@@ -118,14 +130,14 @@
 
                 <h2>Change Password</h2>
 
-                <label>Current Password</label>
-                <input type="password" placeholder="Current password..." />
+                <label for="current-password">Current Password</label>
+                <input id="current-password" type="password" placeholder="Current password..." required />
 
-                <label>New Password</label>
-                <input type="password" placeholder="New password..." />
+                <label for="first-new-password">New Password</label>
+                <input id="first-new-password" type="password" placeholder="New password..." required />
 
-                <label>Confirm New Password</label>
-                <input type="password" placeholder="Confirm new password..." />
+                <label for="second-new-password">Confirm New Password</label>
+                <input id="second-new-password" type="password" placeholder="Confirm new password..." required />
 
                 <button id="confirm-new-password">Confirm New Password</button>
 
