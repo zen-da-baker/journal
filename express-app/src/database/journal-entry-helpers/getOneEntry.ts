@@ -97,11 +97,9 @@ export async function getOneEntry( request: any, response: any ) {
 
     }
 
-
     response.status( 200 ).json({
         msg: "The journal entry was found successfully.",
         entry
     })
-
 
 }
