@@ -15,54 +15,82 @@ export async function getJournalEntryData( entryId: string | null, entryType: st
     }
 
     // If the data sync option is offline, perform the following
+    let dataSyncOption = localStorage.getItem("bytesized-journal-data-sync-selection");
 
-    // If the database wasn't connected yet, try again after one second
-    if ( database === undefined ) {
+    if ( dataSyncOption === null || dataSyncOption === "offline only" || dataSyncOption === "offline and online" ) {
 
-        console.log("Attempting to connect to stored data.");
+        // If the database wasn't connected yet, try again after one second
+        if ( database === undefined ) {
 
-        // Set a timer for one second and execute the connection again
-        setTimeout( () => getJournalEntryData( entryId, entryType ), 100 );
+            console.log("Attempting to connect to stored data.");
 
-    }
-
-    // If the database has been connected now
-    if ( database !== null && database !== undefined ) {
-
-        let objectStoreName: string = dayObjectStoreName;
-
-        if ( entryType === "day" ) {
-
-            objectStoreName = dayObjectStoreName;
-
-        } else {
-
-            objectStoreName = dreamObjectStoreName;
-            
-        }
-
-        let dayEntryTransaction = database.transaction( objectStoreName, "readonly" );
-
-        let dayObjectStore = dayEntryTransaction.objectStore( objectStoreName );
-
-        let retrievalRequest = dayObjectStore.get( entryId );
-
-        retrievalRequest.onsuccess = ( event: any ) => {
-
-            console.log("Stored data accessed successfully.")
-
-            displayJournalEntry( event.target.result );
+            // Set a timer for one second and execute the connection again
+            setTimeout( () => getJournalEntryData( entryId, entryType ), 100 );
 
         }
 
-        retrievalRequest.onerror = ( event: any ) => {
+        // If the database has been connected now
+        if ( database !== null && database !== undefined ) {
 
-            displayEntryError();
+            let objectStoreName: string = dayObjectStoreName;
+
+            if ( entryType === "day" ) {
+
+                objectStoreName = dayObjectStoreName;
+
+            } else {
+
+                objectStoreName = dreamObjectStoreName;
+                
+            }
+
+            let dayEntryTransaction = database.transaction( objectStoreName, "readonly" );
+
+            let dayObjectStore = dayEntryTransaction.objectStore( objectStoreName );
+
+            let retrievalRequest = dayObjectStore.get( entryId );
+
+            retrievalRequest.onsuccess = ( event: any ) => {
+
+                console.log("Stored data accessed successfully.")
+
+                displayJournalEntry( event.target.result );
+
+            }
+
+            retrievalRequest.onerror = ( event: any ) => {
+
+                displayEntryError();
+
+            }
 
         }
 
     }
 
     // If the data sync option is online, get it from the web server instead
+    if ( dataSyncOption === "online only" ) {
+
+        let tokenString = localStorage.getItem("bytesized-journal-token");
+
+        if ( tokenString === null ) {
+
+            return;
+
+        }
+
+        const initialResponse = await fetch( "/settings/entry?token=" + tokenString + "&entryId=" + entryId );
+
+        const responseBody = await initialResponse.json();
+
+        console.log( responseBody );
+
+        if ( initialResponse.ok ) {
+
+            displayJournalEntry( responseBody.entry );
+
+        }
+        
+    }
 
 }
