@@ -51,7 +51,7 @@ export async function removeJournalEntryFromDB( entryId: string, entryType: stri
     
             const requestBody = {
     
-                entryId, entryType, token
+                entryId, token
     
             }
     

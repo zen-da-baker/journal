@@ -1,9 +1,6 @@
 // Import the indexedDB database
 import { database } from "./db.js";
 
-// Import data models
-import { EntryModel } from "../models/EntryModel.js";
-
 // Import helper functions
 
 // Import helper global variables
