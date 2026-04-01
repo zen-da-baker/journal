@@ -6,6 +6,7 @@ import { changePasswordHandler } from "../../put-settings/changePasswordHandler.
 import { getOneEntry } from "../../../database/journal-entry-helpers/getOneEntry.js";
 import { getAllEntries } from "../../../database/journal-entry-helpers/getAllEntries.js";
 import { updateAllEntries } from "../../../database/journal-entry-helpers/updateAllEntries.js";
+import { updateOneEntry } from "../../../database/journal-entry-helpers/updateOneEntry.js";
 
 const settingsRouter = express.Router();
 
@@ -17,7 +18,7 @@ settingsRouter.get( "/entry", getOneEntry );
 // Upload all journal entries as an update
 settingsRouter.put( "/all-entries", updateAllEntries );
 
-// settingsRouter.put( "/entry", );
+settingsRouter.put( "/entry", updateOneEntry );
 
 // Change an existing user's password
 settingsRouter.put( "/change-password", changePasswordHandler );
