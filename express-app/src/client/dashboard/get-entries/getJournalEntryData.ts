@@ -5,7 +5,7 @@ import { database, dayObjectStoreName, dreamObjectStoreName } from "../../databa
 import { displayJournalEntry } from "../display-entry/displayJournalEntry.js";
 import { displayEntryError } from "../display-entry/displayEntryError.js";
 
-export function getJournalEntryData( entryId: string | null, entryType: string | null ): void {
+export async function getJournalEntryData( entryId: string | null, entryType: string | null ) {
 
     // If the entry ID or type in the URL do not exist, this function will not execute and avoids a runtime error
     if ( entryId === null || entryType === null ) {
@@ -13,6 +13,8 @@ export function getJournalEntryData( entryId: string | null, entryType: string |
         return;
 
     }
+
+    // If the data sync option is offline, perform the following
 
     // If the database wasn't connected yet, try again after one second
     if ( database === undefined ) {
@@ -61,6 +63,6 @@ export function getJournalEntryData( entryId: string | null, entryType: string |
 
     }
 
-    
+    // If the data sync option is online, get it from the web server instead
 
 }

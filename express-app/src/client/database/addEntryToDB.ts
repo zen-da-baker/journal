@@ -6,7 +6,7 @@ import { database } from "./db.js";
 
 import { dayObjectStoreName, dreamObjectStoreName } from "./db.js";
 
-export function addEntryToDB( entryToSave: EntryModel ) {
+export async function addEntryToDB( entryToSave: EntryModel ): Promise<boolean> {
 
     // Determine which object store will be used based on the journal entry type
     let storeName: string;
@@ -44,7 +44,48 @@ export function addEntryToDB( entryToSave: EntryModel ) {
     // If both offline and online or just online only 
     if ( dataSyncOption === "online only" || dataSyncOption === "offline and online" ) {
 
+        let tokenString = localStorage.getItem("bytesized-journal-token");
+
+        if ( tokenString === null ) {
+
+            return;
+
+        }
+
+        let token = JSON.parse( tokenString );
+
         // The journal entry is synced with the database through a PUT request and requires the token for validation
+        const requestBody = {
+
+            token,
+
+            entry: entryToSave
+
+        }
+
+        const requestOptions = {
+
+            method: "PUT",
+
+            headers: {
+                "Content-Type": "application/json"
+            },
+
+            body: JSON.stringify( requestBody )
+
+        }
+
+        const initialResponse = await fetch( "/settings/entry", requestOptions );
+
+        const responseBody = await initialResponse.json();
+
+        if ( initialResponse.ok ) {
+
+            return true;
+
+        }
+
+        return false;
 
     }
     

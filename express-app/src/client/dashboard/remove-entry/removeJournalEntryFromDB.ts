@@ -3,29 +3,76 @@ import { database } from "../../database/db.js";
 
 import { dayObjectStoreName, dreamObjectStoreName } from "../../database/db.js";
 
+// Import data models
+import { Token } from "../../models/Token.js";
+
 // This helper function takes the entry ID and type and uses that to remove the selected entry from it's object store in indexedDB
-export function removeJournalEntryFromDB( entryId: string, entryType: string ): void {
+export async function removeJournalEntryFromDB( entryId: string, entryType: string ): Promise<void> {
 
-    // Determine which object store to use based on the entry type
-    let objectStoreName: string;
+    const dataSyncOption: string | null = localStorage.getItem("bytesized-journal-data-sync-selection");
 
-    if ( entryType === "day" ) {
+    if ( dataSyncOption === null || dataSyncOption === "offline only" || dataSyncOption === "offline and online" ) {
 
-        objectStoreName = dayObjectStoreName;
+        // Determine which object store to use based on the entry type
+        let objectStoreName: string;
 
-    } else {
+        if ( entryType === "day" ) {
 
-        objectStoreName = dreamObjectStoreName;
+            objectStoreName = dayObjectStoreName;
 
-    }
+        } else {
 
-    // Create an indexedDB transaction
-    let dayObjectStoreTransaction: IDBTransaction = database.transaction( objectStoreName, "readwrite" );
+            objectStoreName = dreamObjectStoreName;
 
-    // Get the object store from the transaction
-    let objectStore: IDBObjectStore = dayObjectStoreTransaction.objectStore( objectStoreName );
+        }
 
-    // Perform the deletion action
-    objectStore.delete( entryId );
+        // Create an indexedDB transaction
+        let dayObjectStoreTransaction: IDBTransaction = database.transaction( objectStoreName, "readwrite" );
+
+        // Get the object store from the transaction
+        let objectStore: IDBObjectStore = dayObjectStoreTransaction.objectStore( objectStoreName );
+
+        // Perform the deletion action
+        objectStore.delete( entryId );
+
+        }
+        
+        if ( dataSyncOption === "online only" || dataSyncOption === "offline and online" ) {
+    
+            let tokenString: string | null = localStorage.getItem("bytesized-journal-token");
+    
+            if ( tokenString === null ) {
+    
+                return;
+    
+            }
+    
+            let token: Token = JSON.parse( tokenString );
+    
+            const requestBody = {
+    
+                entryId, entryType, token
+    
+            }
+    
+            const requestOptions = {
+    
+                method: "DELETE",
+    
+                headers: {
+                    "Content-Type": "application/json"
+                },
+    
+                body: JSON.stringify( requestBody )
+    
+            }
+    
+            const initialResponse = await fetch( "/settings/entry", requestOptions );
+    
+            const responseBody = await initialResponse.json();
+    
+            console.log( responseBody );
+    
+        }
 
 }

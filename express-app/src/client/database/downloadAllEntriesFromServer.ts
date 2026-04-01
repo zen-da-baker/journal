@@ -15,13 +15,13 @@ import { dayObjectStoreName, dreamObjectStoreName } from "./db.js";
     If nothing was already on this device, nothing is added to the web server. 
     This function expects a user account of which the token is used for validation. 
 */
-export async function downloadAllEntriesFromServer( ) {
+export async function downloadAllEntriesFromServer(): Promise<boolean> {
 
     let userToken: string | null = localStorage.getItem("bytesized-journal-token");
 
     if ( userToken === null ) {
 
-        return;
+        return false;
 
     }
 
@@ -34,7 +34,7 @@ export async function downloadAllEntriesFromServer( ) {
 
         console.log( initialResponse );
 
-        return;
+        return false;
 
     }
 
@@ -75,5 +75,7 @@ export async function downloadAllEntriesFromServer( ) {
         }
 
     })
+
+    return true;
 
 }

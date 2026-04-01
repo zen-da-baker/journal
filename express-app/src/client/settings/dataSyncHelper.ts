@@ -1,6 +1,7 @@
 // Import helper functions
 import { downloadAllEntriesFromServer } from "../database/downloadAllEntriesFromServer.js";
 import { uploadAllEntriesToServer } from "../database/uploadAllEntriesToServer.js";
+import { removeAllLocalEntries } from "../database/removeAllLocalEntries.js";
 
 // DOM elements
 const dataSyncSelectionUI = document.getElementById("data-sync-selection") as HTMLSelectElement;
@@ -22,18 +23,27 @@ export async function dataSyncHelper( originalDataSyncSelection: string ) {
     // The offline and online selection download any existing journal entries on the web server and uploads local entries
     if ( selectedValue === "offline and online" ) {
 
-        downloadAllEntriesFromServer();
+        let completedStatus = await downloadAllEntriesFromServer();
 
-        uploadAllEntriesToServer();
+        if ( completedStatus ) {
+
+            uploadAllEntriesToServer();
+    
+        }
 
     }
 
     // The online only selection uploads existing entries then clears the indexedDB storage
     if ( selectedValue === "online only" ) {
 
-        uploadAllEntriesToServer();
+        let completedStatus = await uploadAllEntriesToServer();
 
-        // Now clear the indexedDB object stores
+        if ( completedStatus ) {
+
+            // Now clear the indexedDB object stores
+            removeAllLocalEntries();
+    
+        }
 
     }
 

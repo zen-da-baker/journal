@@ -10,7 +10,9 @@ const settingsRouter = express.Router();
 settingsRouter.get( "/all-journal-entries", );
 
 // Upload all journal entries as an update
-settingsRouter.put( "all-journal-entries", );
+settingsRouter.put( "/all-journal-entries", );
+
+settingsRouter.put( "/entry", );
 
 // Change an existing user's password
 settingsRouter.put( "/change-password", changePasswordHandler );
