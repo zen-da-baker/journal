@@ -66,7 +66,7 @@ export async function updateAllEntries( request: any, response: any ) {
 
     let username = token.username;
 
-    const userCollection = database.collection( username );
+    const userCollection = await database.collection( username );
 
     userCollection.insertMany( entriesList );
     

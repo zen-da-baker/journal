@@ -69,7 +69,7 @@ export async function deleteOneEntry( request: any, response: any ) {
 
     let username = token.username;
 
-    const userCollection = database.collection( username );
+    const userCollection = await database.collection( username );
 
     userCollection.deleteOne( { id: entryId } );
     

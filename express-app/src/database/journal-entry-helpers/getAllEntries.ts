@@ -67,9 +67,9 @@ export async function getAllEntries( request: any, response: any ) {
     }
 
     // Now that the user is verified, get the requested entries
-    const collection = database.collection( token.username );
+    const collection = await database.collection( token.username );
 
-    const entriesList: Array<EntryModel> | null = collection.find();
+    const entriesList: Array<EntryModel> | null = await collection.find();
 
     if ( entriesList === null ) {
 

@@ -87,7 +87,7 @@ export async function getOneEntry( request: any, response: any ) {
     // Each user has their own collection of journal entries
     const collection = database.collection( token.username );
 
-    const entry: EntryModel | null = collection.findOne( { id: entryId } );
+    const entry: EntryModel | null = await collection.findOne( { id: entryId } );
 
     if ( entry === null ) {
 
