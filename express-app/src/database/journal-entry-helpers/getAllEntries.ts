@@ -68,9 +68,21 @@ export async function getAllEntries( request: any, response: any ) {
     // Now that the user is verified, get the requested entries
     const collection = await database.collection( token.username );
 
-    const entriesList: Array<EntryModel> | null = await collection.find();
+    const entriesList = await collection.find();
 
     if ( entriesList === null ) {
+
+        return response.status( 400 ).json({
+            msg: "The journal entries were not found."
+        })
+
+    }
+
+    let allEntries = await entriesList.toArray();
+
+    console.log( allEntries );
+
+    if ( allEntries.length === 0 ) {
 
         return response.status( 400 ).json({
             msg: "The journal entries were not found."
