@@ -16,10 +16,6 @@ const formSubjectUI: HTMLInputElement = document.getElementById("feedback-form-s
 const formBodyUI: HTMLInputElement = document.getElementById("feedback-form-message-body") as HTMLInputElement;
 
 // The modal elements for display
-const successModalUI: HTMLDialogElement = document.getElementById("success-modal") as HTMLDialogElement;
-
-const closeSuccessModalButtonUI = document.getElementById("close-success-modal-button");
-
 const fieldsIncompleteModalUI: HTMLDialogElement = document.getElementById("fields-incomplete-modal") as HTMLDialogElement;
 
 const closeIncompleteModalButtonUI = document.getElementById("close-fields-incomplete-modal-button");
@@ -155,8 +151,6 @@ async function submitFeedbackMessage(): Promise<void> {
 feedbackSubmitButtonUI.onclick = submitFeedbackMessage;
 
 feedbackCancelButtonUI.onclick = clearFeedbackMessageForm;
-
-closeSuccessModalButtonUI.onclick = () => successModalUI.close();
 
 closeIncompleteModalButtonUI.onclick = () => fieldsIncompleteModalUI.close();
 

@@ -26,7 +26,7 @@ export async function downloadAllEntriesFromServer(): Promise<boolean> {
     }
 
     // The network request is made first 
-    const initialResponse = await fetch( "/settings/get-all-journal-entries?token=" + userToken );
+    const initialResponse = await fetch( "/settings/all-entries?token=" + userToken );
 
     const responseBody = await initialResponse.json();
 

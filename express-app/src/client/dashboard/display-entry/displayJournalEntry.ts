@@ -53,12 +53,6 @@ export function displayJournalEntry( entry: EntryModel ): void {
 
     let newLineErrorModalUI = document.getElementById("new-line-error-modal") as HTMLDialogElement;
 
-    let newLineErrorHeadingUI = document.getElementById("new-line-error-heading");
-
-    let newLineErrorTextUI = document.getElementById("new-line-error-text");
-
-    let newLineErrorCloseButtonUI = document.getElementById("close-new-line-error-modal");
-
     let newYouTubeVideoModelUI = document.getElementById("new-youtube-video-modal") as HTMLDialogElement;
 
     let newYouTubeVideoInputUI = document.getElementById("video-link-input") as HTMLInputElement;
@@ -703,13 +697,6 @@ export function displayJournalEntry( entry: EntryModel ): void {
 
         // The new line modal is shown again
         newLineModalUI.show();
-
-    }
-
-    // Error modal close button event
-    newLineErrorCloseButtonUI.onclick = () => {
-
-        newLineErrorModalUI.close();
 
     }
 

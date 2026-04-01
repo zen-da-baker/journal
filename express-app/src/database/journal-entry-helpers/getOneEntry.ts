@@ -44,7 +44,6 @@ export async function getOneEntry( request: any, response: any ) {
 
     // The token string is parsed or else an error is thrown if the fields do not exist
     token.username = validateUserStrings( token.username );
-    token.id = validateUserStrings( token.id );
     token.expirationDate = validateUserStrings( token.expirationDate );
 
     let entryId = queryObject.entryId;
@@ -56,8 +55,6 @@ export async function getOneEntry( request: any, response: any ) {
         })
 
     }
-
-    entryId = validateUserStrings( entryId );
 
     // Validate the user token
     let nonExistantUser = await validateUniqueUsername( token.username );

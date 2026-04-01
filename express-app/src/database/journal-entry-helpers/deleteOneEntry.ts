@@ -32,11 +32,10 @@ export async function deleteOneEntry( request: any, response: any ) {
     }
 
     // The token is parsed
-    const token: Token = JSON.parse( body.token );
+    const token: Token = body.token;
 
     // The token string is parsed or else an error is thrown if the fields do not exist
     token.username = validateUserStrings( token.username );
-    token.id = validateUserStrings( token.id );
     token.expirationDate = validateUserStrings( token.expirationDate );
 
     // Validate the user token

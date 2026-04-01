@@ -1,6 +1,7 @@
 // Import data models
 import { Token } from "../../client/models/Token.js";
 import { User } from "../../controllers/server-models/User.js";
+import { EntryModel } from "../../client/models/EntryModel.js";
 
 // Import helper functions
 import { validateUserStrings } from "../../helpers/validateUserStrings.js";
@@ -32,11 +33,10 @@ export async function updateOneEntry( request: any, response: any ) {
     }
 
     // The token is parsed
-    const token: Token = JSON.parse( body.token );
+    const token: Token = body.token;
 
     // The token string is parsed or else an error is thrown if the fields do not exist
     token.username = validateUserStrings( token.username );
-    token.id = validateUserStrings( token.id );
     token.expirationDate = validateUserStrings( token.expirationDate );
 
     // Validate the user token
@@ -62,16 +62,13 @@ export async function updateOneEntry( request: any, response: any ) {
 
     }
 
-    let entry = body.entry;
-
-    // The journal entry id being used for a query could be the source of an injection attack and must be sanitized
-    entry.id = validateUserStrings( entry.id );
+    let entry: EntryModel = body.entry;
 
     let username = token.username;
 
     const userCollection = await database.collection( username );
 
-    userCollection.updateOne( { id: entry.id }, entry );
+    userCollection.updateOne( { id: entry.id }, { $set: { createdOn: entry.createdOn, listOfLines: entry.listOfLines, title: entry.title } }, { upsert: true } );
     
     return response.status( 200 ).json({
         msg: "Journal entry was updated successfully."
