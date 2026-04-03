@@ -83,74 +83,84 @@ export async function uploadAllEntriesToServer(): Promise<boolean> {
         let dreamRequest: IDBRequest = dreamObjectStore.count();
 
         // If day entries exist in the indexedDB database, perform the PUT network request
-        dayEntriesCount = dayRequest.result
+        dayRequest.onsuccess = async () => {
 
-        if ( dayEntriesCount !== 0 ) {
+            dayEntriesCount = dayRequest.result;
 
-            dayRequest = dayObjectStore.getAll();
+            if ( dayEntriesCount !== 0 ) {
 
-            let dayEntriesList: Array<EntryModel> = dayRequest.result;
+                dayRequest = dayObjectStore.getAll();
 
-            const requestBody = {
+                let dayEntriesList: Array<EntryModel> = dayRequest.result;
 
-                entriesList: dayEntriesList,
+                const requestBody = {
 
-                token: userToken
+                    entriesList: dayEntriesList,
+
+                    token: userToken
+
+                }
+
+                const requestOptions = {
+
+                    method: "PUT",
+
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+
+                    body: JSON.stringify( requestBody )
+
+                }
+
+                const initialResponse: Response = await fetch( "/settings/all-entries", requestOptions );
+
+                const responseBody = await initialResponse.json();
+
+                console.log( responseBody );
 
             }
-
-            const requestOptions = {
-
-                method: "PUT",
-
-                headers: {
-                    "Content-Type": "application/json"
-                },
-
-                body: JSON.stringify( requestBody )
-
-            }
-
-            const initialResponse: Response = await fetch( "/settings/all-entries", requestOptions );
-
-            const responseBody = await initialResponse.json();
-
-            console.log( responseBody );
-
+    
         }
 
-        if ( dreamEntriesCount !== 0 ) {
+        dreamRequest.onsuccess = async () => {
 
-            dreamRequest = dreamObjectStore.getAll();
+            dreamEntriesCount = dreamRequest.result;
 
-            let dreamEntriesList: Array<EntryModel> = dreamRequest.result;
+            if ( dreamEntriesCount !== 0 ) {
 
-            const requestBody = {
+                dreamRequest = dreamObjectStore.getAll();
 
-                entriesList: dreamEntriesList,
+                let dreamEntriesList: Array<EntryModel> = dreamRequest.result;
 
-                token: userToken
+                const requestBody = {
+
+                    entriesList: dreamEntriesList,
+
+                    token: userToken
+
+                }
+
+                const requestOptions = {
+
+                    method: "PUT",
+
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+
+                    body: JSON.stringify( requestBody )
+
+                }
+
+                const initialResponse: Response = await fetch( "/settings/all-entries", requestOptions );
+
+                const responseBody = await initialResponse.json();
+
+                console.log( responseBody );
 
             }
-
-            const requestOptions = {
-
-                method: "PUT",
-
-                headers: {
-                    "Content-Type": "application/json"
-                },
-
-                body: JSON.stringify( requestBody )
-
-            }
-
-            const initialResponse: Response = await fetch( "/settings/all-entries", requestOptions );
-
-            const responseBody = await initialResponse.json();
-
-            console.log( responseBody );
-
+    
         }
 
         return true;

@@ -80,8 +80,6 @@ export async function getAllEntries( request: any, response: any ) {
 
     let allEntries = await entriesList.toArray();
 
-    console.log( allEntries );
-
     if ( allEntries.length === 0 ) {
 
         return response.status( 400 ).json({
