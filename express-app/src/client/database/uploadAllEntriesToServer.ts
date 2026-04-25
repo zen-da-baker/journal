@@ -21,7 +21,7 @@ export async function uploadAllEntriesToServer(): Promise<boolean> {
     // If the local device does not have token, no action is taken
     if ( userToken === null ) {
 
-        return;
+        return false;
 
     }
 
@@ -63,7 +63,7 @@ export async function uploadAllEntriesToServer(): Promise<boolean> {
 
     if ( totalCount === 0 ) {
 
-        return;
+        return false;
 
     }
 
@@ -170,5 +170,7 @@ export async function uploadAllEntriesToServer(): Promise<boolean> {
     // The journal entries are collected as a single list of entries
 
     // The network request with a PUT method is made to the server
+
+    return true;
 
 }

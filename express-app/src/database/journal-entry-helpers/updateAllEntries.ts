@@ -49,7 +49,15 @@ export async function updateAllEntries( request: any, response: any ) {
 
     }
 
-    let user: User = await findUser( token.username );
+    let user: User | null = await findUser( token.username );
+
+    if ( user === null ) {
+
+        return response.status( 400 ).json({
+            msg: "User not found"
+        })
+        
+    }
 
     let verifiedUser = verifyUserToken( user, token );
 
