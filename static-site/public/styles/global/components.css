@@ -1,0 +1,300 @@
+button {
+
+    border: none;
+
+    border-radius: 0.25rem;
+
+    background-color: hsl( 40, 90%, 80% );
+
+    color: black;
+
+    padding: 0.25rem;
+
+    box-shadow: 0.25rem 0.25rem hsl( 40, 90%, 70% );
+
+    cursor: pointer;
+
+}
+button:active {
+
+    box-shadow: none;
+
+    transform: translate( 0.25rem, 0.25rem );
+    
+}
+
+.card {
+
+    border-radius: 0.5rem;
+
+    padding: 0.75rem;
+
+    margin: 0.5rem;
+
+    background-color: hsl( 200, 20%, 80% );
+
+    max-width: 40vw;
+
+}
+
+.center-card {
+
+    margin: auto;
+
+}
+
+.card span {
+
+    font-size: 1rem;
+
+}
+
+.dream-card {
+
+    background-color: hsl( 250, 20%, 20% );
+    
+}
+
+.dream-card h3 {
+
+    color: white;
+
+}
+
+.dream-card p, .dream-card span {
+
+    color:hsl( 1, 0%, 80% );
+
+}
+
+.icon {
+
+    width: 1rem;
+
+}
+
+footer, header {
+
+    background-color: hsl( 200, 50%, 20% );
+
+    color: white;
+
+}
+
+footer a {
+
+    color: hsl( 200, 50%, 80% );
+
+}
+
+footer span {
+
+    color: white;
+
+}
+
+header {
+
+    padding: 0.5rem 1rem;
+
+}
+
+dialog {
+
+    position: fixed;
+
+    left: 25vw;
+
+    top: 25vh;
+
+    padding: 1rem;
+
+    border-radius: 0.5rem;
+
+    border: 0.1rem solid black;
+
+    min-width: 25rem;
+
+    min-height: 20rem;
+
+    z-index: 2;
+
+}
+
+dialog .cancel-btn {
+
+    position: absolute;
+
+    bottom: 1rem;
+
+    right: 1rem;
+
+}
+
+.error-modal {
+
+    background-color: hsl( 1, 25%, 80% );
+
+    color: hsl( 1, 50%, 20% );
+
+    border: none;
+
+    z-index: 3;
+
+}
+
+.success-modal {
+
+    background-color: hsl( 150, 25%, 80% );
+
+    color: hsl( 150, 50%, 20% );
+
+    border: none;
+
+    min-height: 10rem;
+
+    z-index: 3;
+
+}
+
+.bottom {
+
+    position: absolute;
+
+    bottom: 0.5rem;
+
+    width: 100%;
+
+}
+
+.journal-image {
+
+    /* height: 31vw; */
+
+   border-radius: 0.5rem;
+
+}
+
+.journal-image-container, .journal-video-container {
+
+    background-color: hsl( 40, 90%, 90% );
+
+    border-radius: 0.5rem;
+
+    width: 75vw;
+
+    padding: 0.75rem;
+
+    margin: 0.5rem auto;
+
+}
+
+.journal-image, .journal-video {
+
+    position: relative;
+
+    display: block;
+
+    padding: 0.5rem;
+
+    border-radius: 0.5rem;
+
+    overflow: hidden;
+
+}
+
+.journal-video {
+
+    margin: 0 auto;
+
+    width: 55vw;
+
+    height: 31vw;
+
+    border: none;
+
+}
+
+select {
+
+    padding: 0.25rem;
+
+    background-color: white;
+
+    border-radius: 0.5rem;
+
+}
+
+input, textarea {
+
+    padding: 0.5rem;
+
+    margin: 0.5rem;
+
+    border-radius: 0.5rem;
+
+    border: 0.05rem solid black;
+
+}
+
+nav {
+
+    min-width: 20rem;
+
+    display: flex;
+
+    justify-content: space-between;
+
+}
+
+.confirm-btn {
+
+    background-color: hsl( 150, 50%, 25% );
+
+    color: white;
+
+    box-shadow: 0.25rem 0.25rem hsl( 150, 50%, 10% );
+
+}
+
+.cancel-btn {
+
+    background-color: hsl( 5, 0%, 25% );
+
+    color: white;
+
+    box-shadow: 0.25rem 0.25rem hsl( 5, 0%, 10% );
+
+}
+
+.danger-btn {
+
+    background-color: hsl( 5, 50%, 25% );
+
+    color: white;
+
+    box-shadow: 0.25rem 0.25rem hsl( 5, 50%, 10% );
+
+}
+
+#entry-body, #entry-title {
+
+    background-color: white;
+
+    padding: 1rem;
+
+    border-radius: 0.5rem;
+
+}
+
+#journal-button-container {
+
+    background-color: white;
+
+    padding: 1rem;
+
+    border-radius: 0.5rem;
+
+    margin: 1rem;
+
+}

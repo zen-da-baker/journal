@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+        <meta charset="UTF-8" />
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <title>Settings | Bytesized Journal</title>
+
+        <link rel="icon" href="/icons/bytesized-orange.png" />
+
+        <!-- The styles of the pages -->
+        <!-- Global CSS -->
+        <link rel="stylesheet" href="/styles/global/global.css" />
+        <link rel="stylesheet" href="/styles/global/typography.css" />
+        <link rel="stylesheet" href="/styles/global/components.css" />
+
+        <!-- Layout CSS -->
+        <link rel="stylesheet" href="/styles/flex.css" />
+
+    </head>
+
+    <body>
+
+        <header class="flex space-between">
+
+            <a href="/">
+
+                <h2>Bytesized Journal</h2>
+
+            </a>
+
+            <nav>
+
+                <a href="/dashboard">
+                    Dashboard
+                </a>
+
+                <a href="/dashboard/calendar">
+                    Calendar
+                </a>
+
+                <a href="/dashboard/settings">
+                    Settings
+                </a>
+                
+            </nav>
+
+        </header>
+
+        <dialog id="error-modal" class="error-modal">
+
+            <h3 id="error-heading"></h3>
+
+            <p id="error-text"></p>
+
+            <button id="close-error-modal">Close</button>
+
+        </dialog>
+
+        <dialog id="success-modal" class="success-modal">
+
+            <h3 id="success-heading"></h3>
+
+            <p id="success-text"></p>
+
+            <button id="close-success-modal">Close</button>
+
+        </dialog>
+
+        <dialog id="fields-incomplete-modal" class="modal error-modal">
+
+            <button id="close-fields-incomplete-modal-button" class="cancel-btn">Close</button>
+
+            <h3>Not All Fields Filled</h3>
+
+            <p>Not all of the input fields were filled when the submission button was pressed. The form was not submitted.</p>
+        
+        </dialog>
+
+        <dialog id="server-error-modal" class="modal error-modal">
+
+            <button id="close-server-error-modal-button" class="cancel-btn">Close</button>
+
+            <h3>Error During Submission</h3>
+
+            <p>The form was queued for submission to </p>
+
+        </dialog>
+
+        <main>
+
+            <h1>Settings</h1>
+
+            <section id="login-signup-section" class="text-container">
+
+                <h2>Account</h2>
+
+                <p>Have an account? Click the button below to login.</p>
+
+                <a href="/dashboard/login">
+
+                    <button>Login</button>
+
+                </a>
+
+                <p>Don't have an account already? Sign up for free to unlock more features.</p>
+
+                <a href="/dashboard/signup">
+
+                    <button>Sign Up</button>
+
+                </a>
+
+            </section>
+
+            <section id="logout-section">
+
+                <h2>Needs a Break?</h2>
+
+                <p>Feel free to logout below if you feel inclined.</p>
+
+                <button id="logout-button">Logout</button>
+
+            </section>
+
+            <section id="change-password-section">
+
+                <h2>Change Password</h2>
+
+                <label for="current-password">Current Password</label>
+                <input id="current-password" type="password" placeholder="Current password..." required />
+
+                <label for="first-new-password">New Password</label>
+                <input id="first-new-password" type="password" placeholder="New password..." required />
+
+                <label for="second-new-password">Confirm New Password</label>
+                <input id="second-new-password" type="password" placeholder="Confirm new password..." required />
+
+                <button id="confirm-new-password">Confirm New Password</button>
+
+            </section>
+
+            <section id="data-sync-section" class="text-container">
+
+                <h2>Data Syncing</h2>
+
+                <p>With an account, how your journal entries are stored can be adjusted here.</p>
+
+                <select id="data-sync-selection">
+
+                    <!-- The Offline only selection is the default, it's selection will download existing entries. -->
+                    <option value="offline only">Offline Only</option>
+
+                    <!-- The offline and online selection will extend offline to upload existing entries and then update individual entries as they are updated. -->
+                    <option value="offline and online">Offline and Online</option>
+
+                    <!-- The online only selection uploads existing journal entries and then removes the indexedDB entries. -->
+                    <option value="online only">Online Only</option>
+
+                </select>
+
+                <p>
+                    Offline Only is the default. 
+                    This means that the journal entries are stored on the device accessing the website.
+                    This is ideal if you plan to use the website on only one device or have the website 
+                    installed on a device. 
+                    The Offline and Online setting means that journal entries are stored primarily on one 
+                    device and backedup to the Bytesized Journal web server. This is ideal if you want 
+                    to extend the capability of the website to allow another device to access the journal 
+                    entries after being logged in. 
+                    The online only setting is for when you only want to access journal entries 
+                    stored on the Bytesized Journal web server without using any storage on the device accessing 
+                    the website. 
+                    Please review your selection before confirming. 
+                </p>
+
+                <div class="button-container flex space-around" style="width: 100%;">
+
+                    <button id="confirm-data-sync-selection-button">Confirm Selection</button>
+
+                    <button id="cancel-data-sync-selection-button">Cancel</button>
+
+                </div>
+
+            </section>
+
+            <section>
+
+                <h2>Submit Feedback</h2>
+
+                <form class="card center-card flex flex-column">
+
+                    <label for="feedback-form-name">Your Name</label>
+                    <input id="feedback-form-name" type="text" placeholder="Name..." required />
+
+                    <label for="feedback-form-email">Your Email Address</label>
+                    <input id="feedback-form-email" type="text" placeholder="Email..." required />
+
+                    <label for="feedback-form-subject">Subject</label>
+                    <input id="feedback-form-subject" type="text" placeholder="Subject..." required />
+
+                    <label for="feedback-form-message-body">Message Body</label>
+                    <textarea id="feedback-form-message-body" placeholder="Body..." required >
+
+                    </textarea>
+
+                    <div class="button-container flex space-between">
+
+                        <button id="feedback-form-submission-button">Submit</button>
+
+                        <button id="feedback-form-cancel-button">Cancel</button>
+
+                    </div>
+
+                </form>
+
+            </section>
+
+        </main>
+        
+    </body>
+
+    <script src="/settings/sendFeedbackMessageFromClient.js" type="module"></script>
+    <script src="/settings/mainSettingsPageFile.js" type="module"></script>
+    
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+        <meta charset="UTF-8" />
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <link rel="icon" href="/icons/bytesized-orange.png" />
+
+        <title>Dashboard | Bytesized Journal</title>
+
+        <!-- The styles of the pages -->
+        <!-- Global CSS -->
+        <link rel="stylesheet" href="/styles/global/global.css" />
+        <link rel="stylesheet" href="/styles/global/typography.css" />
+        <link rel="stylesheet" href="/styles/global/components.css" />
+
+        <!-- Layout CSS -->
+        <link rel="stylesheet" href="/styles/flex.css" />
+
+    </head>
+
+    <body>
+
+        <header class="flex space-between">
+
+            <a href="/">
+
+                <h2>Bytesized Journal</h2>
+
+            </a>
+
+            <nav>
+
+                <a href="/dashboard">
+                    Dashboard
+                </a>
+
+                <a href="/dashboard/calendar">
+                    Calendar
+                </a>
+
+                <a href="/dashboard/settings">
+                    Settings
+                </a>
+                
+            </nav>
+
+        </header>
+
+        <main>
+
+            <h1>Dashboard</h1>
+
+            <div class="flex space-around">
+
+                <button id="add-day-entry-button">New Day Entry</button>
+
+                <button id="add-dream-entry-button">New Dream Entry</button>
+
+            </div>
+
+            <dialog id="delete-entry-dialogue">
+
+                <h3 id="delete-warning"></h3>
+
+                <div class="flex space-between">
+
+                    <button id="finalize-delete-button" class="danger-btn">Delete Entry</button>
+
+                    <button id="close-entry-delete-dialogue" class="cancel-btn">Cancel</button>
+
+                </div>
+
+            </dialog>
+
+            <div id="gallery-container" class="flex space-around">
+
+                <div id="day-entry-gallery" class="gallery">
+
+                    <p>No entries yet...</p>
+
+                </div>
+
+                <div id="dream-entry-gallery" class="gallery">
+
+                    <p>No dream entries yet...</p>
+
+                </div>
+
+            </div>
+
+        </main>
+        
+    </body>
+
+    <script src="mainDashboardSetup.js" type="module"></script>
+
+</html>

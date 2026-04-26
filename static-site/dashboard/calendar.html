@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+        <meta charset="UTF-8" />
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <link rel="icon" href="/icons/bytesized-orange.png" />
+
+        <title>Calendar | Bytesized Journal</title>
+
+        <!-- Include styling -->
+         <link rel="stylesheet" href="/styles/flex.css" />
+
+        <!-- Calendar specific styling -->
+        <link rel="stylesheet" href="/styles/calendar/calendar-grid.css" />
+
+        <link rel="stylesheet" href="/styles/global/global.css" />
+
+        <link rel="stylesheet" href="/styles/global/typography.css" />
+
+        <link rel="stylesheet" href="/styles/global/components.css" />
+
+    </head>
+
+    <body>
+
+        <header class="flex space-between">
+
+            <a href="/">
+
+                <h2>Bytesized Journal</h2>
+
+            </a>
+
+            <nav>
+
+                <a href="/dashboard">
+                    Dashboard
+                </a>
+
+                <a href="/dashboard/calendar">
+                    Calendar
+                </a>
+
+                <a href="/dashboard/settings">
+                    Settings
+                </a>
+                
+            </nav>
+
+        </header>
+
+        <main>
+
+            <dialog id="new-journal-entry-selection">
+
+                <h3>What type of Entry Will this Be?</h3>
+
+                <div id="calendar-journal-type-selection-form" class="flex space-between align-items-center">
+
+                    <label for="journal-entry-type-selection">Journal Entry Type:</label>
+
+                    <select id="journal-entry-type-selection">
+
+                        <option value="day">Day</option>
+
+                        <option value="dream">Dream</option>
+
+                    </select>
+
+                </div>
+
+                <div class="flex space-between">
+
+                    <button id="confirm-new-journal-entry" class="confirm-btn">Confirm</button>
+
+                    <button id="cancel-new-journal-entry" class="cancel-btn">Cancel</button>
+
+                </div>
+
+            </dialog>
+
+            <div id="month-calendar">
+
+                <div id="calendar-header" class="flex space-between">
+
+                    <div class="flex">
+
+                        <p><span id="month-name">Month</span> <span id="year-number">Year</span></p>
+
+                    </div>
+
+                    <div id="calendar-month-cycling" class="flex space-between">
+
+                        <button id="previous-month-button">Previous</button>
+
+                        <button id="next-month-button">Next</button>
+
+                    </div>
+
+                </div>
+
+                <div id="calendar-body">
+
+                    <div id="calendar-days-titles" class="calendar-row flex">
+
+                        <div class="calendar-column">Sunday</div>
+
+                        <div class="calendar-column">Monday</div>
+
+                        <div class="calendar-column">Tuesday</div>
+
+                        <div class="calendar-column">Wednesday</div>
+
+                        <div class="calendar-column">Thursday</div>
+
+                        <div class="calendar-column">Friday</div>
+
+                        <div class="calendar-column">Saturday</div>
+
+                    </div>
+
+                    <div id="calendar-days-grid">
+
+                        
+                    </div>
+
+                </div>
+
+            </div>
+
+        </main>
+        
+    </body>
+
+    <script src="/dashboard/calendar/mainCalendarProgram.js" type="module"></script>
+    
+</html>

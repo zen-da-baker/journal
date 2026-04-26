@@ -1,0 +1,71 @@
+.calendar-column {
+
+    width: 10rem;
+
+    border: 0.1rem solid black;
+
+}
+
+.calendar-day {
+
+    min-height: 5rem;
+
+    border: 0.1rem solid black;
+
+}
+
+.calendar-weekend {
+
+    background-color: hsl( 200, 0%, 90% );
+
+}
+
+.current-day {
+
+    background-color: hsl( 1, 50%, 75% );
+
+}
+
+#month-calendar {
+
+    width: 70rem;
+
+    margin: 5vw;
+
+    border-radius: 1rem;
+
+    overflow: hidden;
+
+    border: 0.1rem solid black;
+
+    background-color: white;
+
+}
+
+#calendar-header {
+
+    padding: 1rem;
+
+}
+
+#calendar-month-cycling {
+
+    width: 7.5rem;
+
+}
+
+#calendar-days-titles * {
+
+    padding: 0.5rem;
+
+    text-align: center;
+
+}
+
+#calendar-journal-type-selection-form {
+
+    margin: 0.5rem 0;
+
+    width: 100%;
+
+}

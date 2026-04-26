@@ -1,0 +1,25 @@
+* {
+    
+    margin: 0;
+
+    padding: 0;
+
+}
+
+body {
+
+    background-color: hsl( 40, 25%, 90% );
+    
+}
+
+main {
+
+    min-height: 80vh;
+
+}
+
+[contenteditable] {
+
+    outline: 0px solid transparent;
+
+}

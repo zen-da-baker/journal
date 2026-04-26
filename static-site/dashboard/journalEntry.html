@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+        <!-- Include general meta data -->
+        <meta charset="UTF-8" />
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <!-- Include website favicon -->
+        <link rel="icon" href="/icons/bytesized-orange.png" />
+
+        <!-- Include stylesheets -->
+        <link rel="stylesheet" href="/styles/flex.css" />
+
+        <!-- Page title -->
+        <title>Entry | Bytesized Journal</title>
+
+        <!-- The styles of the pages -->
+        <!-- Global CSS -->
+        <link rel="stylesheet" href="/styles/global/global.css" />
+        <link rel="stylesheet" href="/styles/global/typography.css" />
+        <link rel="stylesheet" href="/styles/global/components.css" />
+
+        <!-- Layout CSS -->
+        <link rel="stylesheet" href="/styles/flex.css" />
+
+        <!-- Custom font for editable content -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet" />
+
+
+        <style>
+
+            main {
+
+                padding: 1rem;
+
+            }
+
+        </style>
+
+    </head>
+
+    <body>
+
+        <header class="flex space-between">
+
+            <a href="/">
+
+                <h2>Bytesized Journal</h2>
+
+            </a>
+
+            <nav>
+
+                <a href="/dashboard">
+                    Dashboard
+                </a>
+
+                <a href="/dashboard/calendar">
+                    Calendar
+                </a>
+
+                <a href="/dashboard/settings">
+                    Settings
+                </a>
+                
+            </nav>
+
+        </header>
+
+        <main>
+
+            <dialog id="error-modal" class="error-modal">
+
+                <h3 id="error-heading"></h3>
+
+                <p id="error-text"></p>
+
+                <button id="close-error-modal">Close</button>
+
+            </dialog>
+
+            <dialog id="edit-existing-image">
+
+                <h3>Edit the Existing Image</h3>
+
+                <label for="image-source-edit-input">Change Image Source</label>
+                <input id="image-source-edit-input" type="text" placeholder="Image source..." />
+
+                <label for="image-alt-text-edit-input">Change Image Alt Text</label>
+                <input id="image-alt-text-edit-input" type="text" placeholder="Image alt text..." />
+
+                <div class="flex button-container">
+
+                    <button id="finish-image-edit">Finish Editing Image Link</button>
+
+                    <button id="cancel-image-edit">Cancel Editing Image Link</button>
+
+                </div>
+
+            </dialog>
+
+            <dialog id="edit-existing-video">
+
+                <h3>Edit Existing Video</h3>
+
+                <label for="edit-existing-video-source-input">Change Video Source</label>
+                <input id="edit-existing-video-source-input" type="text" placeholder="New video link..." />
+
+                <div class="flex button-container">
+
+                    <button id="finish-editing-video-link-button">Finish Editing Video Link</button>
+
+                    <button id="cancel-editing-video-link-button">Cancel Editing Video Link</button>
+
+                </div>
+ 
+            </dialog>
+
+            <dialog id="new-line-modal">
+
+                <h3>Add a new line</h3>
+
+                <label for="line-type-selection">Line Type:</label>
+
+                <select id="line-type-selection">
+
+                    <option value="p">Paragraph</option>
+
+                    <option value="h1">Heading 1</option>
+
+                    <option value="h2">Heading 2</option>
+
+                    <option value="h3">Heading 3</option>
+
+                    <option value="img">Image</option>
+
+                    <option value="youtube-video">YouTube Video</option>
+
+                </select>
+
+                <div class="flex space-between button-container bottom">
+
+                    <button id="finish-line-type-selection">Finish Selection</button>
+
+                    <button id="cancel-line-type-selection">Cancel</button>
+
+                </div>
+
+            </dialog>
+
+            <dialog id="new-image-modal">
+
+                <h3>Add an Image</h3>
+
+                <label for="image-link-input">Image Link</label>
+                <input id="image-link-input" type="text" placeholder="Image link..." />
+
+                <label for="image-alt-text-input">Image Alternate Text</label>
+                <input id="image-alt-text-input" type="text" placeholder="Alternate text..." />
+
+                <div class="flex space-between bottom">
+
+                    <button id="finish-adding-new-image-button">Finish Addition</button>
+
+                    <button id="cancel-adding-new-image-button">Cancel</button>
+
+                </div>
+
+            </dialog>
+
+            <dialog id="new-youtube-video-modal">
+
+                <h3>Add YouTube Video</h3>
+
+                <label for="video-link-input">Video Link</label>
+                <input id="video-link-input" type="text" placeholder="Video link..." />
+
+                <div class="flex space-between bottom">
+
+                    <button id="finish-adding-video">Finish Addition</button>
+
+                    <button id="cancel-adding-video">Cancel</button>
+
+                </div>
+
+            </dialog>
+
+            <div>
+
+                <h2 id="entry-title" contenteditable="true"></h2>
+
+                <p id="entry-date"></p>
+
+            </div>
+
+            <div id="entry-body">
+
+            </div>
+
+            <div id="journal-button-container" class="button-container flex space-between">
+
+                <button id="new-line-button">New Line</button>
+
+                <button id="delete-current-entry-button">Delete Entry</button>
+
+            </div>
+
+            <dialog>
+
+                <h3 id="modal-heading"></h3>
+
+                <button id="close-deletion-modal-button">Close</button>
+
+                <button id="confirm-entry-deletion-button">Delete Entry</button>
+
+            </dialog>
+
+        </main>
+        
+    </body>
+
+    <script src="/dashboard/display-entry/mainJournalEntrySetup.js" type="module"></script>
+
+</html>
