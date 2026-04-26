@@ -41,7 +41,7 @@ export function displayJournalEntries(entryType = "day") {
                 user created entry can surpass the localStorage 5MB limit as well as contain files to store such as images.
                 The second key is the entry type which determines which object store is searched and the styling of the page.
             */
-            linkElementUI.href = "/dashboard/journal-entry?entryId=" + entry.id + "&entryType=" + entryType;
+            linkElementUI.href = "../dashboard/journalEntry.html?entryId=" + entry.id + "&entryType=" + entryType;
             let linkButtonUI = document.createElement("button");
             let deleteButtonUI = document.createElement("button");
             deleteButtonUI.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">

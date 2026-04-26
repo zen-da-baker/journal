@@ -19,7 +19,7 @@ export function addJournalEntriesToDay(calendarDayUI, calendarDay, calendarMonth
             entryCardButton.style.width = "100%";
             // Assign the properties of the new calendar card element
             entryCardTitleUI.textContent = entry.title;
-            entryCardLink.href = "/dashboard/journal-entry?entryId=" + entry.id + "&entryType=" + entryType;
+            entryCardLink.href = "../dashboard/journalEntry.html?entryId=" + entry.id + "&entryType=" + entryType;
             entryCardButton.textContent = "Open";
             // Add the calendar card element to the current calendar day entry
             entryCardLink.appendChild(entryCardButton);

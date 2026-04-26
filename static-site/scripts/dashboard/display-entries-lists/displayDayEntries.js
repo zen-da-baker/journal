@@ -19,7 +19,7 @@ export function displayDayEntries() {
             dateElementUI.textContent = monthsList[entryDate.getMonth()] + " " + entryDate.getDate() + ", " + entryDate.getFullYear();
             // The link to the entry is created and holds a query parameter that contains the entry id which is needed for the next page
             let linkElementUI = document.createElement("a");
-            linkElementUI.href = "/dashboard/journal-entry?entryId=" + entry.id;
+            linkElementUI.href = "../dashboard/journalEntry.html?entryId=" + entry.id;
             let linkButtonUI = document.createElement("button");
             let deleteButtonUI = document.createElement("button");
             deleteButtonUI.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
