@@ -1,0 +1,1 @@
+This is the current directory where the static assets of the journal app are being hosted. The dynamic website will come in the form of NextJS in a different directory.

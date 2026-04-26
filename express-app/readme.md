@@ -1,0 +1,1 @@
+The express web server is now deprecated in favor of static hosting for the moment and an eventual dynamic server in the form of NextJS.
