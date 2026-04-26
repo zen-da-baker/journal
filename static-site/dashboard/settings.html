@@ -9,16 +9,16 @@
 
         <title>Settings | Bytesized Journal</title>
 
-        <link rel="icon" href="/icons/bytesized-orange.png" />
+        <link rel="icon" href="../public/icons/bytesized-orange.png" />
 
         <!-- The styles of the pages -->
         <!-- Global CSS -->
-        <link rel="stylesheet" href="/styles/global/global.css" />
-        <link rel="stylesheet" href="/styles/global/typography.css" />
-        <link rel="stylesheet" href="/styles/global/components.css" />
+        <link rel="stylesheet" href="../public/styles/global/global.css" />
+        <link rel="stylesheet" href="../public/styles/global/typography.css" />
+        <link rel="stylesheet" href="../public/styles/global/components.css" />
 
         <!-- Layout CSS -->
-        <link rel="stylesheet" href="/styles/flex.css" />
+        <link rel="stylesheet" href="../public/styles/flex.css" />
 
     </head>
 
@@ -26,7 +26,7 @@
 
         <header class="flex space-between">
 
-            <a href="/">
+            <a href="../index.html">
 
                 <h2>Bytesized Journal</h2>
 
@@ -34,15 +34,15 @@
 
             <nav>
 
-                <a href="/dashboard">
+                <a href="../dashboard/dashboardHome.html">
                     Dashboard
                 </a>
 
-                <a href="/dashboard/calendar">
+                <a href="../dashboard/calendar.html">
                     Calendar
                 </a>
 
-                <a href="/dashboard/settings">
+                <a href="../dashboard/settings.html">
                     Settings
                 </a>
                 
@@ -100,7 +100,7 @@
 
                 <p>Have an account? Click the button below to login.</p>
 
-                <a href="/dashboard/login">
+                <a href="#">
 
                     <button>Login</button>
 
@@ -108,7 +108,7 @@
 
                 <p>Don't have an account already? Sign up for free to unlock more features.</p>
 
-                <a href="/dashboard/signup">
+                <a href="#">
 
                     <button>Sign Up</button>
 
@@ -194,24 +194,24 @@
                 <form class="card center-card flex flex-column">
 
                     <label for="feedback-form-name">Your Name</label>
-                    <input id="feedback-form-name" type="text" placeholder="Name..." required />
+                    <input id="feedback-form-name" type="text" placeholder="Name..." disabled />
 
                     <label for="feedback-form-email">Your Email Address</label>
-                    <input id="feedback-form-email" type="text" placeholder="Email..." required />
+                    <input id="feedback-form-email" type="text" placeholder="Email..." disabled />
 
                     <label for="feedback-form-subject">Subject</label>
-                    <input id="feedback-form-subject" type="text" placeholder="Subject..." required />
+                    <input id="feedback-form-subject" type="text" placeholder="Subject..." disabled />
 
                     <label for="feedback-form-message-body">Message Body</label>
-                    <textarea id="feedback-form-message-body" placeholder="Body..." required >
+                    <textarea id="feedback-form-message-body" placeholder="Body..." disabled >
 
                     </textarea>
 
                     <div class="button-container flex space-between">
 
-                        <button id="feedback-form-submission-button">Submit</button>
+                        <button id="feedback-form-submission-button" disabled>Submit</button>
 
-                        <button id="feedback-form-cancel-button">Cancel</button>
+                        <button id="feedback-form-cancel-button" disabled>Cancel</button>
 
                     </div>
 
@@ -223,7 +223,7 @@
         
     </body>
 
-    <script src="/settings/sendFeedbackMessageFromClient.js" type="module"></script>
-    <script src="/settings/mainSettingsPageFile.js" type="module"></script>
+    <script src="../scripts/settings/sendFeedbackMessageFromClient.js" type="module"></script>
+    <script src="../scripts/settings/mainSettingsPageFile.js" type="module"></script>
     
 </html>
